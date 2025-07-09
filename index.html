@@ -72,9 +72,28 @@
     }
 
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.8rem;
-      }h2 {
+  header h1 {
+    font-size: 1.8rem;
+  }
+}
+    h2 {
+  text-align: center;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #ff8a00, #e52e71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2rem;
+  margin: 50px auto 30px;
+  letter-spacing: 1px;
+}
+
+body {
+  scroll-behavior: smooth;
+  padding-top: 80px; /* Aumentamos para que el nav no tape */
+}
+        
   text-align: center;
   font-family: 'Helvetica Neue', sans-serif;
   font-weight: bold;
