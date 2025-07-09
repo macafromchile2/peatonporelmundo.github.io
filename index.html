@@ -142,6 +142,36 @@
     @media (max-width: 600px) {
       header h1 { font-size: 1.8rem; }
     }
+    .bio-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: center;
+  transition: transform 0.3s;
+}
+.bio-card:hover {
+  transform: translateY(-5px);
+}
+
+.bio-card img {
+  max-width: 250px;
+  border-radius: 10px;
+}
+
+.bio-text {
+  flex: 1;
+  min-width: 250px;
+  font-size: 1rem;
+  color: #333;
+  text-align: left;
+}
+
   </style>
 </head>
 <body>
@@ -164,12 +194,20 @@
   </div>
 </header>
 <section class="bio">
-  <img src="tu-foto.jpg" alt="Foto de Maca Silva" />
-  <p><strong>Soy Maca Silva</strong>, escritora, exploradora y autora de <em>Peatón por el Mundo</em>.</p>
-  <p>Durante los últimos 4 años crucé océanos, selvas, desiertos y ciudades a pie, cámara y libreta en mano. He recorrido los <strong>6 continentes</strong> (sí, todos menos la Antártica — por ahora), documentando lo que no sale en los folletos: la mirada humana, lo cotidiano, lo incómodo y lo real.</p>
-  <p>No viajo por lujo ni por moda. Viajo para entender. Para caminar sin prisa, para narrar desde el barro, la intemperie o el metro cuadrado que nadie ve.</p>
-  <p>Este sitio es mi punto de encuentro con el mundo: donde el viaje se transforma en relato y el relato en revolución personal.</p>
+  <div class="bio-card">
+    <img src="tu-foto.jpg" alt="Foto de Maca Silva" />
+    <div class="bio-text">
+      <p><strong>Hola, soy Maca Silva</strong>. Escritora, fotógrafa y exploradora independiente. Autora de <em>Peatón por el Mundo</em>, un libro que documenta una travesía a pie por más de 50 países en los 6 continentes.</p>
+
+      <p>Durante los últimos años, he recorrido el mundo con una libreta y una cámara, buscando narrar lo que no aparece en las postales: la vida cotidiana, lo invisible, lo incómodo y lo profundamente humano. Mis relatos nacen desde la experiencia directa, con los pies en el barro, en mercados, trenes, fronteras y callejones olvidados.</p>
+
+      <p>No viajo para escapar, viajo para comprender. Porque cada paso, cada encuentro, es una forma de mirar el mundo —y también de mirarme a mí misma— desde nuevos ángulos.</p>
+
+      <p>Este sitio es mi bitácora digital. Aquí comparto mapas interactivos, relatos breves y miradas íntimas de los lugares que he habitado. Bienvenidx a este viaje sin prisa, donde el destino no es un lugar, sino una forma de contar.</p>
+    </div>
+  </div>
 </section>
+
   <section id="mapas">
   </section>
   <!-- SECCIÓN AMÉRICA DEL SUR -->
