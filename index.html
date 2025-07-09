@@ -105,6 +105,21 @@
       margin: 0 auto;
     }
 
+    .region h2 {
+      background: linear-gradient(to right, #5e60ce, #7400b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .region p {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 15px;
+      border-left: 4px solid #7400b8;
+      border-radius: 8px;
+      font-style: italic;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
     .frase-final {
       text-align: center;
       font-style: italic;
@@ -142,36 +157,36 @@
     @media (max-width: 600px) {
       header h1 { font-size: 1.8rem; }
     }
+
     .bio-card {
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  padding: 30px;
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-  align-items: center;
-  transition: transform 0.3s;
-}
-.bio-card:hover {
-  transform: translateY(-5px);
-}
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      padding: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      align-items: center;
+      transition: transform 0.3s;
+    }
+    .bio-card:hover {
+      transform: translateY(-5px);
+    }
 
-.bio-card img {
-  max-width: 250px;
-  border-radius: 10px;
-}
+    .bio-card img {
+      max-width: 250px;
+      border-radius: 10px;
+    }
 
-.bio-text {
-  flex: 1;
-  min-width: 250px;
-  font-size: 1rem;
-  color: #333;
-  text-align: left;
-}
-
+    .bio-text {
+      flex: 1;
+      min-width: 250px;
+      font-size: 1rem;
+      color: #333;
+      text-align: left;
+    }
   </style>
 </head>
 <body>
