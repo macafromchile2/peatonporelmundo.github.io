@@ -12,6 +12,10 @@
       background: #fffdf6;
       color: #222;
       line-height: 1.6;
+      scroll-behavior: smooth;
+      padding-top: 80px;
+      border: 8px solid #111;
+      box-sizing: border-box;
     }
     header {
       background: linear-gradient(to right, #ff8a00, #e52e71);
@@ -42,6 +46,46 @@
     .instagram { background: #3f729b; }
     .facebook { background: #3b5998; }
 
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fffdf6;
+      border-bottom: 1px solid #eee;
+      z-index: 1000;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 10px 0;
+      gap: 30px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #e52e71;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ff8a00;
+    }
+
+    h2 {
+      text-align: center;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      background: linear-gradient(to right, #ff8a00, #e52e71);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 2rem;
+      margin: 50px auto 30px;
+      letter-spacing: 1px;
+    }
+
     .bio {
       padding: 40px 20px;
       max-width: 800px;
@@ -54,6 +98,26 @@
       margin-bottom: 20px;
     }
 
+    .region, .historias {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .frase-final {
+      text-align: center;
+      font-style: italic;
+      color: #b0004d;
+      padding: 40px 20px 20px;
+      background: #fff0f5;
+      font-size: 1.2rem;
+      animation: fadein 2s ease-in;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
     footer {
       background: #222;
       color: #eee;
@@ -61,111 +125,23 @@
       padding: 20px;
       font-size: 0.9rem;
     }
-
     footer a {
       color: #ff79b0;
       text-decoration: underline;
     }
-
     footer a:hover {
       color: #ffaad2;
     }
 
-    @media (max-width: 600px) {
-  header h1 {
-    font-size: 1.8rem;
-  }
-}
-    h2 {
-  text-align: center;
-  font-family: 'Helvetica Neue', sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
-  background: linear-gradient(to right, #ff8a00, #e52e71);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 2rem;
-  margin: 50px auto 30px;
-  letter-spacing: 1px;
-}
-
-body {
-  scroll-behavior: smooth;
-  padding-top: 80px; /* Aumentamos para que el nav no tape */
-}
-        
-  text-align: center;
-  font-family: 'Helvetica Neue', sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
-  background: linear-gradient(to right, #ff8a00, #e52e71);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 2rem;
-  margin: 50px auto 30px;
-  letter-spacing: 1px;
-}
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #fffdf6;
-  border-bottom: 1px solid #eee;
-  z-index: 1000;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  padding: 10px 0;
-  gap: 30px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #e52e71;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: color 0.3s;
-}
-
-nav ul li a:hover {
-  color: #ff8a00;
-}
-
-  body {
-    scroll-behavior: smooth;
-    padding-top: 80px; 
-    border: 8px solid #111;
-    box-sizing: border-box;
-  }
-}
-
+    @keyframes fadein {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
-    .frase-final {
-  text-align: center;
-  font-style: italic;
-  color: #b0004d;
-  padding: 40px 20px 20px;
-  background: #fff0f5;
-  font-size: 1.2rem;
-  animation: fadein 2s ease-in;
-  max-width: 800px;
-  margin: 0 auto 40px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
 
-@keyframes fadein {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-    
-
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.8rem; }
+    }
   </style>
-  
 </head>
 <body>
 <nav>
@@ -176,26 +152,24 @@ nav ul li a:hover {
     <li><a href="#contacto">Contacto</a></li>
   </ul>
 </nav>
-
-  <header> 
-    <h1>PEATÓN POR EL MUNDO</h1>
-    <h2>Relatos de una exploradora nómada</h2>
-    <div class="buttons">
-      <a class="amazon" href="https://www.amazon.com/gp/product/9564200997" target="_blank">Ver en Amazon</a>
-      <a class="mercado" href="https://www.mercadolibre.cl/libro-peaton-por-el-mundo/up/MLCU2858535998/" target="_blank">Ver en Mercado Libre</a>
-      <a class="instagram" href="https://www.instagram.com/macafromchile" target="_blank">Instagram</a>
-      <a class="facebook" href="https://www.facebook.com/macafromchile/" target="_blank">Facebook</a>
-
-    </div>
-  </header>
-
-  <section class="bio">
-    <img src="tu-foto.jpg" alt="Foto de Maca Silva" />
-    <p><strong>Soy Maca Silva</strong>, escritora, exploradora y autora de <em>Peatón por el Mundo</em>.</p>
-<p>Durante los últimos 4 años crucé océanos, selvas, desiertos y ciudades a pie, cámara y libreta en mano. He recorrido los <strong>6 continentes</strong> (sí, todos menos la Antártica — por ahora), documentando lo que no sale en los folletos: la mirada humana, lo cotidiano, lo incómodo y lo real.</p>
-<p>No viajo por lujo ni por moda. Viajo para entender. Para caminar sin prisa, para narrar desde el barro, la intemperie o el metro cuadrado que nadie ve.</p>
-<p>Este sitio es mi punto de encuentro con el mundo: donde el viaje se transforma en relato y el relato en revolución personal.</p>
-
+<header id="inicio">
+  <h1>PEATÓN POR EL MUNDO</h1>
+  <h2>Relatos de una exploradora nómada</h2>
+  <div class="buttons">
+    <a class="amazon" href="https://www.amazon.com/gp/product/9564200997" target="_blank">Ver en Amazon</a>
+    <a class="mercado" href="https://www.mercadolibre.cl/libro-peaton-por-el-mundo/up/MLCU2858535998/" target="_blank">Ver en Mercado Libre</a>
+    <a class="instagram" href="https://www.instagram.com/macafromchile" target="_blank">Instagram</a>
+    <a class="facebook" href="https://www.facebook.com/macafromchile/" target="_blank">Facebook</a>
+  </div>
+</header>
+<section class="bio">
+  <img src="tu-foto.jpg" alt="Foto de Maca Silva" />
+  <p><strong>Soy Maca Silva</strong>, escritora, exploradora y autora de <em>Peatón por el Mundo</em>.</p>
+  <p>Durante los últimos 4 años crucé océanos, selvas, desiertos y ciudades a pie, cámara y libreta en mano. He recorrido los <strong>6 continentes</strong> (sí, todos menos la Antártica — por ahora), documentando lo que no sale en los folletos: la mirada humana, lo cotidiano, lo incómodo y lo real.</p>
+  <p>No viajo por lujo ni por moda. Viajo para entender. Para caminar sin prisa, para narrar desde el barro, la intemperie o el metro cuadrado que nadie ve.</p>
+  <p>Este sitio es mi punto de encuentro con el mundo: donde el viaje se transforma en relato y el relato en revolución personal.</p>
+</section>
+  <section id="mapas">
   </section>
   <!-- SECCIÓN AMÉRICA DEL SUR -->
 <section class="region">
@@ -246,23 +220,21 @@ nav ul li a:hover {
   <iframe src="mapa_oceania.html" width="100%" height="500" frameborder="0"></iframe>
 </section>
 
-<section class="historias">
+<section id="historias" class="historias">
   <h2>Historias del Mundo</h2>
   <iframe src="historias_del_mundo.html" width="100%" height="1000" frameborder="0"></iframe>
 </section>
-
 <section class="frase-final">
   <p>“Lo único que uno puede dejar en el mundo son las creaciones personales. Todo lo demás se esfuma como el viento.”<br><em>— Maca Silva</em></p>
 </section>
-
-
-  <footer>
-    📩 Contacto: <a href="mailto:macafromchile@gmail.com">macafromchile@gmail.com</a> / <a href="mailto:peatonporelmundo@gmail.com">peatonporelmundo@gmail.com</a><br>
-    © 2025 Maca Silva – Todos los derechos reservados
-  </footer>
-
+<footer id="contacto">
+  📩 Contacto: <a href="mailto:macafromchile@gmail.com">macafromchile@gmail.com</a> / <a href="mailto:peatonporelmundo@gmail.com">peatonporelmundo@gmail.com</a><br>
+  © 2025 Maca Silva – Todos los derechos reservados
+</footer>
 </body>
 </html>
+
+
 
 
 
