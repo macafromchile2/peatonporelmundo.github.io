@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_465faee191d2885c4177d1e5c3f8aac3 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_465faee191d2885c4177d1e5c3f8aac3" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_465faee191d2885c4177d1e5c3f8aac3 = L.map(
+                "map_465faee191d2885c4177d1e5c3f8aac3",
+                {
+                    center: [30.0, 90.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 3,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_188e2fffd86558de190f478e2965f902 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_465faee191d2885c4177d1e5c3f8aac3);
+        
+    
+            var marker_3271ab0a605824f22c10000c1fd38793 = L.marker(
+                [51.1, 71.4],
+                {}
+            ).addTo(map_465faee191d2885c4177d1e5c3f8aac3);
+        
+    
+            var icon_76450143717dc98d90a486f8d4738fd4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
+            );
+            marker_3271ab0a605824f22c10000c1fd38793.setIcon(icon_76450143717dc98d90a486f8d4738fd4);
+        
+    
+            marker_3271ab0a605824f22c10000c1fd38793.bindTooltip(
+                `<div>
+                     Kazakhstan
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2bac6178ae2a43e29cdc769194e78e0d = L.marker(
+                [42.9, 74.6],
+                {}
+            ).addTo(map_465faee191d2885c4177d1e5c3f8aac3);
+        
+    
+            var icon_bb961b901c10882a6546b04b09fca8e8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
+            );
+            marker_2bac6178ae2a43e29cdc769194e78e0d.setIcon(icon_bb961b901c10882a6546b04b09fca8e8);
+        
+    
+            marker_2bac6178ae2a43e29cdc769194e78e0d.bindTooltip(
+                `<div>
+                     Kyrgyzstan
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_812cf1a092d63622025379a66e3834b4 = L.marker(
+                [28.6, 77.2],
+                {}
+            ).addTo(map_465faee191d2885c4177d1e5c3f8aac3);
+        
+    
+            var icon_77a4c1d651b469e0089beb3fc7ec0f26 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
+            );
+            marker_812cf1a092d63622025379a66e3834b4.setIcon(icon_77a4c1d651b469e0089beb3fc7ec0f26);
+        
+    
+            marker_812cf1a092d63622025379a66e3834b4.bindTooltip(
+                `<div>
+                     India
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cbac26eb89259783498044ec2b4d33a2 = L.marker(
+                [27.7, 85.3],
+                {}
+            ).addTo(map_465faee191d2885c4177d1e5c3f8aac3);
+        
+    
+            var icon_d87fe50f387127488a313ff7fc0eb448 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
+            );
+            marker_cbac26eb89259783498044ec2b4d33a2.setIcon(icon_d87fe50f387127488a313ff7fc0eb448);
+        
+    
+            marker_cbac26eb89259783498044ec2b4d33a2.bindTooltip(
+                `<div>
+                     Nepal
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_18fc68433ee22d908afa78204e17a5fd = L.marker(
+                [47.9, 106.9],
+                {}
+            ).addTo(map_465faee191d2885c4177d1e5c3f8aac3);
+        
+    
+            var icon_8a14bc42da6d2af8fd965dbeedccc26d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
+            );
+            marker_18fc68433ee22d908afa78204e17a5fd.setIcon(icon_8a14bc42da6d2af8fd965dbeedccc26d);
+        
+    
+            marker_18fc68433ee22d908afa78204e17a5fd.bindTooltip(
+                `<div>
+                     Mongolia
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d6c2d2c4f75fd6beb78c59fc82c2d7e1 = L.marker(
+                [37.6, 127.0],
+                {}
+            ).addTo(map_465faee191d2885c4177d1e5c3f8aac3);
+        
+    
+            var icon_f61a24c0fd231875c0d2e9b7b029cf1d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
+            );
+            marker_d6c2d2c4f75fd6beb78c59fc82c2d7e1.setIcon(icon_f61a24c0fd231875c0d2e9b7b029cf1d);
+        
+    
+            marker_d6c2d2c4f75fd6beb78c59fc82c2d7e1.bindTooltip(
+                `<div>
+                     South Korea
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_860c67fd61bf5e0ac6f93096bfac89be = L.marker(
+                [14.6, 121.0],
+                {}
+            ).addTo(map_465faee191d2885c4177d1e5c3f8aac3);
+        
+    
+            var icon_33485fde52957158a8f12b02c3ad1e4f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
+            );
+            marker_860c67fd61bf5e0ac6f93096bfac89be.setIcon(icon_33485fde52957158a8f12b02c3ad1e4f);
+        
+    
+            marker_860c67fd61bf5e0ac6f93096bfac89be.bindTooltip(
+                `<div>
+                     Philippines
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_029502b37f202402e74328d733dddc33 = L.marker(
+                [-6.2, 106.8],
+                {}
+            ).addTo(map_465faee191d2885c4177d1e5c3f8aac3);
+        
+    
+            var icon_b2cc294305e41d5e8f8901a55df1d0c2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
+            );
+            marker_029502b37f202402e74328d733dddc33.setIcon(icon_b2cc294305e41d5e8f8901a55df1d0c2);
+        
+    
+            marker_029502b37f202402e74328d733dddc33.bindTooltip(
+                `<div>
+                     Indonesia
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
