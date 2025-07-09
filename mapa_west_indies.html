@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f0c03a79205910413588e30e72d40b62 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_f0c03a79205910413588e30e72d40b62" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_f0c03a79205910413588e30e72d40b62 = L.map(
+                "map_f0c03a79205910413588e30e72d40b62",
+                {
+                    center: [14.0, -61.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 3,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_1ef548c9cf5abda6d40aae04c27cc9ae = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_f0c03a79205910413588e30e72d40b62);
+        
+    
+            var marker_b778f2dbfd51b2db115008c738aa220c = L.marker(
+                [17.1, -61.8],
+                {}
+            ).addTo(map_f0c03a79205910413588e30e72d40b62);
+        
+    
+            var icon_c7677edd03e17ef4bc87ad266717e480 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
+            );
+            marker_b778f2dbfd51b2db115008c738aa220c.setIcon(icon_c7677edd03e17ef4bc87ad266717e480);
+        
+    
+            marker_b778f2dbfd51b2db115008c738aa220c.bindTooltip(
+                `<div>
+                     Antigua and Barbuda
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_84480aa8db72fa2af44ea5a94c0fbc45 = L.marker(
+                [13.1, -59.6],
+                {}
+            ).addTo(map_f0c03a79205910413588e30e72d40b62);
+        
+    
+            var icon_00d777006f229c27a1600ef977c775d8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
+            );
+            marker_84480aa8db72fa2af44ea5a94c0fbc45.setIcon(icon_00d777006f229c27a1600ef977c775d8);
+        
+    
+            marker_84480aa8db72fa2af44ea5a94c0fbc45.bindTooltip(
+                `<div>
+                     Barbados
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c97f486a06c5506e15cee868622c95f1 = L.marker(
+                [15.3, -61.4],
+                {}
+            ).addTo(map_f0c03a79205910413588e30e72d40b62);
+        
+    
+            var icon_9699e0a981ed039727b13d0d8a057a23 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
+            );
+            marker_c97f486a06c5506e15cee868622c95f1.setIcon(icon_9699e0a981ed039727b13d0d8a057a23);
+        
+    
+            marker_c97f486a06c5506e15cee868622c95f1.bindTooltip(
+                `<div>
+                     Dominica
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_25a857b493d9006d3a77f09765fc1bad = L.marker(
+                [12.1, -61.7],
+                {}
+            ).addTo(map_f0c03a79205910413588e30e72d40b62);
+        
+    
+            var icon_7c1a0dd3731d37451e24721dde27b6d7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
+            );
+            marker_25a857b493d9006d3a77f09765fc1bad.setIcon(icon_7c1a0dd3731d37451e24721dde27b6d7);
+        
+    
+            marker_25a857b493d9006d3a77f09765fc1bad.bindTooltip(
+                `<div>
+                     Grenada
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1ef2b6fc2bd5a0fcd96b6e1a2af3f714 = L.marker(
+                [17.3, -62.7],
+                {}
+            ).addTo(map_f0c03a79205910413588e30e72d40b62);
+        
+    
+            var icon_8351f0e8a89a48facbfabe070e770682 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
+            );
+            marker_1ef2b6fc2bd5a0fcd96b6e1a2af3f714.setIcon(icon_8351f0e8a89a48facbfabe070e770682);
+        
+    
+            marker_1ef2b6fc2bd5a0fcd96b6e1a2af3f714.bindTooltip(
+                `<div>
+                     Saint Kitts and Nevis
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_82be1ac1faaf08fd2230caac95fccb9b = L.marker(
+                [13.9, -60.9],
+                {}
+            ).addTo(map_f0c03a79205910413588e30e72d40b62);
+        
+    
+            var icon_4aa6b88798e9ea11a2df4a79b317656d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
+            );
+            marker_82be1ac1faaf08fd2230caac95fccb9b.setIcon(icon_4aa6b88798e9ea11a2df4a79b317656d);
+        
+    
+            marker_82be1ac1faaf08fd2230caac95fccb9b.bindTooltip(
+                `<div>
+                     Saint Lucia
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_556813aa047f8b4e586cac70e70da9e0 = L.marker(
+                [13.2, -61.2],
+                {}
+            ).addTo(map_f0c03a79205910413588e30e72d40b62);
+        
+    
+            var icon_34c1246d814d91ffe41264015875a2a8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
+            );
+            marker_556813aa047f8b4e586cac70e70da9e0.setIcon(icon_34c1246d814d91ffe41264015875a2a8);
+        
+    
+            marker_556813aa047f8b4e586cac70e70da9e0.bindTooltip(
+                `<div>
+                     Saint Vincent and the Grenadines
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6c1ad2fa1dce51e8e26009a7d015f7a5 = L.marker(
+                [10.7, -61.5],
+                {}
+            ).addTo(map_f0c03a79205910413588e30e72d40b62);
+        
+    
+            var icon_03dd84eac377290672a7931ec21671e5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
+            );
+            marker_6c1ad2fa1dce51e8e26009a7d015f7a5.setIcon(icon_03dd84eac377290672a7931ec21671e5);
+        
+    
+            marker_6c1ad2fa1dce51e8e26009a7d015f7a5.bindTooltip(
+                `<div>
+                     Trinidad and Tobago
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3bc5f3e2f53f289bf6448a37cfce23ee = L.marker(
+                [14.6, -61.0],
+                {}
+            ).addTo(map_f0c03a79205910413588e30e72d40b62);
+        
+    
+            var icon_c80596a2d1dbcba31003f13f3f701db9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
+            );
+            marker_3bc5f3e2f53f289bf6448a37cfce23ee.setIcon(icon_c80596a2d1dbcba31003f13f3f701db9);
+        
+    
+            marker_3bc5f3e2f53f289bf6448a37cfce23ee.bindTooltip(
+                `<div>
+                     Martinique
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
