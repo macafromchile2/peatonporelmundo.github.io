@@ -10,17 +10,17 @@
     body {
       margin: 0;
       font-family: 'Helvetica Neue', sans-serif;
-      background: #fefcfb url('https://www.transparenttextures.com/patterns/old-map.png') repeat;
-      color: #222;
+      background: #f4f4f4;
+      color: #111;
       line-height: 1.6;
       scroll-behavior: smooth;
       padding-top: 80px;
-      border: 8px solid #111;
+      border: 8px solid #000;
       box-sizing: border-box;
     }
 
     header {
-      background: linear-gradient(to right, #ff8a00, #e52e71);
+      background: #000;
       color: white;
       padding: 60px 20px;
       text-align: center;
@@ -43,18 +43,19 @@
       color: white;
       border-radius: 5px;
       font-weight: bold;
+      background: #111;
     }
-    .amazon { background: #6a4c93; }
-    .mercado { background: #ff6f61; }
-    .instagram { background: #8338ec; }
-    .facebook { background: #3a0ca3; }
+
+    .amazon, .mercado, .instagram, .facebook {
+      background: #000;
+    }
 
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: #fffdf6;
-      border-bottom: 1px solid #eee;
+      background: #111;
+      border-bottom: 1px solid #333;
       z-index: 1000;
     }
     nav ul {
@@ -67,13 +68,13 @@
     }
     nav ul li a {
       text-decoration: none;
-      color: #9d4edd;
+      color: #eee;
       font-weight: bold;
       font-size: 1rem;
       transition: color 0.3s;
     }
     nav ul li a:hover {
-      color: #ff8a00;
+      color: #999;
     }
 
     h2 {
@@ -81,9 +82,7 @@
       font-family: 'Playfair Display', serif;
       font-weight: bold;
       text-transform: uppercase;
-      background: linear-gradient(to right, #9d4edd, #5f0f40);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #000;
       font-size: 2.2rem;
       margin: 50px auto 30px;
       letter-spacing: 1px;
@@ -107,28 +106,22 @@
       margin: 0 auto;
     }
 
-    .region h2 {
-      background: linear-gradient(to right, #5e60ce, #7400b8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
     .region p {
-      background: rgba(255, 255, 255, 0.9);
+      background: #fff;
       padding: 15px;
-      border-left: 4px solid #9d4edd;
+      border-left: 4px solid #000;
       border-radius: 8px;
       font-style: italic;
-      color: #333;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      color: #111;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
     .frase-final {
       text-align: center;
       font-style: italic;
-      color: #b0004d;
+      color: #000;
       padding: 40px 20px 20px;
-      background: #fff0f5;
+      background: #eaeaea;
       font-size: 1.2rem;
       animation: fadein 2s ease-in;
       max-width: 800px;
@@ -138,18 +131,18 @@
     }
 
     footer {
-      background: #222;
-      color: #eee;
+      background: #000;
+      color: #ccc;
       text-align: center;
       padding: 20px;
       font-size: 0.9rem;
     }
     footer a {
-      color: #ff79b0;
+      color: #999;
       text-decoration: underline;
     }
     footer a:hover {
-      color: #ffaad2;
+      color: #eee;
     }
 
     @keyframes fadein {
@@ -187,7 +180,7 @@
       flex: 1;
       min-width: 250px;
       font-size: 1rem;
-      color: #333;
+      color: #111;
       text-align: left;
     }
   </style>
