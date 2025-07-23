@@ -26,19 +26,23 @@
       margin-bottom: 30px;
     }
 
-    .filtros button {
-      background-color: #000;
-      color: #fff;
-      border: 1px solid #000;
-      padding: 10px 20px;
-      font-family: Georgia, serif;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
+   .filtros button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-family: Georgia, serif;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
 
-    .filtros button:hover {
-      background-color: #333;
-    }
+.filtros button:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
 
     .tarjetas {
       display: grid;
