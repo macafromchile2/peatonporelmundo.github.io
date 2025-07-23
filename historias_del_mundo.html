@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,15 +27,15 @@
             color: #333333;
         }
 
-        .grid {
+        .relatos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             max-width: 1000px;
             margin: 0 auto;
         }
 
-        .card {
+        .tarjeta {
             background-color: #f9f9f9;
             border: 1px solid #cccccc;
             padding: 20px;
@@ -45,53 +44,92 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .card:hover {
+        .tarjeta:hover {
             transform: translateY(-3px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .card strong {
-            display: block;
+        .tarjeta h3 {
             font-size: 1.1em;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             color: #000000;
         }
 
-        .card span {
+        .tarjeta p {
             font-size: 0.95em;
             color: #555555;
+        }
+
+        .tarjeta a {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.95em;
+            color: #222;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .tarjeta a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
 <h2>Historias del Mundo</h2>
-<p>Cada país que visité me enfrentó con una realidad. Aquí comparto algunas temáticas que documenté, breves pero intensas, como una postal con carga emocional.</p>
+<p>Fragmentos de viaje, momentos transformadores. Aquí, cada país guarda una vivencia que me cambió. Estas son algunas.</p>
 
-<div class="grid">
-    <div class="card"><strong>Mongolia</strong><span>Nómades modernos</span></div>
-    <div class="card"><strong>Kirguistán</strong><span>Ala Kachuu, el secuestro de mujeres</span></div>
-    <div class="card"><strong>Kazajistán</strong><span>La vida tras la URSS</span></div>
-    <div class="card"><strong>Corea del Sur</strong><span>El castigo de la edad</span></div>
-    <div class="card"><strong>China</strong><span>El pago del futuro</span></div>
-    <div class="card"><strong>Japón</strong><span>Maids Café</span></div>
-    <div class="card"><strong>Nepal</strong><span>El origen del budismo</span></div>
-    <div class="card"><strong>India</strong><span>El caos como lección</span></div>
-    <div class="card"><strong>Egipto</strong><span>La explotación que rodea las pirámides</span></div>
-    <div class="card"><strong>Qatar</strong><span>La vida en Al Barr (el desierto)</span></div>
-    <div class="card"><strong>Jordania</strong><span>Huelgas en Amán</span></div>
-    <div class="card"><strong>Surinam</strong><span>Renacer tras el colonialismo</span></div>
-    <div class="card"><strong>Guyana</strong><span>Abandono comunitario</span></div>
-    <div class="card"><strong>Guayana Francesa</strong><span>Puerto espacial de la Unión Europea</span></div>
-    <div class="card"><strong>Barbados</strong><span>La casa de Rihanna</span></div>
-    <div class="card"><strong>Grenada</strong><span>Techos rojos tras el huracán</span></div>
-    <div class="card"><strong>Saint Lucia</strong><span>El país de las lunas de miel</span></div>
-    <div class="card"><strong>Nauru</strong><span>El país menos visitado del mundo</span></div>
-    <div class="card"><strong>Vanuatu</strong><span>El país de los tres idiomas</span></div>
-    <div class="card"><strong>Fiji</strong><span>El nuevo hinduismo</span></div>
-    <div class="card"><strong>Puerto Williams (Chile)</strong><span>Desastre ambiental por castores</span></div>
-    <div class="card"><strong>Puerto Cisnes (Chile)</strong><span>La minga</span></div>
-    <div class="card"><strong>Puerto Toro (Chile)</strong><span>El poblado más austral del mundo</span></div>
+<div class="relatos">
+  <div class="tarjeta">
+    <h3>Victoria, Argentina – De otro planeta</h3>
+    <p>Un museo OVNI, una investigadora y un relato que desafía lo que entendemos como real.</p>
+    <a href="#">Leer más</a>
+  </div>
+  <div class="tarjeta">
+    <h3>Surinam – Paramaribo bajo el agua</h3>
+    <p>Una ciudad amazónica que se inundó y me enseñó que lo inesperado es parte del viaje.</p>
+    <a href="#">Leer más</a>
+  </div>
+  <div class="tarjeta">
+    <h3>Guyana – ¿Un país hostil?</h3>
+    <p>Una capital sofocante donde descubrí que incluso en lo más duro, hay destellos de humanidad.</p>
+    <a href="#">Leer más</a>
+  </div>
+  <div class="tarjeta">
+    <h3>Dominica – La isla verde</h3>
+    <p>Una conexión ancestral en la tierra de los Kalinago y noches de cumbia inesperada.</p>
+    <a href="#">Leer más</a>
+  </div>
+  <div class="tarjeta">
+    <h3>Antigua y Barbuda – Entre la calma y el caos</h3>
+    <p>El huracán Fiona transformó un paraíso en prueba. Y luego en resiliencia.</p>
+    <a href="#">Leer más</a>
+  </div>
+  <div class="tarjeta">
+    <h3>Tijuana, México – Más allá del mito</h3>
+    <p>Rock, frontera y contradicciones. Tijuana no se explica, se vive.</p>
+    <a href="#">Leer más</a>
+  </div>
+  <div class="tarjeta">
+    <h3>Sevilla, España – Un viaje de reencuentro</h3>
+    <p>Mi nombre, mi historia, y un aroma a naranjo que lo conecta todo.</p>
+    <a href="#">Leer más</a>
+  </div>
+  <div class="tarjeta">
+    <h3>Islandia – El latido del Ártico</h3>
+    <p>Silencio, frío y viento. El norte no abraza, desafía.</p>
+    <a href="#">Leer más</a>
+  </div>
+  <div class="tarjeta">
+    <h3>Noruega – El enigma del norte</h3>
+    <p>Casco vikingo, arte oculto y una iglesia satánica. Noruega no es lo que parece.</p>
+    <a href="#">Leer más</a>
+  </div>
+  <div class="tarjeta">
+    <h3>Letonia – Entre mitos y monumentos</h3>
+    <p>Gatos rebeldes y esculturas que protestan en silencio. Riga me habló bajito.</p>
+    <a href="#">Leer más</a>
+  </div>
 </div>
 
 </body>
