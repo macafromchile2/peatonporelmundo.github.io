@@ -86,13 +86,18 @@
         }
 
         .bandera {
-            width: 25px;
-            height: 17px;
-            vertical-align: middle;
-            margin-right: 8px;
-            border: 1px solid #aaa;
-            filter: grayscale(100%);
-        }
+  width: 25px;
+  height: 17px;
+  vertical-align: middle;
+  margin-right: 8px;
+  border: 1px solid #aaa;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.tarjeta:hover .bandera {
+  filter: none;
+}
     </style>
     <script>
       function filtrarContinente() {
