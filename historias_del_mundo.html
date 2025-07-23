@@ -27,6 +27,18 @@
             color: #333333;
         }
 
+        .filtro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .filtro select {
+            padding: 8px 12px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
         .relatos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -72,61 +84,105 @@
         .tarjeta a:hover {
             text-decoration: underline;
         }
+
+        .bandera {
+            width: 25px;
+            height: 17px;
+            vertical-align: middle;
+            margin-right: 8px;
+            border: 1px solid #aaa;
+            filter: grayscale(100%);
+        }
     </style>
+    <script>
+      function filtrarContinente() {
+        var seleccion = document.getElementById("filtroContinente").value;
+        var tarjetas = document.querySelectorAll(".tarjeta");
+        tarjetas.forEach(function(t) {
+          t.style.display = (seleccion === "todos" || t.dataset.continente === seleccion) ? "block" : "none";
+        });
+      }
+    </script>
 </head>
 <body>
 
 <h2>Historias del Mundo</h2>
-<p>Fragmentos de viaje, momentos transformadores. Aquí, cada país guarda una vivencia que me cambió. Estas son algunas.</p>
+
+<div class="filtro">
+  <label for="filtroContinente">Filtrar por continente: </label>
+  <select id="filtroContinente" onchange="filtrarContinente()">
+    <option value="todos">Todos</option>
+    <option value="america">América</option>
+    <option value="europa">Europa</option>
+    <option value="asia">Asia</option>
+    <option value="africa">África</option>
+    <option value="oceania">Oceanía</option>
+  </select>
+</div>
 
 <div class="relatos">
-  <div class="tarjeta">
-    <h3>Victoria, Argentina – De otro planeta</h3>
+  <div class="tarjeta" data-continente="america">
+    <h3><img class="bandera" src="https://flagcdn.com/ar.svg" alt="Argentina">Victoria, Argentina – De otro planeta</h3>
     <p>Un museo OVNI, una investigadora y un relato que desafía lo que entendemos como real.</p>
     <a href="#">Leer más</a>
   </div>
-  <div class="tarjeta">
-    <h3>Surinam – Paramaribo bajo el agua</h3>
+  <div class="tarjeta" data-continente="america">
+    <h3><img class="bandera" src="https://flagcdn.com/sr.svg" alt="Surinam">Surinam – Paramaribo bajo el agua</h3>
     <p>Una ciudad amazónica que se inundó y me enseñó que lo inesperado es parte del viaje.</p>
     <a href="#">Leer más</a>
   </div>
-  <div class="tarjeta">
-    <h3>Guyana – ¿Un país hostil?</h3>
+  <div class="tarjeta" data-continente="america">
+    <h3><img class="bandera" src="https://flagcdn.com/gy.svg" alt="Guyana">Guyana – ¿Un país hostil?</h3>
     <p>Una capital sofocante donde descubrí que incluso en lo más duro, hay destellos de humanidad.</p>
     <a href="#">Leer más</a>
   </div>
-  <div class="tarjeta">
-    <h3>Dominica – La isla verde</h3>
+  <div class="tarjeta" data-continente="america">
+    <h3><img class="bandera" src="https://flagcdn.com/dm.svg" alt="Dominica">Dominica – La isla verde</h3>
     <p>Una conexión ancestral en la tierra de los Kalinago y noches de cumbia inesperada.</p>
     <a href="#">Leer más</a>
   </div>
-  <div class="tarjeta">
-    <h3>Antigua y Barbuda – Entre la calma y el caos</h3>
+  <div class="tarjeta" data-continente="america">
+    <h3><img class="bandera" src="https://flagcdn.com/ag.svg" alt="Antigua y Barbuda">Antigua y Barbuda – Entre la calma y el caos</h3>
     <p>El huracán Fiona transformó un paraíso en prueba. Y luego en resiliencia.</p>
     <a href="#">Leer más</a>
   </div>
-  <div class="tarjeta">
-    <h3>Tijuana, México – Más allá del mito</h3>
+  <div class="tarjeta" data-continente="america">
+    <h3><img class="bandera" src="https://flagcdn.com/lc.svg" alt="Saint Lucia">Saint Lucia – La isla de las lunas de miel</h3>
+    <p>Entre volcanes y hoteles de lujo, descubrí cómo se construye un país turístico desde lo simbólico.</p>
+    <a href="#">Leer más</a>
+  </div>
+  <div class="tarjeta" data-continente="america">
+    <h3><img class="bandera" src="https://flagcdn.com/gf.svg" alt="Guayana Francesa">Guayana Francesa – El cohete y la frontera</h3>
+    <p>Desde el centro espacial europeo hasta aldeas indígenas: una frontera cargada de contrastes.</p>
+    <a href="#">Leer más</a>
+  </div>
+  <div class="tarjeta" data-continente="america">
+    <h3><img class="bandera" src="https://flagcdn.com/mx.svg" alt="México">Tijuana, México – Más allá del mito</h3>
     <p>Rock, frontera y contradicciones. Tijuana no se explica, se vive.</p>
     <a href="#">Leer más</a>
   </div>
-  <div class="tarjeta">
-    <h3>Sevilla, España – Un viaje de reencuentro</h3>
-    <p>Mi nombre, mi historia, y un aroma a naranjo que lo conecta todo.</p>
+  <div class="tarjeta" data-continente="africa">
+    <h3><img class="bandera" src="https://flagcdn.com/eg.svg" alt="Egipto">Egipto – El mito roto</h3>
+    <p>Las pirámides y su entorno me hicieron cuestionar la imagen romántica del viaje.</p>
     <a href="#">Leer más</a>
   </div>
-  <div class="tarjeta">
-    <h3>Islandia – El latido del Ártico</h3>
+  <div class="tarjeta" data-continente="asia">
+    <h3><img class="bandera" src="https://flagcdn.com/in.svg" alt="India">India – El caos como espejo</h3>
+    <p>India me enfrentó conmigo misma. Ruido, olor, espiritualidad y contradicción.</p>
+    <a href="#">Leer más</a>
+  </div>
+  <div class="tarjeta" data-continente="europa">
+    <h3><img class="bandera" src="https://flagcdn.com/is.svg" alt="Islandia">Islandia – El latido del Ártico</h3>
     <p>Silencio, frío y viento. El norte no abraza, desafía.</p>
     <a href="#">Leer más</a>
   </div>
-  <div class="tarjeta">
-    <h3>Noruega – El enigma del norte</h3>
+  <div class="tarjeta" data-continente="europa">
+    <h3><img class="bandera" src="https://flagcdn.com/no.svg" alt="Noruega">Noruega – El enigma del norte</h3>
     <p>Casco vikingo, arte oculto y una iglesia satánica. Noruega no es lo que parece.</p>
     <a href="#">Leer más</a>
   </div>
-  <div class="tarjeta">
-    <h3>Letonia – Entre mitos y monumentos</h3>
+  <div class="tarjeta" data-continente="europa">
+    <h3><img class="bandera" src="https://flagcdn.com/lv.svg" alt="Letonia">Letonia – Entre mitos y monumentos</h3>
     <p>Gatos rebeldes y esculturas que protestan en silencio. Riga me habló bajito.</p>
     <a href="#">Leer más</a>
   </div>
@@ -134,4 +190,5 @@
 
 </body>
 </html>
+
 
