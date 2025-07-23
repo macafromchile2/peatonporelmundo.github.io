@@ -1,198 +1,240 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Historias del Mundo – Maca Silva</title>
-    <style>
-        body {
-            font-family: Georgia, serif;
-            background-color: #ffffff;
-            color: #000000;
-            margin: 0;
-            padding: 20px;
-        }
+  <meta charset="UTF-8">
+  <title>Historias del Mundo – Maca Silva</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background-color: #ffffff;
+      color: #000000;
+      margin: 0;
+      padding: 20px;
+    }
 
-        h1, h2 {
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+    h1, h2 {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
 
-        .filtros {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
+    .filtros {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
 
-        .filtros button {
-            background-color: #000;
-            color: #fff;
-            border: 1px solid #000;
-            padding: 10px 20px;
-            font-family: Georgia, serif;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+    .filtros button {
+      background-color: #000;
+      color: #fff;
+      border: 1px solid #000;
+      padding: 10px 20px;
+      font-family: Georgia, serif;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
 
-        .filtros button:hover {
-            background-color: #333;
-        }
+    .filtros button:hover {
+      background-color: #333;
+    }
 
-        .tarjetas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
+    .tarjetas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
 
-        .tarjeta {
-            border: 1px solid #000;
-            padding: 15px;
-            background-color: #f9f9f9;
-        }
+    .tarjeta {
+      border: 1px solid #000;
+      padding: 15px;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
 
-        .tarjeta h3 {
-            margin-top: 0;
-        }
+    .tarjeta img {
+      width: 100px;
+      height: auto;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+      margin-bottom: 10px;
+    }
 
-        .oculto {
-            display: none;
-        }
-    </style>
+    .tarjeta img:hover {
+      filter: grayscale(0%);
+    }
+
+    .tarjeta h3 {
+      margin: 10px 0 5px 0;
+    }
+
+    .oculto {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-    <h1>Historias del Mundo</h1>
-    <h2>por Maca Silva</h2>
+  <h1>Mi vuelta al Mundo</h1>
+  <h2>por Maca Silva</h2>
 
-    <div class="filtros">
-        <button onclick="filtrar('todos')">Todos</button>
-        <button onclick="filtrar('mediooriente')">Medio Oriente</button>
-        <button onclick="filtrar('asia')">Asia</button>
-        <button onclick="filtrar('europa')">Europa</button>
-        <button onclick="filtrar('america')">América</button>
-        <button onclick="filtrar('oceania')">Oceanía</button>
+  <div class="filtros">
+    <button onclick="filtrar('todos')">Todos</button>
+    <button onclick="filtrar('mediooriente')">Medio Oriente</button>
+    <button onclick="filtrar('asia')">Asia</button>
+    <button onclick="filtrar('europa')">Europa</button>
+    <button onclick="filtrar('america')">América</button>
+    <button onclick="filtrar('oceania')">Oceanía</button>
+  </div>
+
+  <div class="tarjetas">
+    <!-- Medio Oriente -->
+    <div class="tarjeta mediooriente">
+      <img src="https://flagcdn.com/w80/ps.png" alt="Palestina">
+      <h3>Palestina</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta mediooriente">
+      <img src="https://flagcdn.com/w80/il.png" alt="Israel">
+      <h3>Israel</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta mediooriente">
+      <img src="https://flagcdn.com/w80/jo.png" alt="Jordania">
+      <h3>Jordania</h3>
+      <p>Historia en desarrollo para este país.</p>
     </div>
 
-    <div class="tarjetas">
-        <!-- Medio Oriente -->
-        <div class="tarjeta mediooriente">
-            <h3>Palestina</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta mediooriente">
-            <h3>Israel</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta mediooriente">
-            <h3>Jordania</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <!-- Asia -->
-        <div class="tarjeta asia">
-            <h3>Corea del Sur</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta asia">
-            <h3>Kazajistán</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta asia">
-            <h3>Kirguistán</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta asia">
-            <h3>Mongolia</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <!-- Europa -->
-        <div class="tarjeta europa">
-            <h3>Islandia</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta europa">
-            <h3>Noruega</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta europa">
-            <h3>Suecia</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta europa">
-            <h3>Dinamarca</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta europa">
-            <h3>España</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta europa">
-            <h3>Francia</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta europa">
-            <h3>Letonia</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta europa">
-            <h3>Lituania</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta europa">
-            <h3>Luxemburgo</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta europa">
-            <h3>Países Bajos</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta europa">
-            <h3>Bélgica</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <!-- América -->
-        <div class="tarjeta america">
-            <h3>Argentina</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta america">
-            <h3>Perú</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta america">
-            <h3>Guyana</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta america">
-            <h3>Surinam</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <div class="tarjeta america">
-            <h3>Guayana Francesa</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-        <!-- Oceanía -->
-        <div class="tarjeta oceania">
-            <h3>Australia</h3>
-            <p>Historia en desarrollo para este país.</p>
-        </div>
-    </div> <!-- cierre .tarjetas -->
+    <!-- Asia -->
+    <div class="tarjeta asia">
+      <img src="https://flagcdn.com/w80/kr.png" alt="Corea del Sur">
+      <h3>Corea del Sur</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta asia">
+      <img src="https://flagcdn.com/w80/kz.png" alt="Kazajistán">
+      <h3>Kazajistán</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta asia">
+      <img src="https://flagcdn.com/w80/kg.png" alt="Kirguistán">
+      <h3>Kirguistán</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta asia">
+      <img src="https://flagcdn.com/w80/mn.png" alt="Mongolia">
+      <h3>Mongolia</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
 
-    <script>
-        function filtrar(region) {
-            const tarjetas = document.querySelectorAll('.tarjeta');
-            if (region === 'todos') {
-                tarjetas.forEach(t => t.classList.remove('oculto'));
-            } else {
-                tarjetas.forEach(t => {
-                    t.classList.add('oculto');
-                    if (t.classList.contains(region)) {
-                        t.classList.remove('oculto');
-                    }
-                });
-            }
-        }
-    </script>
+    <!-- Europa -->
+    <div class="tarjeta europa">
+      <img src="https://flagcdn.com/w80/is.png" alt="Islandia">
+      <h3>Islandia</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta europa">
+      <img src="https://flagcdn.com/w80/no.png" alt="Noruega">
+      <h3>Noruega</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta europa">
+      <img src="https://flagcdn.com/w80/se.png" alt="Suecia">
+      <h3>Suecia</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta europa">
+      <img src="https://flagcdn.com/w80/dk.png" alt="Dinamarca">
+      <h3>Dinamarca</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta europa">
+      <img src="https://flagcdn.com/w80/es.png" alt="España">
+      <h3>España</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta europa">
+      <img src="https://flagcdn.com/w80/fr.png" alt="Francia">
+      <h3>Francia</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta europa">
+      <img src="https://flagcdn.com/w80/lv.png" alt="Letonia">
+      <h3>Letonia</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta europa">
+      <img src="https://flagcdn.com/w80/lt.png" alt="Lituania">
+      <h3>Lituania</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta europa">
+      <img src="https://flagcdn.com/w80/lu.png" alt="Luxemburgo">
+      <h3>Luxemburgo</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta europa">
+      <img src="https://flagcdn.com/w80/nl.png" alt="Países Bajos">
+      <h3>Países Bajos</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta europa">
+      <img src="https://flagcdn.com/w80/be.png" alt="Bélgica">
+      <h3>Bélgica</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+
+    <!-- América -->
+    <div class="tarjeta america">
+      <img src="https://flagcdn.com/w80/ar.png" alt="Argentina">
+      <h3>Argentina</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta america">
+      <img src="https://flagcdn.com/w80/pe.png" alt="Perú">
+      <h3>Perú</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta america">
+      <img src="https://flagcdn.com/w80/gy.png" alt="Guyana">
+      <h3>Guyana</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta america">
+      <img src="https://flagcdn.com/w80/sr.png" alt="Surinam">
+      <h3>Surinam</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+    <div class="tarjeta america">
+      <img src="https://flagcdn.com/w80/gf.png" alt="Guayana Francesa">
+      <h3>Guayana Francesa</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+
+    <!-- Oceanía -->
+    <div class="tarjeta oceania">
+      <img src="https://flagcdn.com/w80/au.png" alt="Australia">
+      <h3>Australia</h3>
+      <p>Historia en desarrollo para este país.</p>
+    </div>
+  </div>
+
+  <script>
+    function filtrar(region) {
+      const tarjetas = document.querySelectorAll('.tarjeta');
+      if (region === 'todos') {
+        tarjetas.forEach(t => t.classList.remove('oculto'));
+      } else {
+        tarjetas.forEach(t => {
+          t.classList.add('oculto');
+          if (t.classList.contains(region)) {
+            t.classList.remove('oculto');
+          }
+        });
+      }
+    }
+  </script>
 </body>
 </html>
+
 
