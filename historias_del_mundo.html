@@ -86,18 +86,35 @@
         }
 
         .bandera {
-  width: 25px;
-  height: 17px;
-  vertical-align: middle;
-  margin-right: 8px;
-  border: 1px solid #aaa;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
-}
+            width: 25px;
+            height: 17px;
+            vertical-align: middle;
+            margin-right: 8px;
+            border: 1px solid #aaa;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
 
-.tarjeta:hover .bandera {
-  filter: none;
-}
+        .tarjeta:hover .bandera {
+            filter: none;
+        }
+
+        .acordeon button {
+            background-color: transparent;
+            border: none;
+            color: #007BFF;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .acordeon .contenido {
+            display: none;
+            margin-top: 10px;
+            color: #333;
+            font-size: 0.95em;
+        }
     </style>
     <script>
       function filtrarContinente() {
@@ -112,6 +129,7 @@
 <body>
 
 <h2>Historias del Mundo</h2>
+<p>Cada país que visité me enfrentó con una realidad. Aquí comparto algunas temáticas que documenté, breves pero intensas, como una postal con carga emocional.</p>
 
 <div class="filtro">
   <label for="filtroContinente">Filtrar por continente: </label>
@@ -126,74 +144,270 @@
 </div>
 
 <div class="relatos">
-  <div class="tarjeta" data-continente="america">
-    <h3><img class="bandera" src="https://flagcdn.com/ar.svg" alt="Argentina">Victoria, Argentina – De otro planeta</h3>
-    <p>Un museo OVNI, una investigadora y un relato que desafía lo que entendemos como real.</p>
-    <a href="#">Leer más</a>
+
+  <div class="tarjeta" data-continente="asia">
+    <h3><img src="https://flagcdn.com/np.svg" class="bandera">Nepal</h3>
+    <p>El origen del budismo, más allá del mito turístico.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        En Nepal descubrí que el budismo no es solo espiritualidad. Es contradicción, negocio, fe y política. Caminé entre monjes con celulares, banderas de oración junto a redes eléctricas caóticas, y peregrinos sacando selfies. Fue ahí donde comprendí que las religiones no solo explican el mundo: también lo negocian.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
   </div>
-  <div class="tarjeta" data-continente="america">
-    <h3><img class="bandera" src="https://flagcdn.com/sr.svg" alt="Surinam">Surinam – Paramaribo bajo el agua</h3>
-    <p>Una ciudad amazónica que se inundó y me enseñó que lo inesperado es parte del viaje.</p>
-    <a href="#">Leer más</a>
+
+  <div class="tarjeta" data-continente="asia">
+    <h3><img src="https://flagcdn.com/cn.svg" class="bandera">China</h3>
+    <p>El pago del futuro.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        En China, me enfrenté a una sociedad ultra tecnológica donde incluso los mendigos usan QR para recibir ayuda. Viví la vigilancia, la censura, y también el deslumbramiento de lo moderno. Todo parecía nuevo, pero a la vez tan controlado, tan medido, que uno se pregunta cuánto de lo humano sobrevive en este futuro brillante.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
   </div>
-  <div class="tarjeta" data-continente="america">
-    <h3><img class="bandera" src="https://flagcdn.com/gy.svg" alt="Guyana">Guyana – ¿Un país hostil?</h3>
-    <p>Una capital sofocante donde descubrí que incluso en lo más duro, hay destellos de humanidad.</p>
-    <a href="#">Leer más</a>
+
+  <div class="tarjeta" data-continente="asia">
+    <h3><img src="https://flagcdn.com/jp.svg" class="bandera">Japón</h3>
+    <p>Maids Café y las emociones enlatadas.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        Tokio me descolocó. En un Maids Café, vi cómo se compran interacciones emocionales en bandeja: chicas disfrazadas te sonríen, te llaman “amo”, pero todo es parte del servicio. El aislamiento y la soledad se esconden detrás de luces de neón. En un país que grita en silencio, cada gesto es una coreografía calculada.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
   </div>
-  <div class="tarjeta" data-continente="america">
-    <h3><img class="bandera" src="https://flagcdn.com/dm.svg" alt="Dominica">Dominica – La isla verde</h3>
-    <p>Una conexión ancestral en la tierra de los Kalinago y noches de cumbia inesperada.</p>
-    <a href="#">Leer más</a>
-  </div>
-  <div class="tarjeta" data-continente="america">
-    <h3><img class="bandera" src="https://flagcdn.com/ag.svg" alt="Antigua y Barbuda">Antigua y Barbuda – Entre la calma y el caos</h3>
-    <p>El huracán Fiona transformó un paraíso en prueba. Y luego en resiliencia.</p>
-    <a href="#">Leer más</a>
-  </div>
-  <div class="tarjeta" data-continente="america">
-    <h3><img class="bandera" src="https://flagcdn.com/lc.svg" alt="Saint Lucia">Saint Lucia – La isla de las lunas de miel</h3>
-    <p>Entre volcanes y hoteles de lujo, descubrí cómo se construye un país turístico desde lo simbólico.</p>
-    <a href="#">Leer más</a>
-  </div>
-  <div class="tarjeta" data-continente="america">
-    <h3><img class="bandera" src="https://flagcdn.com/gf.svg" alt="Guayana Francesa">Guayana Francesa – El cohete y la frontera</h3>
-    <p>Desde el centro espacial europeo hasta aldeas indígenas: una frontera cargada de contrastes.</p>
-    <a href="#">Leer más</a>
-  </div>
-  <div class="tarjeta" data-continente="america">
-    <h3><img class="bandera" src="https://flagcdn.com/mx.svg" alt="México">Tijuana, México – Más allá del mito</h3>
-    <p>Rock, frontera y contradicciones. Tijuana no se explica, se vive.</p>
-    <a href="#">Leer más</a>
-  </div>
-  <div class="tarjeta" data-continente="africa">
-    <h3><img class="bandera" src="https://flagcdn.com/eg.svg" alt="Egipto">Egipto – El mito roto</h3>
-    <p>Las pirámides y su entorno me hicieron cuestionar la imagen romántica del viaje.</p>
-    <a href="#">Leer más</a>
+
+  <div class="tarjeta" data-continente="asia">
+    <h3><img src="https://flagcdn.com/in.svg" class="bandera">India</h3>
+    <p>El caos como lección.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        La India me revolvió el alma. Todo pasaba al mismo tiempo: vacas en la carretera, cremaciones a orillas del río, templos y basura, lujo y miseria, rezos y gritos. Pero entre ese caos descubrí algo: hay orden en el desorden. Un pulso antiguo que sostiene lo que, desde afuera, parece colapsar.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
   </div>
   <div class="tarjeta" data-continente="asia">
-    <h3><img class="bandera" src="https://flagcdn.com/in.svg" alt="India">India – El caos como espejo</h3>
-    <p>India me enfrentó conmigo misma. Ruido, olor, espiritualidad y contradicción.</p>
-    <a href="#">Leer más</a>
+    <h3><img src="https://flagcdn.com/tr.svg" class="bandera">Turquía</h3>
+    <p>La ciudad de las estafas disfrazadas de hospitalidad.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        En Estambul, aprendí que no todo lo que parece hospitalidad lo es. Entre tés forzados, cuentas infladas y promesas que se diluyen al pagar, entendí que el turismo también es un negocio feroz. La ciudad seduce y engaña con la misma intensidad.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
   </div>
+
   <div class="tarjeta" data-continente="europa">
-    <h3><img class="bandera" src="https://flagcdn.com/is.svg" alt="Islandia">Islandia – El latido del Ártico</h3>
-    <p>Silencio, frío y viento. El norte no abraza, desafía.</p>
-    <a href="#">Leer más</a>
+    <h3><img src="https://flagcdn.com/al.svg" class="bandera">Albania</h3>
+    <p>La espera de un tren que nunca llegó.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        Esperé un tren durante horas en una estación donde nadie parecía tener respuestas. La infraestructura rota, los horarios fantasmas y la burocracia soviética aún viva fueron el escenario perfecto para una reflexión sobre el tiempo, la paciencia y el absurdo.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
   </div>
+
   <div class="tarjeta" data-continente="europa">
-    <h3><img class="bandera" src="https://flagcdn.com/no.svg" alt="Noruega">Noruega – El enigma del norte</h3>
-    <p>Casco vikingo, arte oculto y una iglesia satánica. Noruega no es lo que parece.</p>
-    <a href="#">Leer más</a>
+    <h3><img src="https://flagcdn.com/ee.svg" class="bandera">Estonia</h3>
+    <p>El país digital con raíces silenciosas.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        Estonia es una nación donde casi todo puede hacerse online: desde votar hasta abrir una empresa. Pero entre sus bosques silenciosos y sus conexiones de alta velocidad, también encontré un tipo de soledad tecnológica. Un país que funciona como una app, pero con heridas históricas que aún susurran.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
   </div>
+
   <div class="tarjeta" data-continente="europa">
-    <h3><img class="bandera" src="https://flagcdn.com/lv.svg" alt="Letonia">Letonia – Entre mitos y monumentos</h3>
-    <p>Gatos rebeldes y esculturas que protestan en silencio. Riga me habló bajito.</p>
-    <a href="#">Leer más</a>
+    <h3><img src="https://flagcdn.com/ch.svg" class="bandera">Suiza</h3>
+    <p>Todo funciona, incluso lo que no se muestra.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        En Suiza todo parece perfecto: trenes puntuales, calles impecables, relojes que nunca se atrasan. Pero en esa armonía también encontré un silencio extraño. Un país donde la perfección puede esconder historias no contadas. Donde lo funcional a veces reemplaza lo emocional.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
   </div>
+
+  <div class="tarjeta" data-continente="africa">
+    <h3><img src="https://flagcdn.com/ps.svg" class="bandera">Palestina</h3>
+    <p>Una tierra donde la resistencia es rutina.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        En Palestina cada paso es un acto político. Los muros no solo dividen tierra: también separan vidas, historias y futuros. Vi infancia en jaula, alegría en medio del caos, y un pueblo que sigue de pie.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tarjeta" data-continente="africa">
+    <h3><img src="https://flagcdn.com/il.svg" class="bandera">Israel</h3>
+    <p>Una postal compleja de fe, poder y territorio.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        Jerusalén me impactó. Religión, política y memoria conviven —o chocan— en cada rincón. Las calles están llenas de pasado, pero el presente arde en cada checkpoint.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tarjeta" data-continente="africa">
+    <h3><img src="https://flagcdn.com/jo.svg" class="bandera">Jordania</h3>
+    <p>Huelgas en Amán y dignidad en marcha.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        En las calles de Amán, entre puestos de falafel y taxis amarillos, presencié protestas de profesores. Gritaban por salarios justos. Esa marcha me hizo entender que la dignidad también se escribe con megáfono.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tarjeta" data-continente="america">
+    <h3><img src="https://flagcdn.com/br.svg" class="bandera">Brasil</h3>
+    <p>Más allá de Río: la belleza invisible del interior.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        Descubrí otro Brasil, lejos del carnaval y las playas. En ciudades pequeñas, la vida pulsa con menos prisa y más verdad. Donde los colores no son solo samba, también resistencia.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tarjeta" data-continente="oceania">
+    <h3><img src="https://flagcdn.com/vu.svg" class="bandera">Vanuatu</h3>
+    <p>Tres idiomas, una misma resistencia cultural.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        En Vanuatu conviví con comunidades que hablan bislama, inglés y francés. Pero lo que más se hablaba era respeto. A la tierra, al otro, al pasado.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tarjeta" data-continente="oceania">
+    <h3><img src="https://flagcdn.com/fj.svg" class="bandera">Fiyi</h3>
+    <p>El nuevo hinduismo y la hibridez cultural.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        Fiyi me sorprendió con templos, rituales y una mezcla intensa de culturas. La influencia hindú no borra lo local, sino que lo reinventa. Una fusión que late al ritmo del Pacífico.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tarjeta" data-continente="oceania">
+    <h3><img src="https://flagcdn.com/nr.svg" class="bandera">Nauru</h3>
+    <p>El país menos visitado del mundo.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        En Nauru, una isla de apenas 21 km², entendí lo que significa el olvido. Fue centro de detención de migrantes, fue mina de fosfato, fue muchas cosas. Hoy intenta sobrevivir a su propio pasado.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tarjeta" data-continente="america">
+    <h3><img src="https://flagcdn.com/cr.svg" class="bandera">Costa Rica</h3>
+    <p>San José: entre volcanes, cafés y contradicciones.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        La capital costarricense no es solo selva urbana: también es cultura, caos de buses y aroma a café. San José tiene una vibra particular, entre lo ecológico y lo desigual, donde la “pura vida” no siempre alcanza a todos.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tarjeta" data-continente="america">
+    <h3><img src="https://flagcdn.com/pa.svg" class="bandera">Panamá</h3>
+    <p>Ciudad de Panamá: espejismo de modernidad.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        En el skyline de Ciudad de Panamá todo parece Miami, pero al bajar a tierra firme aparece la realidad: desigualdad, barrios históricos invisibilizados, y un canal que lo mueve todo... incluso la narrativa del país.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tarjeta" data-continente="america">
+    <h3><img src="https://flagcdn.com/co.svg" class="bandera">Colombia</h3>
+    <p>Un país que abraza con arte y resiste con alegría.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        En Medellín entendí que una ciudad puede renacer desde su dolor. Entre grafitis de Comuna 13 y charlas con locales, supe que la violencia dejó cicatrices, pero también inspiración. Colombia vibra, canta y no se rinde.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tarjeta" data-continente="america">
+    <h3><img src="https://flagcdn.com/py.svg" class="bandera">Paraguay</h3>
+    <p>Asunción: calma que esconde contradicciones.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        La capital paraguaya es tranquila, hasta que deja de serlo. Descubrí tensiones sociales que no aparecen en postales turísticas. Calles silenciosas, historia ignorada y una identidad que se resiste a ser olvidada.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="tarjeta" data-continente="america">
+    <h3><img src="https://flagcdn.com/bo.svg" class="bandera">Bolivia</h3>
+    <p>Altiplano, cultura viva y heridas abiertas.</p>
+    <div class="acordeon">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+        Leer más</button>
+      <div class="contenido">
+        En La Paz, vi cómo la cosmovisión andina sobrevive a la modernidad. Vi cholitas con celulares, protestas y rituales. Bolivia es lucha viva: por identidad, por tierra, por memoria.
+        <br><br><em>Si quieres conocer esta historia completa, puedes encontrarla en el libro Peatón por el Mundo.</em>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 </body>
 </html>
+
 
 
