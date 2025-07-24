@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Historias – Maca Silva</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Georgia, serif;
@@ -16,6 +17,7 @@
       text-align: center;
       text-transform: uppercase;
       letter-spacing: 2px;
+      margin-bottom: 20px;
     }
 
     .filtros {
@@ -26,43 +28,47 @@
       margin-bottom: 30px;
     }
 
-   .filtros button {
-  background-color: #000;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-family: Georgia, serif;
-  border-radius: 25px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-}
+    .filtros button {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-family: Georgia, serif;
+      border-radius: 25px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
 
-.filtros button:hover {
-  background-color: #333;
-  transform: scale(1.05);
-}
-
+    .filtros button:hover {
+      background-color: #333;
+      transform: scale(1.05);
+    }
 
     .tarjetas {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto 40px;
     }
 
     .tarjeta {
       border: 1px solid #000;
-      padding: 15px;
+      padding: 20px;
       background-color: #f9f9f9;
-      text-align: center;
+      text-align: left;
+      border-radius: 10px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
     }
 
     .tarjeta img {
-      width: 100px;
+      width: 80px;
       height: auto;
       filter: grayscale(100%);
       transition: filter 0.3s ease;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      display: block;
     }
 
     .tarjeta img:hover {
@@ -70,11 +76,29 @@
     }
 
     .tarjeta h3 {
-      margin: 10px 0 5px 0;
+      margin: 10px 0 8px 0;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+
+    .tarjeta p {
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
 
     .oculto {
       display: none;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      .tarjeta {
+        padding: 15px;
+      }
     }
   </style>
 </head>
@@ -300,5 +324,6 @@
   </script>
 </body>
 </html>
+
 
 
