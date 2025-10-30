@@ -2,411 +2,325 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Peatón por el Mundo – Maca Silva</title>
-  <link rel="icon" href="favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Peatón por el Mundo – Macarena Silva (@macafromchile)</title>
+  <meta name="description" content="Relatos de viaje, mapas por continente y talleres de autopublicación de Macarena Silva. Peatón por el mundo: caminar para entenderlo." />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Peatón por el Mundo – Macarena Silva" />
+  <meta property="og:description" content="Relatos de viaje, Puerto Williams y autopublicación. Sígueme en @macafromchile." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/og-cover.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
   <style>
-    body {
-      margin: 0;
-      font-family: 'Helvetica Neue', sans-serif;
-      background: #f4f4f4 url('https://www.transparenttextures.com/patterns/concrete-wall.png') repeat;
-      color: #111;
-      line-height: 1.6;
-      scroll-behavior: smooth;
-      padding-top: 80px;
-      border: 8px solid #000;
-      box-sizing: border-box;
+    :root{
+      /* Paleta sobria con acento dorado */
+      --bg: #0b0b0c;            /* negro profundo */
+      --paper: #ffffff;         /* blanco */
+      --ink: #0f1115;           /* casi negro para texto */
+      --muted: #6b7280;         /* gris */
+      --line: #e6e6e6;          /* borde claro */
+      --accent: #c7a64b;        /* dorado suave */
+      --accent-2: #9a7d2f;      /* dorado oscuro */
+      --accent-ink: #0a0a0a;    
+      --shadow: 0 10px 24px rgba(0,0,0,.15), 0 6px 12px rgba(0,0,0,.12);
     }
 
-    header {
-      background: #000;
-      color: white;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      font-family: 'Playfair Display', serif;
-    }
-    header h2 {
-      font-weight: normal;
-      margin-top: 0;
-      font-size: 1.2rem;
-      font-style: italic;
-      color: #ccc;
-    }
-    .buttons a {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 20px;
-      text-decoration: none;
-      color: white;
-      border-radius: 5px;
-      font-weight: bold;
-      background: linear-gradient(to right, #444, #999);
-      border: 1px solid #555;
+    html{scroll-behavior:smooth}
+    *,*::before,*::after{box-sizing:border-box}
+    body{
+      margin:0; color:var(--ink); background:var(--paper);
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+      line-height:1.65;
     }
 
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: #111;
-      border-bottom: 1px solid #333;
-      z-index: 1000;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      margin: 0;
-      padding: 10px 0;
-      gap: 30px;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #eee;
-      font-weight: bold;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
-    nav ul li a:hover {
-      color: #ccc;
+    /* Fondo sutil, sin recargar */
+    body::before{
+      content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background:
+        radial-gradient(1200px 600px at 100% -10%, rgba(199,166,75,.08), transparent 60%),
+        radial-gradient(800px 600px at -10% 110%, rgba(199,166,75,.06), transparent 55%),
+        linear-gradient(#fbfbfb,#f7f7f7);
     }
 
-    h2 {
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      font-weight: bold;
-      text-transform: uppercase;
-      color: #000;
-      font-size: 2.2rem;
-      margin: 50px auto 30px;
-      letter-spacing: 1px;
+    /* NAV */
+    nav{
+      position:sticky; top:0; z-index:1000; backdrop-filter:saturate(180%) blur(10px);
+      background:rgba(255,255,255,.85); border-bottom:1px solid var(--line);
     }
+    .container{max-width:1100px; margin-inline:auto; padding-inline:20px}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; min-height:64px}
+    .brand{display:flex; align-items:baseline; gap:.5rem; font-weight:800; letter-spacing:.02em}
+    .brand .title{font-family:'Playfair Display', serif; font-size:1.1rem}
+    .brand .dot{width:8px; height:8px; border-radius:999px; background:var(--accent)}
+    .menu{display:flex; gap:1.2rem}
+    .menu a{
+      text-decoration:none; color:#111; font-weight:600; padding:6px 10px; border-radius:8px;
+    }
+    .menu a:hover,.menu a:focus-visible{background:#f2f2f2; outline:2px solid transparent}
 
-    .bio {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .bio img {
-      max-width: 300px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
+    /* HEADER / HERO */
+    header.hero{color:#111; text-align:center; border-bottom:1px solid var(--line)}
+    .hero-inner{padding:84px 20px}
+    .hero h1{font-family:'Playfair Display', serif; font-size:clamp(2rem, 4vw, 3rem); margin:0 0 .25rem}
+    .hero h2{font-weight:500; color:var(--muted); font-style:italic; margin:.25rem 0 1.25rem}
 
-    .region, .historias {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: 0 auto;
+    .cta-row{display:flex; flex-wrap:wrap; gap:12px; justify-content:center}
+    .btn{--ring:transparent; display:inline-flex; align-items:center; gap:.5rem; padding:12px 18px; border-radius:12px; font-weight:700; text-decoration:none; border:1px solid #111; box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .15s ease}
+    .btn:focus-visible{outline:3px solid var(--accent); outline-offset:2px}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-solid{
+      color:var(--accent-ink);
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-color:transparent;
     }
+    .btn-ghost{background:#fff}
 
-    .region p, .historias p {
-      background: #fff;
-      padding: 15px;
-      border-left: 4px solid #444;
-      border-radius: 8px;
-      font-style: italic;
-      color: #111;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    /* SECCIONES TITULARES */
+    section{padding:56px 0}
+    h2.section-title{
+      font-family:'Playfair Display', serif; text-transform:uppercase; letter-spacing:.06em; text-align:center; margin:0 0 24px;
+      font-size:clamp(1.5rem, 2.4vw, 2.2rem);
     }
+    .lead{max-width:800px; margin:0 auto 14px; text-align:center; color:#222}
+    .quote{font-style:italic; text-align:center; color:#111; margin:10px auto 26px}
 
-    .frase-final {
-      text-align: center;
-      font-style: italic;
-      color: #000;
-      padding: 40px 20px 20px;
-      background: #eaeaea;
-      font-size: 1.2rem;
-      animation: fadein 2s ease-in;
-      max-width: 800px;
-      margin: 0 auto 40px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+    /* BIO CARD */
+    .bio-card{background:#fff; border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow); padding:26px; display:grid; grid-template-columns:240px 1fr; gap:24px; align-items:center}
+    .bio-card img{width:100%; max-width:240px; border-radius:14px; display:block}
+    .bio-card h3{font-family:'Playfair Display', serif; margin:.25rem 0 .5rem; font-size:1.6rem}
+    .bio-card p{margin:.4rem 0}
+    @media (max-width:760px){.bio-card{grid-template-columns:1fr}}
 
-    footer {
-      background: #000;
-      color: #ccc;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-    }
-    footer a {
-      color: #999;
-      text-decoration: underline;
-    }
-    footer a:hover {
-      color: #eee;
-    }
+    /* MAPAS */
+    .region{border-top:1px solid var(--line)}
+    .map-embed{aspect-ratio: 16/9; width:100%; border:0; border-radius:16px; box-shadow:var(--shadow); background:#fff}
 
-    @keyframes fadein {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    /* HISTORIAS */
+    .stories-embed{width:100%; height:1000px; border:0; border-radius:16px; box-shadow:var(--shadow); background:#fff}
 
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.8rem; }
-    }
+    /* INSTAGRAM BLOCKS */
+    .galeria-insta{background:#fff; border-top:1px solid var(--line)}
+    .insta-grid{display:flex; flex-wrap:wrap; gap:20px; justify-content:center}
+    .insta-btn{display:inline-block; padding:12px 24px; border-radius:999px; background:#111; color:#fff; text-decoration:none; font-weight:700}
+    .insta-btn:hover,.insta-btn:focus-visible{background:#222}
 
-    .bio-card {
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      padding: 30px;
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      align-items: center;
-      transition: transform 0.3s;
-    }
-    .bio-card:hover {
-      transform: translateY(-5px);
-    }
+    /* FACEBOOK BOX */
+    .facebook-box{background:#eef2ff; border:1px solid #dbe2ff; border-radius:16px; padding:28px; text-align:center; box-shadow:var(--shadow)}
+    .facebook-box h3{font-family:'Playfair Display', serif; color:#3b5998; margin-top:0}
+    .facebook-link{display:inline-block; background:#3b5998; color:#fff; text-decoration:none; padding:12px 20px; border-radius:12px; font-weight:700}
+    .facebook-link:hover{filter:brightness(.94)}
 
-    .bio-card img {
-      max-width: 250px;
-      border-radius: 10px;
-    }
+    /* FRASE FINAL */
+    .frase-final{background:#111; color:#f5f5f5; border-radius:16px; text-align:center; padding:38px; box-shadow:var(--shadow)}
+    .frase-final em{color:#ddd}
 
-    .bio-text {
-      flex: 1;
-      min-width: 250px;
-      font-size: 1rem;
-      color: #111;
-      text-align: left;
-    }
+    /* FOOTER */
+    footer{border-top:1px solid var(--line); background:#fafafa; color:#333; padding:24px 0; text-align:center; font-size:.95rem}
+    footer a{color:#111}
+
+    /* WA Float */
+    #wa-float{position:fixed; right:20px; bottom:20px; width:56px; height:56px; display:grid; place-items:center; border-radius:999px; text-decoration:none; box-shadow:var(--shadow); z-index:9999; background:linear-gradient(135deg, #25d366, #128c7e)}
+    #wa-float svg{width:28px; height:28px; fill:#fff}
+    #wa-float:focus-visible{outline:3px solid #9be7b3; outline-offset:3px}
+    @media (prefers-reduced-motion: reduce){.btn,.btn:hover{transition:none; transform:none}}
   </style>
 </head>
 <body>
-<nav>
-  <ul>
-    <li><a href="#inicio">Inicio</a></li>
-    <li><a href="#mapas">Mapas</a></li>
-    <li><a href="#historias">Historias</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-</nav>
-<header id="inicio">
-  <h1>PEATÓN POR EL MUNDO</h1>
-  <h2>Relatos de una exploradora nómada</h2>
-  <div class="buttons">
-    <a class="amazon" href="https://www.amazon.com/gp/product/9564200997" target="_blank">Ver en Amazon</a>
-    <a class="mercado" href="https://www.mercadolibre.cl/libro-peaton-por-el-mundo/up/MLCU2858535998/" target="_blank">Ver en Mercado Libre</a>
-    <a class="instagram" href="https://www.instagram.com/macafromchile" target="_blank">Instagram</a>
-    <a class="facebook" href="https://www.facebook.com/macafromchile/" target="_blank">Facebook</a>
-  </div>
-</header>
-<section class="bio">
-  <div class="bio-card">
-    <img src="tu-foto.jpg" alt="Foto de Maca Silva" />
-    <div class="bio-text">
-            <h2>Camino el mundo para entenderlo</h2>
-
-    <p><strong>Soy Maca Silva</strong>: escritora, fotógrafa y caminante. En esta bitácora digital comparto historias desde los caminos. Viajo a pie por el mundo en busca de lo que no aparece en las postales.</p>
-
-    <p>He cruzado los seis continentes observando lo cotidiano, lo invisible, lo incómodo y lo profundamente humano. Mis relatos nacen desde la experiencia directa, con los pies en el barro.</p>
-
-    <p>Aquí encontrarás mapas, relatos y miradas íntimas de los territorios que he habitado. ¿Me acompañas?</p>
+  <!-- NAV -->
+  <nav role="navigation" aria-label="Principal">
+    <div class="container nav-inner">
+      <div class="brand" aria-label="Peatón por el Mundo">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="title">Peatón por el Mundo</span>
+      </div>
+      <div class="menu">
+        <a href="#inicio">Inicio</a>
+        <a href="#mapas">Mapas</a>
+        <a href="#historias">Historias</a>
+        <a href="#contacto">Contacto</a>
+      </div>
     </div>
-  </div>
-</section>
+  </nav>
 
-  <section id="mapas">
+  <!-- HERO -->
+  <header id="inicio" class="hero">
+    <div class="container hero-inner">
+      <h1>PEATÓN POR EL MUNDO</h1>
+      <h2>Relatos de una exploradora nómada</h2>
+      <div class="cta-row" role="group" aria-label="Acciones principales">
+        <a class="btn btn-solid" href="https://www.amazon.com/gp/product/9564200997" target="_blank" rel="noopener">Ver en Amazon</a>
+        <a class="btn btn-ghost" href="https://www.mercadolibre.cl/libro-peaton-por-el-mundo/up/MLCU2858535998/" target="_blank" rel="noopener">Mercado Libre</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/macafromchile" target="_blank" rel="me noopener">Instagram</a>
+        <a class="btn btn-ghost" href="https://www.facebook.com/macafromchile/" target="_blank" rel="me noopener">Facebook</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- BIO -->
+  <section class="container" aria-labelledby="bio-title">
+    <div class="bio-card">
+      <img src="tu-foto.jpg" alt="Retrato de Macarena Silva" loading="lazy" />
+      <div>
+        <h3 id="bio-title">Camino el mundo para entenderlo</h3>
+        <p><strong>Soy Maca Silva</strong>: escritora, fotógrafa y caminante. En esta bitácora digital comparto historias desde los caminos. Viajo a pie por el mundo en busca de lo que no aparece en las postales.</p>
+        <p>He cruzado los seis continentes observando lo cotidiano, lo invisible, lo incómodo y lo profundamente humano. Mis relatos nacen desde la experiencia directa, con los pies en el barro.</p>
+        <p>Aquí encontrarás mapas, relatos y miradas íntimas de los territorios que he habitado. ¿Me acompañas?</p>
+      </div>
+    </div>
   </section>
-  <!-- SECCIÓN AMÉRICA DEL SUR -->
-<section class="region">
- <h2>América del Sur: de volcanes y asfalto</h2>
-<p>La raíz de todo viaje está en el sur. Cruzar la cordillera, tocar la selva, compartir mate en la frontera. En Sudamérica aprendí a caminar lento y mirar profundo.</p>
-<h3 style="text-align:center; font-style:italic;">“Aquí nació el impulso de moverme.”</h3>
-<iframe src="mapa_america_sur.html" width="100%" height="500" frameborder="0"></iframe>
 
-</section>
+  <!-- MAPAS: anchor vacío para navegación precisa -->
+  <section id="mapas"></section>
 
-<!-- SECCIÓN WEST INDIES -->
-<section class="region">
-  <h2>West Indies: islas pequeñas, memorias grandes</h2>
-<p>Entre playas que no salen en postales y acentos que cantan historias, encontré en el Caribe una forma suave de vivir y resistir.</p>
-<h3 style="text-align:center; font-style:italic;">“En cada ola, un recuerdo tibio.”</h3>
-<iframe src="mapa_west_indies.html" width="100%" height="500" frameborder="0"></iframe>
+  <!-- SUR AMÉRICA -->
+  <section class="region">
+    <div class="container">
+      <h2 class="section-title">América del Sur: de volcanes y asfalto</h2>
+      <p class="lead">La raíz de todo viaje está en el sur. Cruzar la cordillera, tocar la selva, compartir mate en la frontera. En Sudamérica aprendí a caminar lento y mirar profundo.</p>
+      <p class="quote">“Aquí nació el impulso de moverme.”</p>
+      <iframe class="map-embed" src="mapa_america_sur.html" loading="lazy" title="Mapa de América del Sur"></iframe>
+    </div>
+  </section>
 
-</section>
+  <!-- WEST INDIES -->
+  <section class="region">
+    <div class="container">
+      <h2 class="section-title">West Indies: islas pequeñas, memorias grandes</h2>
+      <p class="lead">Entre playas que no salen en postales y acentos que cantan historias, encontré en el Caribe una forma suave de vivir y resistir.</p>
+      <p class="quote">“En cada ola, un recuerdo tibio.”</p>
+      <iframe class="map-embed" src="mapa_west_indies.html" loading="lazy" title="Mapa de West Indies"></iframe>
+    </div>
+  </section>
 
-<!-- SECCIÓN AMÉRICA CENTRAL Y USA -->
-<section class="region">
-<h2>América Central y USA: la ruta del contraste</h2>
-<p>Pasé del calor tropical de Centroamérica a las luces desbordadas de ciudades gigantes. Cada paso fue una contradicción, y por eso, aprendizaje.</p>
-<h3 style="text-align:center; font-style:italic;">“Contrastes que me hicieron mirar dos veces.”</h3>
-<iframe src="mapa_america_central_usa.html" width="100%" height="500" frameborder="0"></iframe>
+  <!-- AMÉRICA CENTRAL Y USA -->
+  <section class="region">
+    <div class="container">
+      <h2 class="section-title">América Central y USA: la ruta del contraste</h2>
+      <p class="lead">Pasé del calor tropical de Centroamérica a las luces desbordadas de ciudades gigantes. Cada paso fue una contradicción, y por eso, aprendizaje.</p>
+      <p class="quote">“Contrastes que me hicieron mirar dos veces.”</p>
+      <iframe class="map-embed" src="mapa_america_central_usa.html" loading="lazy" title="Mapa de América Central y USA"></iframe>
+    </div>
+  </section>
 
-</section>
+  <!-- ÁFRICA Y MEDIO ORIENTE -->
+  <section class="region">
+    <div class="container">
+      <h2 class="section-title">África y Medio Oriente: el origen del asombro</h2>
+      <p class="lead">Caminar entre templos, arena y conflicto. Aquí todo grita historia, herida, vida. Fue duro, fue bello, fue transformador.</p>
+      <p class="quote">“Volver al origen, y encontrarse.”</p>
+      <iframe class="map-embed" src="mapa_africa_medio_oriente.html" loading="lazy" title="Mapa de África y Medio Oriente"></iframe>
+    </div>
+  </section>
 
-<!-- SECCIÓN ÁFRICA Y MEDIO ORIENTE -->
-<section class="region">
-  <h2>África y Medio Oriente: el origen del asombro</h2>
-<p>Caminar entre templos, arena y conflicto. Aquí todo grita historia, herida, vida. Fue duro, fue bello, fue transformador.</p>
-<h3 style="text-align:center; font-style:italic;">“Volver al origen, y encontrarse.”</h3>
-<iframe src="mapa_africa_medio_oriente.html" width="100%" height="500" frameborder="0"></iframe>
+  <!-- EUROPA -->
+  <section class="region">
+    <div class="container">
+      <h2 class="section-title">Europa: entre invierno y revolución</h2>
+      <p class="lead">Más allá de los monumentos, Europa me enseñó que el pasado nunca es pasado. Cada esquina guarda memoria, y cada paso, un eco.</p>
+      <p class="quote">“Los muros hablan, si uno sabe escuchar.”</p>
+      <iframe class="map-embed" src="mapa_europa.html" loading="lazy" title="Mapa de Europa"></iframe>
+    </div>
+  </section>
 
-</section>
+  <!-- ASIA -->
+  <section class="region">
+    <div class="container">
+      <h2 class="section-title">Asia: caos, calma y conciencia</h2>
+      <p class="lead">De templos silenciosos a ciudades que nunca duermen, Asia me recordó que no hay una sola forma de habitar el mundo. Todo puede convivir.</p>
+      <p class="quote">“Caos y silencio: dos caras del mismo viaje.”</p>
+      <iframe class="map-embed" src="mapa_asia.html" loading="lazy" title="Mapa de Asia"></iframe>
+    </div>
+  </section>
 
-<!-- SECCIÓN EUROPA -->
-<section class="region">
-<h2>Europa: entre invierno y revolución</h2>
-<p>Más allá de los monumentos y las guías de viaje, Europa me enseñó que el pasado nunca es pasado. Cada esquina guarda memoria, y cada paso, un eco.</p>
-<h3 style="text-align:center; font-style:italic;">“Los muros hablan, si uno sabe escuchar.”</h3>
-<iframe src="mapa_europa.html" width="100%" height="500" frameborder="0"></iframe>
-</section>
+  <!-- OCEANÍA -->
+  <section class="region">
+    <div class="container">
+      <h2 class="section-title">Oceanía: islas lejanas, cercanías profundas</h2>
+      <p class="lead">Vanuatu, Nauru, Fiyi, Australia. Lugares remotos donde nadie sabe quién eres y, por eso, puedes ser tú.</p>
+      <p class="quote">“Donde nadie te conoce, todo comienza.”</p>
+      <iframe class="map-embed" src="mapa_oceania.html" loading="lazy" title="Mapa de Oceanía"></iframe>
+    </div>
+  </section>
 
-<!-- SECCIÓN ASIA -->
-<section class="region">
-<h2>Asia: caos, calma y conciencia</h2>
-<p>De templos silenciosos a ciudades que nunca duermen, Asia me recordó que no hay una sola forma de habitar el mundo. Todo puede convivir.</p>
-<h3 style="text-align:center; font-style:italic;">“Caos y silencio: dos caras del mismo viaje.”</h3>
-<iframe src="mapa_asia.html" width="100%" height="500" frameborder="0"></iframe>
+  <!-- HISTORIAS DEL MUNDO -->
+  <section id="historias" class="region">
+    <div class="container">
+      <h2 class="section-title">Historias del Mundo</h2>
+      <iframe class="stories-embed" src="historias_del_mundo.html" loading="lazy" title="Listado de historias"></iframe>
+    </div>
+  </section>
 
-</section>
+  <!-- Instagram -->
+  <section class="galeria-insta">
+    <div class="container">
+      <h2 class="section-title">Sigue el recorrido en Instagram</h2>
+      <div class="insta-grid">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CuGmSRmROY6/" data-instgrm-version="14"></blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CqaUZkIjDFu/" data-instgrm-version="14"></blockquote>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Cn9pDX2jVd0/" data-instgrm-version="14"></blockquote>
+      </div>
+      <p style="text-align:center; margin:24px 0 0">
+        <a class="insta-btn" href="https://www.instagram.com/macafromchile/" target="_blank" rel="noopener">Ver más en Instagram</a>
+      </p>
+    </div>
+  </section>
+  <script async src="//www.instagram.com/embed.js"></script>
 
-<!-- SECCIÓN OCEANÍA -->
-<section class="region">
-<h2>Oceanía: islas lejanas, cercanías profundas</h2>
-<p>Oceanía fue el silencio. Vanuatu, Nauru, Fiyi, Australia. Lugares remotos donde nadie sabe quién eres, y por eso, puedes ser tú.</p>
-<h3 style="text-align:center; font-style:italic;">“Donde nadie te conoce, todo comienza.”</h3>
-<iframe src="mapa_oceania.html" width="100%" height="500" frameborder="0"></iframe>
+  <!-- Facebook box -->
+  <section class="region">
+    <div class="container">
+      <div class="facebook-box">
+        <h3>También estoy en Facebook</h3>
+        <p>En mi página comparto reflexiones viajeras que no siempre aparecen en Instagram. Es otro rincón íntimo de este caminar.</p>
+        <a class="facebook-link" href="https://www.facebook.com/macafromchile" target="_blank" rel="noopener">Ir a Facebook</a>
+      </div>
+    </div>
+  </section>
 
-</section>
+  <!-- Frase final -->
+  <section class="region">
+    <div class="container">
+      <div class="frase-final">
+        <p>“Lo único que uno puede dejar en el mundo son las creaciones personales. Todo lo demás se esfuma como el viento.”<br><em>— Maca Silva</em></p>
+      </div>
+    </div>
+  </section>
 
-<section id="historias" class="historias">
-  <h2>Historias del Mundo</h2>
-  <iframe src="historias_del_mundo.html" width="100%" height="1000" frameborder="0"></iframe>
-</section>
-<section class="galeria-insta">
-  <h2>Sigue el recorrido en Instagram</h2>
+  <!-- Footer -->
+  <footer id="contacto" role="contentinfo">
+    <div class="container">
+      <p>📩 Contacto: <a href="mailto:macafromchile@gmail.com">macafromchile@gmail.com</a> · <a href="mailto:peatonporelmundo@gmail.com">peatonporelmundo@gmail.com</a></p>
+      <p>© 2025 Maca Silva – Todos los derechos reservados</p>
+    </div>
+  </footer>
 
-  <div class="publicaciones">
-    <!-- Publicación 1 -->
-    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CuGmSRmROY6/" data-instgrm-version="14"></blockquote>
+  <!-- WhatsApp flotante -->
+  <a id="wa-float" href="#" aria-label="Escríbeme por WhatsApp" title="WhatsApp">
+    <!-- Ícono -->
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.44c-.23-.12-1.33-.66-1.54-.74-.21-.08-.36-.12-.51.12s-.58.74-.71.9c-.13.16-.26.18-.49.06a6.6 6.6 0 0 1-1.95-1.27 7.18 7.18 0 0 1-1.35-1.71c-.14-.24-.01-.37.1-.49.1-.1.23-.26.35-.39.12-.13.16-.22.23-.37.07-.15.03-.28-.02-.4s-.51-1.23-.7-1.69c-.18-.44-.37-.38-.51-.39l-.44-.01c-.15 0-.4.06-.61.28-.21.22-.8.78-.8 1.9s.82 2.2.93 2.36c.11.16 1.62 2.47 3.93 3.47.55.24.98.38 1.32.49.55.17 1.05.15 1.45.09.44-.07 1.33-.55 1.52-1.07.19-.52.19-.96.13-1.06-.06-.1-.21-.16-.44-.28Z"/></svg>
+  </a>
+  <script>
+    (function(){
+      const a = document.getElementById('wa-float');
+      if(!a) return;
+      // REEMPLAZA ESTE NÚMERO POR EL TUYO (formato sin +): 569XXXXXXXX
+      const phone = '56900000000';
+      const msg = 'Hola Maca, vi tu web y quiero hablar';
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      const base = isMobile ? 'https://wa.me/' : 'https://web.whatsapp.com/send';
+      const url = isMobile ? `${base}${phone}?text=${encodeURIComponent(msg)}` : `${base}?phone=${phone}&text=${encodeURIComponent(msg)}`;
+      const utm = 'utm_source=website&utm_medium=whatsapp_float&utm_campaign=contacto';
+      a.href = url + (url.includes('?') ? '&' : '?') + utm;
+    })();
+  </script>
 
-    <!-- Publicación 2 -->
-    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CqaUZkIjDFu/" data-instgrm-version="14"></blockquote>
-
-    <!-- Publicación 3 -->
-    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Cn9pDX2jVd0/" data-instgrm-version="14"></blockquote>
-  </div>
-
-  <a class="boton-insta" href="https://www.instagram.com/macafromchile/" target="_blank" rel="noopener">Ver más en Instagram</a>
-</section>
-
-<script async src="//www.instagram.com/embed.js"></script>
-
-<style>
-.galeria-insta {
-  padding: 60px 20px 40px;
-  text-align: center;
-  background-color: #fff;
-}
-
-.galeria-insta h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2em;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 40px;
-  color: #222;
-}
-
-.publicaciones {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-.boton-insta {
-  display: inline-block;
-  padding: 12px 24px;
-  font-family: 'Helvetica Neue', sans-serif;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: #fff;
-  background-color: #000;
-  border-radius: 30px;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.boton-insta:hover {
-  background-color: #444;
-}
-</style>
-<section class="facebook-box">
-  <h2>También estoy en Facebook</h2>
-  <p>
-    En mi página comparto reflexiones viajeras que no siempre aparecen en Instagram. 
-    Es otro rincón íntimo de este caminar
-  </p>
-  <a href="https://www.facebook.com/macafromchile" target="_blank" class="facebook-link">Ir a Facebook</a>
-</section>
-
-<style>
-  .facebook-box {
-    background: #e9ecf3;
-    padding: 40px 20px;
-    margin: 40px auto;
-    max-width: 800px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  }
-
-  .facebook-box h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    margin-bottom: 15px;
-    color: #3b5998;
-  }
-
-  .facebook-box p {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 20px;
-  }
-
-  .facebook-link {
-    background-color: #3b5998;
-    color: #fff;
-    padding: 12px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    transition: background 0.3s;
-  }
-
-  .facebook-link:hover {
-    background-color: #2d4373;
-  }
-</style>
-
-<section class="frase-final">
-  <p>“Lo único que uno puede dejar en el mundo son las creaciones personales. Todo lo demás se esfuma como el viento.”<br><em>— Maca Silva</em></p>
-</section>
-<footer id="contacto">
-  📩 Contacto: <a href="mailto:macafromchile@gmail.com">macafromchile@gmail.com</a> / <a href="mailto:peatonporelmundo@gmail.com">peatonporelmundo@gmail.com</a><br>
-  © 2025 Maca Silva – Todos los derechos reservados
-</footer>
 </body>
 </html>
-
-
-
 
 
