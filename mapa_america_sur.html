@@ -1,268 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    
-        <script>
-            L_NO_TOUCH = false;
-            L_DISABLE_3D = false;
-        </script>
-    
-    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
-    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
-    
-            <meta name="viewport" content="width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-            <style>
-                #map_b3b2fcab6a2d69b76fc1d03ce810b184 {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-            </style>
-        
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>América del Sur – mapa fijo</title>
+
+  <!-- Leaflet 1.9 -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <style>
+    html, body { height:100%; margin:0; background:#0b0b0b; }
+    #map { position:absolute; inset:0; }
+    .leaflet-container { background:#0b0b0b; }
+    .attrib {
+      position:absolute; right:10px; bottom:10px;
+      background:rgba(0,0,0,.6); color:#cfcfd2;
+      font:12px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      padding:6px 8px; border-radius:999px; border:1px solid #222;
+      z-index:500;
+    }
+    .attrib a { color:#cfcfd2; text-decoration:none; }
+  </style>
 </head>
 <body>
-    
-    
-            <div class="folium-map" id="map_b3b2fcab6a2d69b76fc1d03ce810b184" ></div>
-        
+  <div id="map" role="region" aria-label="Mapa fijo de América del Sur"></div>
+  <div class="attrib">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OSM</a> • Tiles: Carto Dark</div>
+
+  <script>
+    // ===== Países/ciudades (cap.) — incluye Guayana Francesa =====
+    const POINTS = [
+      { name: "Argentina (Buenos Aires)", coords: [-34.60, -58.38] },
+      { name: "Bolivia (La Paz)", coords: [-16.50, -68.15] },
+      { name: "Brasil (Brasilia)", coords: [-15.80, -47.88] },
+      { name: "Chile (Santiago)", coords: [-33.45, -70.66] },
+      { name: "Colombia (Bogotá)", coords: [ 4.71,  -74.07] },
+      { name: "Ecuador (Quito)", coords: [ -0.18, -78.47] },
+      { name: "Guyana (Georgetown)", coords: [ 6.80,  -58.16] },
+      { name: "Guayana Francesa (Cayenne)", coords: [ 4.94, -52.33] },
+      { name: "Paraguay (Asunción)", coords: [-25.30, -57.64] },
+      { name: "Perú (Lima)", coords: [-12.05, -77.05] },
+      { name: "Surinam (Paramaribo)", coords: [ 5.86,  -55.17] },
+      { name: "Uruguay (Montevideo)", coords: [-34.90, -56.19] },
+      { name: "Venezuela (Caracas)", coords: [10.48,  -66.90] }
+    ];
+
+    // Marco general de Sudamérica (para mantener “zoom cercano” sin irse a Centroamérica/Ántartida)
+    const BOUNDS = L.latLngBounds(
+      [ -56.0, -82.0 ], // suroeste
+      [  13.0, -33.0 ]  // noreste
+    );
+
+    // ===== Mapa fijo (sin interacción del usuario) =====
+    const map = L.map('map', {
+      zoomControl: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      dragging: false,
+      touchZoom: false
+    });
+
+    // Base oscura
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
+
+    // Encadre cercano según tus puntos, pero respetando el marco Sudamérica
+    if (POINTS.length) {
+      const pb = L.latLngBounds(POINTS.map(p => p.coords)).pad(0.6);
+      const fit = L.latLngBounds([
+        [ Math.max(pb.getSouth(), BOUNDS.getSouth()), Math.max(pb.getWest(),  BOUNDS.getWest())  ],
+        [ Math.min(pb.getNorth(), BOUNDS.getNorth()), Math.min(pb.getEast(),  BOUNDS.getEast())  ]
+      ]);
+      map.fitBounds(fit, { animate: false });
+    } else {
+      map.fitBounds(BOUNDS, { animate: false });
+    }
+
+    // Marcadores sutiles fucsia/dorado (coherente con tu web)
+    const style = {
+      radius: 6,
+      color: '#f5c26b',     // borde dorado
+      weight: 2,
+      fillColor: '#e83e8c', // fucsia
+      fillOpacity: 0.9,
+      interactive: false
+    };
+
+    POINTS.forEach(p => {
+      L.circleMarker(p.coords, style).addTo(map)
+        .bindTooltip(`<strong>${p.name}</strong>`, { direction: 'top' });
+    });
+
+    // Sellamos (por si algún embed intenta reactivar controles)
+    map.options.dragging = false;
+    map.options.touchZoom = false;
+    map.options.scrollWheelZoom = false;
+    map.options.doubleClickZoom = false;
+  </script>
 </body>
-<script>
-    
-    
-            var map_b3b2fcab6a2d69b76fc1d03ce810b184 = L.map(
-                "map_b3b2fcab6a2d69b76fc1d03ce810b184",
-                {
-                    center: [-15.0, -60.0],
-                    crs: L.CRS.EPSG3857,
-                    zoom: 3,
-                    zoomControl: true,
-                    preferCanvas: false,
-                }
-            );
-
-            
-
-        
-    
-            var tile_layer_63feab2309fd6a1ef356a8c67e4285ac = L.tileLayer(
-                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
-                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_b3b2fcab6a2d69b76fc1d03ce810b184);
-        
-    
-            var marker_64275eda69f46b90d556f8da086d6cf9 = L.marker(
-                [-34.6, -58.4],
-                {}
-            ).addTo(map_b3b2fcab6a2d69b76fc1d03ce810b184);
-        
-    
-            var icon_8cdb64f47c474918a61f5a4ba4d01eb7 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_64275eda69f46b90d556f8da086d6cf9.setIcon(icon_8cdb64f47c474918a61f5a4ba4d01eb7);
-        
-    
-            marker_64275eda69f46b90d556f8da086d6cf9.bindTooltip(
-                `<div>
-                     Argentina
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_8fa7811622a7b3f30040df38f4d1d1b7 = L.marker(
-                [-16.5, -68.1],
-                {}
-            ).addTo(map_b3b2fcab6a2d69b76fc1d03ce810b184);
-        
-    
-            var icon_38019ed9f5f9c4d919a86b18d7fdb3fd = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_8fa7811622a7b3f30040df38f4d1d1b7.setIcon(icon_38019ed9f5f9c4d919a86b18d7fdb3fd);
-        
-    
-            marker_8fa7811622a7b3f30040df38f4d1d1b7.bindTooltip(
-                `<div>
-                     Bolivia
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_babc96e97872b63340e6cc4a6b715486 = L.marker(
-                [-15.8, -47.9],
-                {}
-            ).addTo(map_b3b2fcab6a2d69b76fc1d03ce810b184);
-        
-    
-            var icon_145838b15d6180405da593f6b112ec99 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_babc96e97872b63340e6cc4a6b715486.setIcon(icon_145838b15d6180405da593f6b112ec99);
-        
-    
-            marker_babc96e97872b63340e6cc4a6b715486.bindTooltip(
-                `<div>
-                     Brasil
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_a3c761a3a506039e5b301753c44a335b = L.marker(
-                [-33.4, -70.6],
-                {}
-            ).addTo(map_b3b2fcab6a2d69b76fc1d03ce810b184);
-        
-    
-            var icon_ffaa81c5f7894890f1199d2130c3399d = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_a3c761a3a506039e5b301753c44a335b.setIcon(icon_ffaa81c5f7894890f1199d2130c3399d);
-        
-    
-            marker_a3c761a3a506039e5b301753c44a335b.bindTooltip(
-                `<div>
-                     Chile
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_321beb17aa9bfcb115791301c66aa5bd = L.marker(
-                [4.7, -74.1],
-                {}
-            ).addTo(map_b3b2fcab6a2d69b76fc1d03ce810b184);
-        
-    
-            var icon_8225e6c599688faec72281d88d1fd051 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_321beb17aa9bfcb115791301c66aa5bd.setIcon(icon_8225e6c599688faec72281d88d1fd051);
-        
-    
-            marker_321beb17aa9bfcb115791301c66aa5bd.bindTooltip(
-                `<div>
-                     Colombia
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_486b147fd31c45614832c5560ba4e838 = L.marker(
-                [6.8, -58.2],
-                {}
-            ).addTo(map_b3b2fcab6a2d69b76fc1d03ce810b184);
-        
-    
-            var icon_e253205ce8cf3849679b13654e1cfc68 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_486b147fd31c45614832c5560ba4e838.setIcon(icon_e253205ce8cf3849679b13654e1cfc68);
-        
-    
-            marker_486b147fd31c45614832c5560ba4e838.bindTooltip(
-                `<div>
-                     Guyana
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_50035b9fb6bcdfc117723b4c0b099af6 = L.marker(
-                [-25.3, -57.6],
-                {}
-            ).addTo(map_b3b2fcab6a2d69b76fc1d03ce810b184);
-        
-    
-            var icon_e453ae3496289a47b1a3cb6c4141a8a5 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_50035b9fb6bcdfc117723b4c0b099af6.setIcon(icon_e453ae3496289a47b1a3cb6c4141a8a5);
-        
-    
-            marker_50035b9fb6bcdfc117723b4c0b099af6.bindTooltip(
-                `<div>
-                     Paraguay
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_fee4c45e93f9ef9f0375ad9a78daa9ca = L.marker(
-                [-12.0, -77.0],
-                {}
-            ).addTo(map_b3b2fcab6a2d69b76fc1d03ce810b184);
-        
-    
-            var icon_55154d6fa221c7ae6c0f8efa87968e98 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_fee4c45e93f9ef9f0375ad9a78daa9ca.setIcon(icon_55154d6fa221c7ae6c0f8efa87968e98);
-        
-    
-            marker_fee4c45e93f9ef9f0375ad9a78daa9ca.bindTooltip(
-                `<div>
-                     Peru
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_f34164a452918191b6d02526d03f2193 = L.marker(
-                [5.9, -55.2],
-                {}
-            ).addTo(map_b3b2fcab6a2d69b76fc1d03ce810b184);
-        
-    
-            var icon_e10265f7dfac764dbaaa1fdc1993aa44 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_f34164a452918191b6d02526d03f2193.setIcon(icon_e10265f7dfac764dbaaa1fdc1993aa44);
-        
-    
-            marker_f34164a452918191b6d02526d03f2193.bindTooltip(
-                `<div>
-                     Suriname
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_15e08f2b8fd02cce1d11cb520bfd3172 = L.marker(
-                [-34.9, -56.2],
-                {}
-            ).addTo(map_b3b2fcab6a2d69b76fc1d03ce810b184);
-        
-    
-            var icon_7ebc956231e466768fa179a27f16c7b2 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_15e08f2b8fd02cce1d11cb520bfd3172.setIcon(icon_7ebc956231e466768fa179a27f16c7b2);
-        
-    
-            marker_15e08f2b8fd02cce1d11cb520bfd3172.bindTooltip(
-                `<div>
-                     Uruguay
-                 </div>`,
-                {"sticky": true}
-            );
-        
-</script>
 </html>
