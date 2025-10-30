@@ -6,8 +6,6 @@
   <title>Peatón por el Mundo – Macarena Silva (@macafromchile)</title>
   <meta name="description" content="Relatos de viaje, mapas por continente y talleres de autopublicación de Macarena Silva. Peatón por el mundo: caminar para entenderlo." />
   <link rel="icon" href="/favicon.ico" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <!-- Open Graph / Twitter -->
@@ -16,115 +14,116 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/assets/og-cover.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  
+
   <style>
     :root{
-      /* Paleta sobria con acento dorado */
-      --bg: #0b0b0c;            /* negro profundo */
-      --paper: #ffffff;         /* blanco */
-      --ink: #0f1115;           /* casi negro para texto */
-      --muted: #6b7280;         /* gris */
-      --line: #e6e6e6;          /* borde claro */
-      --accent: #c7a64b;        /* dorado suave */
-      --accent-2: #9a7d2f;      /* dorado oscuro */
-      --accent-ink: #0a0a0a;    
-      --shadow: 0 10px 24px rgba(0,0,0,.15), 0 6px 12px rgba(0,0,0,.12);
+      /* Paleta femenina/juvenil */
+      --bg-grad1: #fff8fb;    /* rosado muy claro */
+      --bg-grad2: #ffe9f3;    /* rosado pastel */
+      --bg-grad3: #fff;       /* blanco */
+      --paper: #ffffff;
+      --ink: #2b1430;         /* morado oscuro legible */
+      --muted: #7a5a7e;       /* malva */
+      --accent: #e83e8c;      /* fucsia */
+      --accent-2: #c2185b;    /* fucsia oscuro */
+      --accent-lite: #f7a1c4; /* rosado claro */
+      --line: #f4c2d7;        /* borde suave */
+      --shadow: 0 10px 24px rgba(200, 30, 110, .15), 0 6px 12px rgba(200, 30, 110, .12);
     }
 
     html{scroll-behavior:smooth}
     *,*::before,*::after{box-sizing:border-box}
     body{
       margin:0; color:var(--ink); background:var(--paper);
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
       line-height:1.65;
     }
-
-    /* Fondo sutil, sin recargar */
+    /* Fondo liso y luminoso (sin texturas) */
     body::before{
       content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
       background:
-        radial-gradient(1200px 600px at 100% -10%, rgba(199,166,75,.08), transparent 60%),
-        radial-gradient(800px 600px at -10% 110%, rgba(199,166,75,.06), transparent 55%),
-        linear-gradient(#fbfbfb,#f7f7f7);
+        radial-gradient(1200px 600px at 120% -20%, var(--bg-grad2), transparent 60%),
+        radial-gradient(900px 600px at -20% 120%, var(--bg-grad1), transparent 55%),
+        linear-gradient(var(--bg-grad3), var(--bg-grad1));
     }
+
+    .container{max-width:1100px; margin-inline:auto; padding-inline:20px}
 
     /* NAV */
     nav{
-      position:sticky; top:0; z-index:1000; backdrop-filter:saturate(180%) blur(10px);
-      background:rgba(255,255,255,.85); border-bottom:1px solid var(--line);
+      position:sticky; top:0; z-index:1000;
+      backdrop-filter:saturate(180%) blur(10px);
+      background:rgba(255,255,255,.9);
+      border-bottom:1px solid var(--line);
     }
-    .container{max-width:1100px; margin-inline:auto; padding-inline:20px}
     .nav-inner{display:flex; align-items:center; justify-content:space-between; min-height:64px}
     .brand{display:flex; align-items:baseline; gap:.5rem; font-weight:800; letter-spacing:.02em}
-    .brand .title{font-family:'Playfair Display', serif; font-size:1.1rem}
+    .brand .title{font-family:'Playfair Display', serif; font-size:1.1rem; color:var(--accent-2)}
     .brand .dot{width:8px; height:8px; border-radius:999px; background:var(--accent)}
     .menu{display:flex; gap:1.2rem}
-    .menu a{
-      text-decoration:none; color:#111; font-weight:600; padding:6px 10px; border-radius:8px;
-    }
-    .menu a:hover,.menu a:focus-visible{background:#f2f2f2; outline:2px solid transparent}
+    .menu a{text-decoration:none; color:#3b2c41; font-weight:600; padding:8px 12px; border-radius:10px}
+    .menu a:hover,.menu a:focus-visible{background:#ffe6f0; outline:2px solid transparent}
 
     /* HEADER / HERO */
-    header.hero{color:#111; text-align:center; border-bottom:1px solid var(--line)}
+    header.hero{text-align:center; border-bottom:1px solid var(--line)}
     .hero-inner{padding:84px 20px}
-    .hero h1{font-family:'Playfair Display', serif; font-size:clamp(2rem, 4vw, 3rem); margin:0 0 .25rem}
+    .hero h1{font-family:'Playfair Display', serif; font-size:clamp(2rem, 4vw, 3rem); margin:0 0 .25rem; color:var(--accent-2)}
     .hero h2{font-weight:500; color:var(--muted); font-style:italic; margin:.25rem 0 1.25rem}
 
     .cta-row{display:flex; flex-wrap:wrap; gap:12px; justify-content:center}
-    .btn{--ring:transparent; display:inline-flex; align-items:center; gap:.5rem; padding:12px 18px; border-radius:12px; font-weight:700; text-decoration:none; border:1px solid #111; box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .15s ease}
-    .btn:focus-visible{outline:3px solid var(--accent); outline-offset:2px}
+    .btn{display:inline-flex; align-items:center; gap:.6rem; padding:12px 18px; border-radius:14px; font-weight:700; text-decoration:none; box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .15s ease; border:1px solid transparent}
     .btn:hover{transform:translateY(-2px)}
-    .btn-solid{
-      color:var(--accent-ink);
-      background:linear-gradient(135deg, var(--accent), var(--accent-2));
-      border-color:transparent;
-    }
-    .btn-ghost{background:#fff}
+    .btn:focus-visible{outline:3px solid var(--accent-lite); outline-offset:3px}
 
-    /* SECCIONES TITULARES */
+    /* Botones con íconos de color */
+    .btn .ico{width:18px; height:18px; display:inline-block}
+    .btn-amazon{background:#ff9900; color:#211f1f}
+    .btn-mercado{background:#ffe600; color:#2d3277; border-color:#f0d500}
+    .btn-instagram{background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); color:#fff}
+    .btn-facebook{background:#1877f2; color:#fff}
+
+    /* SECCIONES */
     section{padding:56px 0}
     h2.section-title{
       font-family:'Playfair Display', serif; text-transform:uppercase; letter-spacing:.06em; text-align:center; margin:0 0 24px;
-      font-size:clamp(1.5rem, 2.4vw, 2.2rem);
+      font-size:clamp(1.5rem, 2.4vw, 2.2rem); color:var(--accent-2)
     }
-    .lead{max-width:800px; margin:0 auto 14px; text-align:center; color:#222}
-    .quote{font-style:italic; text-align:center; color:#111; margin:10px auto 26px}
+    .lead{max-width:800px; margin:0 auto 14px; text-align:center; color:#3b2c41}
+    .quote{font-style:italic; text-align:center; color:#2b1430; margin:10px auto 26px}
 
     /* BIO CARD */
     .bio-card{background:#fff; border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow); padding:26px; display:grid; grid-template-columns:240px 1fr; gap:24px; align-items:center}
     .bio-card img{width:100%; max-width:240px; border-radius:14px; display:block}
-    .bio-card h3{font-family:'Playfair Display', serif; margin:.25rem 0 .5rem; font-size:1.6rem}
+    .bio-card h3{font-family:'Playfair Display', serif; margin:.25rem 0 .5rem; font-size:1.6rem; color:var(--accent-2)}
     .bio-card p{margin:.4rem 0}
     @media (max-width:760px){.bio-card{grid-template-columns:1fr}}
 
-    /* MAPAS */
+    /* MAPAS / IFRAMES */
     .region{border-top:1px solid var(--line)}
     .map-embed{aspect-ratio: 16/9; width:100%; border:0; border-radius:16px; box-shadow:var(--shadow); background:#fff}
-
-    /* HISTORIAS */
     .stories-embed{width:100%; height:1000px; border:0; border-radius:16px; box-shadow:var(--shadow); background:#fff}
 
-    /* INSTAGRAM BLOCKS */
+    /* Instagram */
     .galeria-insta{background:#fff; border-top:1px solid var(--line)}
     .insta-grid{display:flex; flex-wrap:wrap; gap:20px; justify-content:center}
     .insta-btn{display:inline-block; padding:12px 24px; border-radius:999px; background:#111; color:#fff; text-decoration:none; font-weight:700}
-    .insta-btn:hover,.insta-btn:focus-visible{background:#222}
+    .insta-btn:hover,.insta-btn:focus-visible{filter:brightness(.92)}
 
-    /* FACEBOOK BOX */
+    /* Facebook box */
     .facebook-box{background:#eef2ff; border:1px solid #dbe2ff; border-radius:16px; padding:28px; text-align:center; box-shadow:var(--shadow)}
     .facebook-box h3{font-family:'Playfair Display', serif; color:#3b5998; margin-top:0}
     .facebook-link{display:inline-block; background:#3b5998; color:#fff; text-decoration:none; padding:12px 20px; border-radius:12px; font-weight:700}
     .facebook-link:hover{filter:brightness(.94)}
 
-    /* FRASE FINAL */
-    .frase-final{background:#111; color:#f5f5f5; border-radius:16px; text-align:center; padding:38px; box-shadow:var(--shadow)}
-    .frase-final em{color:#ddd}
+    /* Frase final */
+    .frase-final{background:#ffffffcc; backdrop-filter: blur(2px); color:#2b1430; border:1px solid var(--line); border-radius:16px; text-align:center; padding:38px; box-shadow:var(--shadow)}
+    .frase-final em{color:#7a5a7e}
 
-    /* FOOTER */
-    footer{border-top:1px solid var(--line); background:#fafafa; color:#333; padding:24px 0; text-align:center; font-size:.95rem}
-    footer a{color:#111}
+    /* Footer */
+    footer{border-top:1px solid var(--line); background:#faf5f8; color:#4a3a50; padding:24px 0; text-align:center; font-size:.95rem}
+    footer a{color:#2b1430}
 
-    /* WA Float */
+    /* WhatsApp flotante */
     #wa-float{position:fixed; right:20px; bottom:20px; width:56px; height:56px; display:grid; place-items:center; border-radius:999px; text-decoration:none; box-shadow:var(--shadow); z-index:9999; background:linear-gradient(135deg, #25d366, #128c7e)}
     #wa-float svg{width:28px; height:28px; fill:#fff}
     #wa-float:focus-visible{outline:3px solid #9be7b3; outline-offset:3px}
@@ -132,6 +131,7 @@
   </style>
 </head>
 <body>
+
   <!-- NAV -->
   <nav role="navigation" aria-label="Principal">
     <div class="container nav-inner">
@@ -153,11 +153,45 @@
     <div class="container hero-inner">
       <h1>PEATÓN POR EL MUNDO</h1>
       <h2>Relatos de una exploradora nómada</h2>
+
       <div class="cta-row" role="group" aria-label="Acciones principales">
-        <a class="btn btn-solid" href="https://www.amazon.com/gp/product/9564200997" target="_blank" rel="noopener">Ver en Amazon</a>
-        <a class="btn btn-ghost" href="https://www.mercadolibre.cl/libro-peaton-por-el-mundo/up/MLCU2858535998/" target="_blank" rel="noopener">Mercado Libre</a>
-        <a class="btn btn-ghost" href="https://www.instagram.com/macafromchile" target="_blank" rel="me noopener">Instagram</a>
-        <a class="btn btn-ghost" href="https://www.facebook.com/macafromchile/" target="_blank" rel="me noopener">Facebook</a>
+        <!-- Amazon -->
+        <a class="btn btn-amazon" href="https://www.amazon.com/gp/product/9564200997" target="_blank" rel="noopener">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+            <!-- carrito simple -->
+            <path d="M7 18a2 2 0 1 0 .001 3.999A2 2 0 0 0 7 18zm10 0a2 2 0 1 0 .001 3.999A2 2 0 0 0 17 18zM6 6h14l-2 8H8L6 6zm-2-2h2l3 12h10l3-12h2" fill="currentColor"/>
+          </svg>
+          Amazon
+        </a>
+
+        <!-- Mercado Libre -->
+        <a class="btn btn-mercado" href="https://www.mercadolibre.cl/libro-peaton-por-el-mundo/up/MLCU2858535998/" target="_blank" rel="noopener">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+            <!-- tienda simple -->
+            <path d="M3 7l9-5 9 5v10a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2V7z" fill="currentColor"/>
+          </svg>
+          Mercado Libre
+        </a>
+
+        <!-- Instagram -->
+        <a class="btn btn-instagram" href="https://www.instagram.com/macafromchile" target="_blank" rel="me noopener">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+            <!-- logo instagram simplificado -->
+            <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+          </svg>
+          Instagram
+        </a>
+
+        <!-- Facebook -->
+        <a class="btn btn-facebook" href="https://www.facebook.com/macafromchile/" target="_blank" rel="me noopener">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+            <!-- f -->
+            <path d="M13 22v-9h3l.5-4H13V7.5c0-1.1.3-1.8 1.9-1.8H17V2.2C16.6 2.1 15.5 2 14.2 2 11.4 2 9.5 3.7 9.5 7v2H6v4h3.5v9h3.5z" fill="currentColor"/>
+          </svg>
+          Facebook
+        </a>
       </div>
     </div>
   </header>
@@ -175,7 +209,7 @@
     </div>
   </section>
 
-  <!-- MAPAS: anchor vacío para navegación precisa -->
+  <!-- MAPAS: ancla -->
   <section id="mapas"></section>
 
   <!-- SUR AMÉRICA -->
@@ -302,15 +336,16 @@
 
   <!-- WhatsApp flotante -->
   <a id="wa-float" href="#" aria-label="Escríbeme por WhatsApp" title="WhatsApp">
-    <!-- Ícono -->
-    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.44c-.23-.12-1.33-.66-1.54-.74-.21-.08-.36-.12-.51.12s-.58.74-.71.9c-.13.16-.26.18-.49.06a6.6 6.6 0 0 1-1.95-1.27 7.18 7.18 0 0 1-1.35-1.71c-.14-.24-.01-.37.1-.49.1-.1.23-.26.35-.39.12-.13.16-.22.23-.37.07-.15.03-.28-.02-.4s-.51-1.23-.7-1.69c-.18-.44-.37-.38-.51-.39l-.44-.01c-.15 0-.4.06-.61.28-.21.22-.8.78-.8 1.9s.82 2.2.93 2.36c.11.16 1.62 2.47 3.93 3.47.55.24.98.38 1.32.49.55.17 1.05.15 1.45.09.44-.07 1.33-.55 1.52-1.07.19-.52.19-.96.13-1.06-.06-.1-.21-.16-.44-.28Z"/></svg>
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M19.11 17.44c-.23-.12-1.33-.66-1.54-.74-.21-.08-.36-.12-.51.12s-.58.74-.71.9c-.13.16-.26.18-.49.06a6.6 6.6 0 0 1-1.95-1.27 7.18 7.18 0 0 1-1.35-1.71c-.14-.24-.01-.37.1-.49.1-.1.23-.26.35-.39.12-.13.16-.22.23-.37.07-.15.03-.28-.02-.4s-.51-1.23-.7-1.69c-.18-.44-.37-.38-.51-.39l-.44-.01c-.15 0-.4.06-.61.28-.21.22-.8.78-.8 1.9s.82 2.2.93 2.36c.11.16 1.62 2.47 3.93 3.47.55.24.98.38 1.32.49.55.17 1.05.15 1.45.09.44-.07 1.33-.55 1.52-1.07.19-.52.19-.96.13-1.06-.06-.1-.21-.16-.44-.28Z" fill="#fff"/>
+    </svg>
   </a>
   <script>
     (function(){
       const a = document.getElementById('wa-float');
       if(!a) return;
-      // REEMPLAZA ESTE NÚMERO POR EL TUYO (formato sin +): 569XXXXXXXX
-      const phone = '56900000000';
+      // Número de Maca sin “+”
+      const phone = '56953609597';
       const msg = 'Hola Maca, vi tu web y quiero hablar';
       const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
       const base = isMobile ? 'https://wa.me/' : 'https://web.whatsapp.com/send';
@@ -322,5 +357,3 @@
 
 </body>
 </html>
-
-
