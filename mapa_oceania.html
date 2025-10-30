@@ -1,148 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    
-        <script>
-            L_NO_TOUCH = false;
-            L_DISABLE_3D = false;
-        </script>
-    
-    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
-    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
-    
-            <meta name="viewport" content="width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-            <style>
-                #map_409b39573e418d6c734e14d86e6f26c1 {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-            </style>
-        
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oceanía – mapa fijo</title>
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+  <style>
+    html, body { height:100%; margin:0; background:#0b0b0b; }
+    #map { position:absolute; inset:0; }
+    .leaflet-container { background:#0b0b0b; }
+    .attrib {
+      position:absolute; right:10px; bottom:10px;
+      background:rgba(0,0,0,.6); color:#cfcfd2;
+      font:12px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      padding:6px 8px; border-radius:999px; border:1px solid #222; z-index:500;
+    }
+    .attrib a { color:#cfcfd2; text-decoration:none; }
+  </style>
 </head>
 <body>
-    
-    
-            <div class="folium-map" id="map_409b39573e418d6c734e14d86e6f26c1" ></div>
-        
+  <div id="map" role="region" aria-label="Mapa fijo de Oceanía"></div>
+  <div class="attrib">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OSM</a> • Tiles: Carto Dark</div>
+
+  <script>
+    // ===== Países solicitados =====
+    const POINTS = [
+      { name: "Australia (Canberra)",   coords: [-35.2809, 149.1300] },
+      { name: "Fiyi (Suva)",            coords: [-18.1248, 178.4501] },
+      { name: "Vanuatu (Port Vila)",    coords: [-17.7333, 168.3273] },
+      { name: "Nauru (Yaren)",          coords: [ -0.5477, 166.9209] }
+    ];
+
+    // Marco de Oceanía
+    const BOUNDS = L.latLngBounds(
+      [ -50.0, 120.0 ],  // suroeste
+      [  10.0, 180.0 ]   // noreste
+    );
+
+    // ===== Mapa fijo =====
+    const map = L.map('map', {
+      zoomControl: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      dragging: false,
+      touchZoom: false
+    });
+
+    // Base oscura
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
+
+    // Encadre general
+    if (POINTS.length) {
+      const pb = L.latLngBounds(POINTS.map(p => p.coords)).pad(0.5);
+      const fit = L.latLngBounds([
+        [ Math.max(pb.getSouth(), BOUNDS.getSouth()), Math.max(pb.getWest(),  BOUNDS.getWest())  ],
+        [ Math.min(pb.getNorth(), BOUNDS.getNorth()), Math.min(pb.getEast(),  BOUNDS.getEast())  ]
+      ]);
+      map.fitBounds(fit, { animate: false });
+    } else {
+      map.fitBounds(BOUNDS, { animate: false });
+    }
+
+    // Marcadores fucsia/dorado
+    const style = {
+      radius: 6,
+      color: '#f5c26b',
+      weight: 2,
+      fillColor: '#e83e8c',
+      fillOpacity: 0.9,
+      interactive: false
+    };
+
+    POINTS.forEach(p => {
+      L.circleMarker(p.coords, style).addTo(map)
+        .bindTooltip(`<strong>${p.name}</strong>`, { direction: 'top' });
+    });
+
+    // Inmovilizar totalmente
+    map.options.dragging = false;
+    map.options.touchZoom = false;
+    map.options.scrollWheelZoom = false;
+    map.options.doubleClickZoom = false;
+  </script>
 </body>
-<script>
-    
-    
-            var map_409b39573e418d6c734e14d86e6f26c1 = L.map(
-                "map_409b39573e418d6c734e14d86e6f26c1",
-                {
-                    center: [-20.0, 160.0],
-                    crs: L.CRS.EPSG3857,
-                    zoom: 3,
-                    zoomControl: true,
-                    preferCanvas: false,
-                }
-            );
-
-            
-
-        
-    
-            var tile_layer_99b9e5f5c4570039c17dc49bdd24e773 = L.tileLayer(
-                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
-                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_409b39573e418d6c734e14d86e6f26c1);
-        
-    
-            var marker_d55377bb390ec0b9e24c5e5a3d6c18d1 = L.marker(
-                [-17.7, 168.3],
-                {}
-            ).addTo(map_409b39573e418d6c734e14d86e6f26c1);
-        
-    
-            var icon_bfc1d044cf794ee29957c966ff6f34cc = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_d55377bb390ec0b9e24c5e5a3d6c18d1.setIcon(icon_bfc1d044cf794ee29957c966ff6f34cc);
-        
-    
-            marker_d55377bb390ec0b9e24c5e5a3d6c18d1.bindTooltip(
-                `<div>
-                     Vanuatu
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_007291c93683ee29ab706a295784b2f6 = L.marker(
-                [-18.1, 178.4],
-                {}
-            ).addTo(map_409b39573e418d6c734e14d86e6f26c1);
-        
-    
-            var icon_d049d204d967f1341d2be7667e64c0fd = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_007291c93683ee29ab706a295784b2f6.setIcon(icon_d049d204d967f1341d2be7667e64c0fd);
-        
-    
-            marker_007291c93683ee29ab706a295784b2f6.bindTooltip(
-                `<div>
-                     Fiji
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_46cfd2da9230981cc9847a3c694babfa = L.marker(
-                [-0.5, 166.9],
-                {}
-            ).addTo(map_409b39573e418d6c734e14d86e6f26c1);
-        
-    
-            var icon_ba996175b4b276062fe75ef7a57ca9f5 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_46cfd2da9230981cc9847a3c694babfa.setIcon(icon_ba996175b4b276062fe75ef7a57ca9f5);
-        
-    
-            marker_46cfd2da9230981cc9847a3c694babfa.bindTooltip(
-                `<div>
-                     Nauru
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_16263cd39b97928da49a37d92e66f0eb = L.marker(
-                [-35.3, 149.1],
-                {}
-            ).addTo(map_409b39573e418d6c734e14d86e6f26c1);
-        
-    
-            var icon_e5a153f6f48b42e9134966667888fc25 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_16263cd39b97928da49a37d92e66f0eb.setIcon(icon_e5a153f6f48b42e9134966667888fc25);
-        
-    
-            marker_16263cd39b97928da49a37d92e66f0eb.bindTooltip(
-                `<div>
-                     Australia
-                 </div>`,
-                {"sticky": true}
-            );
-        
-</script>
 </html>
