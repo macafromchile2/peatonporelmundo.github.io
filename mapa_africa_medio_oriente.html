@@ -1,168 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    
-        <script>
-            L_NO_TOUCH = false;
-            L_DISABLE_3D = false;
-        </script>
-    
-    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
-    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
-    
-            <meta name="viewport" content="width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-            <style>
-                #map_13bae23f2cb8b7ae8d8ec34e9a18702d {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-            </style>
-        
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>África y Medio Oriente – mapa fijo</title>
+
+  <!-- Leaflet 1.9 -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <style>
+    html, body { height:100%; margin:0; background:#0b0b0b; }
+    #map { position:absolute; inset:0; }
+    .leaflet-container { background:#0b0b0b; }
+    .attrib {
+      position:absolute; right:10px; bottom:10px;
+      background:rgba(0,0,0,.6); color:#cfcfd2;
+      font:12px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      padding:6px 8px; border-radius:999px; border:1px solid #222;
+      z-index:500;
+    }
+    .attrib a { color:#cfcfd2; text-decoration:none; }
+  </style>
 </head>
 <body>
-    
-    
-            <div class="folium-map" id="map_13bae23f2cb8b7ae8d8ec34e9a18702d" ></div>
-        
+  <div id="map" role="region" aria-label="Mapa fijo de África y Medio Oriente"></div>
+  <div class="attrib">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OSM</a> • Tiles: Carto Dark</div>
+
+  <script>
+    // ===== Puntos clave =====
+    const POINTS = [
+      { name: "Egipto (El Cairo)",           coords: [30.0444,  31.2357] },
+      { name: "Jordania (Amán)",             coords: [31.9539,  35.9106] },
+      { name: "Israel (Tel Aviv)",           coords: [32.0853,  34.7818] },
+      { name: "Palestina (Ramala)",          coords: [31.8996,  35.2042] },
+      { name: "Qatar (Doha)",                coords: [25.2854,  51.5310] }
+    ];
+
+    // Marco regional (Egipto -> Golfo Pérsico), vista cercana sin moverse
+    const BOUNDS = L.latLngBounds(
+      [19.0, 24.0],  // suroeste
+      [35.0, 54.0]   // noreste
+    );
+
+    // ===== Mapa fijo (sin interacción) =====
+    const map = L.map('map', {
+      zoomControl: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      dragging: false,
+      touchZoom: false
+    });
+
+    // Base oscura unificada (Carto Dark Matter)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
+
+    // Encadre: ajusta a puntos y respeta el marco regional
+    if (POINTS.length) {
+      const pb = L.latLngBounds(POINTS.map(p => p.coords)).pad(0.6);
+      const fit = L.latLngBounds([
+        [ Math.max(pb.getSouth(), BOUNDS.getSouth()), Math.max(pb.getWest(),  BOUNDS.getWest())  ],
+        [ Math.min(pb.getNorth(), BOUNDS.getNorth()), Math.min(pb.getEast(),  BOUNDS.getEast())  ]
+      ]);
+      map.fitBounds(fit, { animate: false });
+    } else {
+      map.fitBounds(BOUNDS, { animate: false });
+    }
+
+    // Marcadores fucsia/dorado (coherente con tu sitio)
+    const style = {
+      radius: 6,
+      color: '#f5c26b',     // borde dorado
+      weight: 2,
+      fillColor: '#e83e8c', // fucsia
+      fillOpacity: 0.9,
+      interactive: false
+    };
+
+    POINTS.forEach(p => {
+      L.circleMarker(p.coords, style).addTo(map)
+        .bindTooltip(`<strong>${p.name}</strong>`, { direction: 'top' });
+    });
+
+    // Sellamos inmovilidad (por si algún embed intenta reactivar)
+    map.options.dragging = false;
+    map.options.touchZoom = false;
+    map.options.scrollWheelZoom = false;
+    map.options.doubleClickZoom = false;
+  </script>
 </body>
-<script>
-    
-    
-            var map_13bae23f2cb8b7ae8d8ec34e9a18702d = L.map(
-                "map_13bae23f2cb8b7ae8d8ec34e9a18702d",
-                {
-                    center: [25.0, 35.0],
-                    crs: L.CRS.EPSG3857,
-                    zoom: 3,
-                    zoomControl: true,
-                    preferCanvas: false,
-                }
-            );
-
-            
-
-        
-    
-            var tile_layer_a135ded1da7897ba69c5181243bcc9e1 = L.tileLayer(
-                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
-                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_13bae23f2cb8b7ae8d8ec34e9a18702d);
-        
-    
-            var marker_58fdedf3d3e592324da5c9744b26b91d = L.marker(
-                [26.8, 30.8],
-                {}
-            ).addTo(map_13bae23f2cb8b7ae8d8ec34e9a18702d);
-        
-    
-            var icon_6d33ebc2cd91d05d828051bd4ee52867 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_58fdedf3d3e592324da5c9744b26b91d.setIcon(icon_6d33ebc2cd91d05d828051bd4ee52867);
-        
-    
-            marker_58fdedf3d3e592324da5c9744b26b91d.bindTooltip(
-                `<div>
-                     Egypt
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_e69a81e34f59d7b9f0575e4801684b42 = L.marker(
-                [25.2, 51.5],
-                {}
-            ).addTo(map_13bae23f2cb8b7ae8d8ec34e9a18702d);
-        
-    
-            var icon_c7d5c2b262504447d7739ece6336690a = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_e69a81e34f59d7b9f0575e4801684b42.setIcon(icon_c7d5c2b262504447d7739ece6336690a);
-        
-    
-            marker_e69a81e34f59d7b9f0575e4801684b42.bindTooltip(
-                `<div>
-                     Qatar
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_cdd06fe73a0bb2c4964c747b72376510 = L.marker(
-                [31.9, 35.9],
-                {}
-            ).addTo(map_13bae23f2cb8b7ae8d8ec34e9a18702d);
-        
-    
-            var icon_2288ae75fe1e8ba3e865fe354eca6581 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_cdd06fe73a0bb2c4964c747b72376510.setIcon(icon_2288ae75fe1e8ba3e865fe354eca6581);
-        
-    
-            marker_cdd06fe73a0bb2c4964c747b72376510.bindTooltip(
-                `<div>
-                     Jordan
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_0ad4fa0cb4bb73dd795d77dbba8da59b = L.marker(
-                [31.0, 34.8],
-                {}
-            ).addTo(map_13bae23f2cb8b7ae8d8ec34e9a18702d);
-        
-    
-            var icon_41528f292aa21aa64967b5848781d71b = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_0ad4fa0cb4bb73dd795d77dbba8da59b.setIcon(icon_41528f292aa21aa64967b5848781d71b);
-        
-    
-            marker_0ad4fa0cb4bb73dd795d77dbba8da59b.bindTooltip(
-                `<div>
-                     Israel
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_5697aadb191a91dae581ab4541048d9b = L.marker(
-                [31.9, 35.2],
-                {}
-            ).addTo(map_13bae23f2cb8b7ae8d8ec34e9a18702d);
-        
-    
-            var icon_8a34d666c3ba47d8a72eba8842be4db8 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_5697aadb191a91dae581ab4541048d9b.setIcon(icon_8a34d666c3ba47d8a72eba8842be4db8);
-        
-    
-            marker_5697aadb191a91dae581ab4541048d9b.bindTooltip(
-                `<div>
-                     Palestine
-                 </div>`,
-                {"sticky": true}
-            );
-        
-</script>
 </html>
