@@ -1,308 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    
-        <script>
-            L_NO_TOUCH = false;
-            L_DISABLE_3D = false;
-        </script>
-    
-    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
-    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
-    
-            <meta name="viewport" content="width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-            <style>
-                #map_6c35c8617ea8465ad764f775846eb26a {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-            </style>
-        
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Europa – mapa fijo</title>
+
+  <!-- Leaflet 1.9 -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <style>
+    html, body { height:100%; margin:0; background:#0b0b0b; }
+    #map { position:absolute; inset:0; }
+    .leaflet-container { background:#0b0b0b; }
+    .attrib {
+      position:absolute; right:10px; bottom:10px;
+      background:rgba(0,0,0,.6); color:#cfcfd2;
+      font:12px/1.2 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      padding:6px 8px; border-radius:999px; border:1px solid #222; z-index:500;
+    }
+    .attrib a { color:#cfcfd2; text-decoration:none; }
+  </style>
 </head>
 <body>
-    
-    
-            <div class="folium-map" id="map_6c35c8617ea8465ad764f775846eb26a" ></div>
-        
+  <div id="map" role="region" aria-label="Mapa fijo de Europa"></div>
+  <div class="attrib">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OSM</a> • Tiles: Carto Dark</div>
+
+  <script>
+    // ===== Países/ciudades (cap.) solicitados =====
+    const POINTS = [
+      { name: "Noruega (Oslo)",                 coords: [59.9139, 10.7522] },
+      { name: "Islandia (Reikiavik)",           coords: [64.1466, -21.9426] },
+      { name: "Finlandia (Helsinki)",           coords: [60.1699, 24.9384] },
+      { name: "Dinamarca (Copenhague)",         coords: [55.6761, 12.5683] },
+      { name: "Reino Unido (Londres)",          coords: [51.5074, -0.1278] },
+      { name: "Suecia (Estocolmo)",             coords: [59.3293, 18.0686] },
+      { name: "Suiza (Berna)",                  coords: [46.9480,  7.4474] },
+      { name: "España (Madrid)",                coords: [40.4168, -3.7038] },
+      { name: "Liechtenstein (Vaduz)",          coords: [47.1410,  9.5210] },
+      { name: "Albania (Tirana)",               coords: [41.3275, 19.8187] },
+      { name: "Estonia (Tallin)",               coords: [59.4370, 24.7536] },
+      { name: "Letonia (Riga)",                 coords: [56.9496, 24.1052] },
+      { name: "Lituania (Vilna)",               coords: [54.6872, 25.2797] },
+      { name: "Países Bajos (Ámsterdam)",       coords: [52.3676,  4.9041] },
+      { name: "Bélgica (Bruselas)",             coords: [50.8503,  4.3517] },
+      { name: "Andorra (Andorra la Vella)",     coords: [42.5063,  1.5218] },
+      { name: "Turquía (Ankara)",               coords: [39.9334, 32.8597] },
+      { name: "Luxemburgo (Luxemburgo)",        coords: [49.6116,  6.1319] }
+    ];
+
+    // Marco de Europa (incluye Islandia y hasta Ankara)
+    const BOUNDS = L.latLngBounds(
+      [34.0, -25.0],  // suroeste
+      [72.0,  45.0]   // noreste
+    );
+
+    // ===== Mapa fijo (sin interacción) =====
+    const map = L.map('map', {
+      zoomControl: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      dragging: false,
+      touchZoom: false
+    });
+
+    // Base oscura unificada
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
+
+    // Encadre cercano según puntos, respetando el marco
+    if (POINTS.length) {
+      const pb = L.latLngBounds(POINTS.map(p => p.coords)).pad(0.5);
+      const fit = L.latLngBounds([
+        [ Math.max(pb.getSouth(), BOUNDS.getSouth()), Math.max(pb.getWest(),  BOUNDS.getWest())  ],
+        [ Math.min(pb.getNorth(), BOUNDS.getNorth()), Math.min(pb.getEast(),  BOUNDS.getEast())  ]
+      ]);
+      map.fitBounds(fit, { animate: false });
+    } else {
+      map.fitBounds(BOUNDS, { animate: false });
+    }
+
+    // Marcadores fucsia/dorado (coherentes con tu sitio)
+    const style = {
+      radius: 6,
+      color: '#f5c26b',     // borde dorado
+      weight: 2,
+      fillColor: '#e83e8c', // fucsia
+      fillOpacity: 0.9,
+      interactive: false
+    };
+
+    POINTS.forEach(p => {
+      L.circleMarker(p.coords, style).addTo(map)
+        .bindTooltip(`<strong>${p.name}</strong>`, { direction: 'top' });
+    });
+
+    // Sellamos inmovilidad
+    map.options.dragging = false;
+    map.options.touchZoom = false;
+    map.options.scrollWheelZoom = false;
+    map.options.doubleClickZoom = false;
+  </script>
 </body>
-<script>
-    
-    
-            var map_6c35c8617ea8465ad764f775846eb26a = L.map(
-                "map_6c35c8617ea8465ad764f775846eb26a",
-                {
-                    center: [54.0, 10.0],
-                    crs: L.CRS.EPSG3857,
-                    zoom: 3,
-                    zoomControl: true,
-                    preferCanvas: false,
-                }
-            );
-
-            
-
-        
-    
-            var tile_layer_1637f70e9829aac2cbf42fb4d5cc9c05 = L.tileLayer(
-                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
-                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_6c35c8617ea8465ad764f775846eb26a);
-        
-    
-            var marker_4d8563d9fcc726bfaf5456e8f27ccd4d = L.marker(
-                [40.4, -3.7],
-                {}
-            ).addTo(map_6c35c8617ea8465ad764f775846eb26a);
-        
-    
-            var icon_210c5af897c0f38abcdc67bca5bfc51a = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_4d8563d9fcc726bfaf5456e8f27ccd4d.setIcon(icon_210c5af897c0f38abcdc67bca5bfc51a);
-        
-    
-            marker_4d8563d9fcc726bfaf5456e8f27ccd4d.bindTooltip(
-                `<div>
-                     Spain
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_b72df14496ff15363ce0e505a8ce5387 = L.marker(
-                [41.3, 19.8],
-                {}
-            ).addTo(map_6c35c8617ea8465ad764f775846eb26a);
-        
-    
-            var icon_245dc92791f21919d9a24ea89a0147e7 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_b72df14496ff15363ce0e505a8ce5387.setIcon(icon_245dc92791f21919d9a24ea89a0147e7);
-        
-    
-            marker_b72df14496ff15363ce0e505a8ce5387.bindTooltip(
-                `<div>
-                     Albania
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_0e8cdc2765c2c51fabc04842856748bf = L.marker(
-                [64.1, -21.9],
-                {}
-            ).addTo(map_6c35c8617ea8465ad764f775846eb26a);
-        
-    
-            var icon_68071285512a4dabf18edd4bd445ae03 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_0e8cdc2765c2c51fabc04842856748bf.setIcon(icon_68071285512a4dabf18edd4bd445ae03);
-        
-    
-            marker_0e8cdc2765c2c51fabc04842856748bf.bindTooltip(
-                `<div>
-                     Iceland
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_417242a1ddfc4c6267811514848f71ca = L.marker(
-                [59.9, 10.8],
-                {}
-            ).addTo(map_6c35c8617ea8465ad764f775846eb26a);
-        
-    
-            var icon_523f8a85d9e4fa379f7f17eb4d1d87f7 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_417242a1ddfc4c6267811514848f71ca.setIcon(icon_523f8a85d9e4fa379f7f17eb4d1d87f7);
-        
-    
-            marker_417242a1ddfc4c6267811514848f71ca.bindTooltip(
-                `<div>
-                     Norway
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_bffe374c29c9a0512679dcff203d83b1 = L.marker(
-                [59.3, 18.1],
-                {}
-            ).addTo(map_6c35c8617ea8465ad764f775846eb26a);
-        
-    
-            var icon_633937963568a7ef85c931a53bb6d1a4 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_bffe374c29c9a0512679dcff203d83b1.setIcon(icon_633937963568a7ef85c931a53bb6d1a4);
-        
-    
-            marker_bffe374c29c9a0512679dcff203d83b1.bindTooltip(
-                `<div>
-                     Sweden
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_c70ac43d98791855675818b665ac78f1 = L.marker(
-                [46.9, 7.4],
-                {}
-            ).addTo(map_6c35c8617ea8465ad764f775846eb26a);
-        
-    
-            var icon_1b43c0ad52145aff4101ffaeb5c98984 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_c70ac43d98791855675818b665ac78f1.setIcon(icon_1b43c0ad52145aff4101ffaeb5c98984);
-        
-    
-            marker_c70ac43d98791855675818b665ac78f1.bindTooltip(
-                `<div>
-                     Switzerland
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_b59d73bc443a2fdcc1d646af0d959f37 = L.marker(
-                [55.7, 12.6],
-                {}
-            ).addTo(map_6c35c8617ea8465ad764f775846eb26a);
-        
-    
-            var icon_8dfbaa8d46dc235438d9bb88db5cb003 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_b59d73bc443a2fdcc1d646af0d959f37.setIcon(icon_8dfbaa8d46dc235438d9bb88db5cb003);
-        
-    
-            marker_b59d73bc443a2fdcc1d646af0d959f37.bindTooltip(
-                `<div>
-                     Denmark
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_3a57a4a12ec3ba7b1f29fac32952027c = L.marker(
-                [60.2, 24.9],
-                {}
-            ).addTo(map_6c35c8617ea8465ad764f775846eb26a);
-        
-    
-            var icon_85cd034dbf86f6cc0aaa86638197211a = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_3a57a4a12ec3ba7b1f29fac32952027c.setIcon(icon_85cd034dbf86f6cc0aaa86638197211a);
-        
-    
-            marker_3a57a4a12ec3ba7b1f29fac32952027c.bindTooltip(
-                `<div>
-                     Finland
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_68fb9219915a82ed5fcb1339f70538f2 = L.marker(
-                [51.5, -0.1],
-                {}
-            ).addTo(map_6c35c8617ea8465ad764f775846eb26a);
-        
-    
-            var icon_3b19f821394d358fd805a10c6ebf2319 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_68fb9219915a82ed5fcb1339f70538f2.setIcon(icon_3b19f821394d358fd805a10c6ebf2319);
-        
-    
-            marker_68fb9219915a82ed5fcb1339f70538f2.bindTooltip(
-                `<div>
-                     United Kingdom
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_d4eab85bcf7156488b9f4f32e3bd08c5 = L.marker(
-                [59.4, 24.7],
-                {}
-            ).addTo(map_6c35c8617ea8465ad764f775846eb26a);
-        
-    
-            var icon_06b80623f3b6ccc26812fbb3e0b40f35 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_d4eab85bcf7156488b9f4f32e3bd08c5.setIcon(icon_06b80623f3b6ccc26812fbb3e0b40f35);
-        
-    
-            marker_d4eab85bcf7156488b9f4f32e3bd08c5.bindTooltip(
-                `<div>
-                     Estonia
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_99ca8e632dab4aabc7c3743bd67dcef8 = L.marker(
-                [54.7, 25.3],
-                {}
-            ).addTo(map_6c35c8617ea8465ad764f775846eb26a);
-        
-    
-            var icon_f9cc8e40bc7433ba323aebf26ba9d70e = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_99ca8e632dab4aabc7c3743bd67dcef8.setIcon(icon_f9cc8e40bc7433ba323aebf26ba9d70e);
-        
-    
-            marker_99ca8e632dab4aabc7c3743bd67dcef8.bindTooltip(
-                `<div>
-                     Lithuania
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_69ef404bacc125c02f82ad9cb7e02e64 = L.marker(
-                [56.9, 24.1],
-                {}
-            ).addTo(map_6c35c8617ea8465ad764f775846eb26a);
-        
-    
-            var icon_9f40c8f55563856fce4f967dc5dab74c = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "map-marker", "iconColor": "white", "markerColor": "pink", "prefix": "fa"}
-            );
-            marker_69ef404bacc125c02f82ad9cb7e02e64.setIcon(icon_9f40c8f55563856fce4f967dc5dab74c);
-        
-    
-            marker_69ef404bacc125c02f82ad9cb7e02e64.bindTooltip(
-                `<div>
-                     Latvia
-                 </div>`,
-                {"sticky": true}
-            );
-        
-</script>
 </html>
