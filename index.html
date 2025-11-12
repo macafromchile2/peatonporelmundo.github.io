@@ -26,11 +26,18 @@
       --line: #2a2a2a;       /* bordes */
       --shadow: 0 10px 24px rgba(0,0,0,.45), 0 6px 12px rgba(0,0,0,.35);
 
-      /* Botones suavizados (compatibles con dark) */
+      /* (Originales – ya no se usan para botones, pero las dejamos por compatibilidad)
       --amazon-bg: #ffb84d;   --amazon-fg: #2b1e14;
       --ml-bg:     #fff27c;   --ml-fg:   #263065; --ml-border: #e8da5f;
       --ig-from:   #f8a5c2;   --ig-to:   #b29dd9;
       --fb-bg:     #8ab4f8;   --fb-fg:   #0b254a;
+      */
+
+      /* Morados unificados para CTAs */
+      --morado:#7C3AED;         /* base */
+      --morado-600:#6D28D9;     /* hover */
+      --morado-700:#5B21B6;     /* active/borde */
+      --morado-glow: rgba(124,58,237,.35);
     }
 
     html{scroll-behavior:smooth}
@@ -85,14 +92,47 @@
       box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .15s ease; border:1px solid rgba(255,255,255,.06)
     }
     .btn:hover{transform:translateY(-2px)}
-    .btn:focus-visible{outline:3px solid rgba(248,165,194,.6); outline-offset:3px}
+    .btn:focus-visible{outline:3px solid rgba(124,58,237,.55); outline-offset:3px}
     .btn .ico{width:18px; height:18px; display:inline-block}
 
-    /* Botones con colores suaves */
-    .btn-amazon{background:var(--amazon-bg); color:var(--amazon-fg)}
-    .btn-mercado{background:var(--ml-bg); color:var(--ml-fg); border-color:var(--ml-border)}
-    .btn-instagram{background:linear-gradient(45deg,var(--ig-from),var(--ig-to)); color:#1d0b1d}
-    .btn-facebook{background:var(--fb-bg); color:var(--fb-fg)}
+    /* ===== BOTONES EN MORADO (lo que pediste) ===== */
+    .btn-amazon,
+    .btn-mercado,
+    .btn-instagram,
+    .btn-facebook{
+      background: var(--morado);
+      color: #fff;
+      border-color: var(--morado-700);
+    }
+    .btn-amazon:hover,
+    .btn-mercado:hover,
+    .btn-instagram:hover,
+    .btn-facebook:hover{
+      background: var(--morado-600);
+      box-shadow: 0 6px 18px var(--morado-glow);
+    }
+    .btn-amazon:active,
+    .btn-mercado:active,
+    .btn-instagram:active,
+    .btn-facebook:active{
+      background: var(--morado-700);
+    }
+    /* (Si prefieres gradiente, reemplaza lo de arriba por esto)
+    .btn-amazon,
+    .btn-mercado,
+    .btn-instagram,
+    .btn-facebook{
+      background: linear-gradient(135deg, #8B5CF6, #7C3AED 55%, #5B21B6);
+      color:#fff; border:0;
+    }
+    .btn-amazon:hover,
+    .btn-mercado:hover,
+    .btn-instagram:hover,
+    .btn-facebook:hover{
+      filter: brightness(.98);
+      box-shadow: 0 6px 18px var(--morado-glow);
+    }
+    */
 
     /* SECCIONES */
     section{padding:56px 0}
@@ -121,14 +161,26 @@
     /* Instagram */
     .galeria-insta{background:#0f0f0f; border-top:1px solid var(--line)}
     .insta-grid{display:flex; flex-wrap:wrap; gap:20px; justify-content:center}
-    .insta-btn{display:inline-block; padding:12px 24px; border-radius:999px; background:#111; color:#fff; text-decoration:none; font-weight:700}
-    .insta-btn:hover,.insta-btn:focus-visible{filter:brightness(.92)}
+    .insta-btn{
+      display:inline-block; padding:12px 24px; border-radius:999px;
+      background: var(--morado); color:#fff; text-decoration:none; font-weight:700;
+      border:1px solid var(--morado-700);
+    }
+    .insta-btn:hover,
+    .insta-btn:focus-visible{
+      background: var(--morado-600);
+      box-shadow:0 6px 18px var(--morado-glow);
+      filter:none;
+    }
 
     /* Facebook box */
     .facebook-box{background:#141414; border:1px solid var(--line); border-radius:16px; padding:28px; text-align:center; box-shadow:var(--shadow)}
     .facebook-box h3{font-family:'Fraunces', serif; color:var(--accent-2); margin-top:0}
-    .facebook-link{display:inline-block; background:#8ab4f8; color:#0b254a; text-decoration:none; padding:12px 20px; border-radius:12px; font-weight:700}
-    .facebook-link:hover{filter:brightness(.95)}
+    .facebook-link{
+      display:inline-block; background: var(--morado); color:#fff; text-decoration:none;
+      padding:12px 20px; border-radius:12px; font-weight:700; border:1px solid var(--morado-700)
+    }
+    .facebook-link:hover{ background: var(--morado-600); box-shadow:0 6px 18px var(--morado-glow) }
 
     /* Frase final */
     .frase-final{background:#101010; color:#e9e9ec; border:1px solid var(--line); border-radius:16px; text-align:center; padding:38px; box-shadow:var(--shadow)}
@@ -368,4 +420,5 @@
 
 </body>
 </html>
+
 
