@@ -1,427 +1,457 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Peatón por el Mundo – Macarena Silva (@macafromchile)</title>
-  <meta name="description" content="Relatos de viaje, mapas por continente y talleres de autopublicación de Macarena Silva. Peatón por el mundo: caminar para entenderlo." />
-  <link rel="icon" href="/favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <meta name="description" content="Relatos de viaje, mapas por continente y miradas íntimas desde los caminos. Maca Silva: autora y caminante." />
+
+  <!-- Open Graph -->
   <meta property="og:title" content="Peatón por el Mundo – Macarena Silva" />
-  <meta property="og:description" content="Relatos de viaje, Puerto Williams y autopublicación. Sígueme en @macafromchile." />
+  <meta property="og:description" content="Viajo a pie por el mundo en busca de lo que no aparece en las postales." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/assets/og-cover.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:url" content="https://peatonporelmundo.com/" />
+  <!-- TODO: agrega una imagen OG real -->
+  <meta property="og:image" content="https://peatonporelmundo.com/assets/og.jpg" />
+
+  <meta name="theme-color" content="#0f0f10" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Fonts (editorial + sans limpia) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* Paleta oscura con acentos cálidos */
-      --bg: #0b0b0b;         /* negro profundo */
-      --paper: #121212;      /* tarjetas/oscuros */
-      --ink: #f4f4f4;        /* texto principal */
-      --muted: #cfcfd2;      /* texto secundario */
-      --accent: #e83e8c;     /* fucsia */
-      --accent-2: #f5c26b;   /* dorado suave */
-      --accent-lite: #f7a1c4;/* rosado claro */
-      --line: #2a2a2a;       /* bordes */
-      --shadow: 0 10px 24px rgba(0,0,0,.45), 0 6px 12px rgba(0,0,0,.35);
+      --bg: #0f0f10;
+      --panel: rgba(255,255,255,.06);
+      --panel-2: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.88);
+      --muted: rgba(255,255,255,.62);
+      --line: rgba(255,255,255,.12);
 
-      /* (Originales – ya no se usan para botones, pero las dejamos por compatibilidad)
-      --amazon-bg: #ffb84d;   --amazon-fg: #2b1e14;
-      --ml-bg:     #fff27c;   --ml-fg:   #263065; --ml-border: #e8da5f;
-      --ig-from:   #f8a5c2;   --ig-to:   #b29dd9;
-      --fb-bg:     #8ab4f8;   --fb-fg:   #0b254a;
-      */
+      /* Acento femenino sobrio (cambia si quieres: #d7a8a8 / #c7a6ff / #f2c6a0) */
+      --accent: #f2c6a0;
+      --accent-2: #b8f2e6;
 
-      /* Morados unificados para CTAs */
-      --morado:#7C3AED;         /* base */
-      --morado-600:#6D28D9;     /* hover */
-      --morado-700:#5B21B6;     /* active/borde */
-      --morado-glow: rgba(124,58,237,.35);
+      --shadow: 0 18px 55px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 1120px;
     }
 
-    html{scroll-behavior:smooth}
-    *,*::before,*::after{box-sizing:border-box}
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
     body{
-      margin:0; color:var(--ink); background:var(--bg);
-      font-family:'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
-      line-height:1.7;
-      position:relative;
-      min-height:100vh;
-    }
-    /* Capa 1: niebla oscura sutil (radial-gradients) */
-    body::before{
-      content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+      margin:0;
       background:
-        radial-gradient(1200px 600px at 120% -20%, rgba(255,255,255,.045), transparent 60%),
-        radial-gradient(900px 600px at -20% 120%, rgba(255,255,255,.03), transparent 55%),
-        linear-gradient(#0b0b0b, #0b0b0b);
-    }
-    /* Capa 2: grano fino (SVG noise embebido) */
-    body::after{
-      content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
-      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='300' height='300' filter='url(%23n)' opacity='0.03'/></svg>");
-      background-size:300px 300px; opacity:1; mix-blend-mode:soft-light;
+        radial-gradient(900px 500px at 20% -10%, rgba(242,198,160,.15), transparent 60%),
+        radial-gradient(900px 500px at 80% 0%, rgba(184,242,230,.10), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.55;
     }
 
-    .container{max-width:1100px; margin-inline:auto; padding-inline:20px}
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ opacity: .92; }
 
-    /* NAV */
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+    /* Topbar */
+    .topbar{
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(15,15,16,.72);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap: 14px;
+    }
+    .brand{
+      display:flex; align-items:baseline; gap:10px;
+      letter-spacing: .2px;
+    }
+    .brand strong{
+      font-family: Fraunces, serif;
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .brand span{
+      color: var(--muted);
+      font-size: 13px;
+    }
     nav{
-      position:sticky; top:0; z-index:1000; backdrop-filter:saturate(160%) blur(8px);
-      background:rgba(10,10,10,.75); border-bottom:1px solid var(--line);
+      display:flex; gap: 14px; align-items:center; flex-wrap: wrap;
+      justify-content:flex-end;
     }
-    .nav-inner{display:flex; align-items:center; justify-content:space-between; min-height:64px}
-    .brand{display:flex; align-items:center; gap:.6rem; font-weight:800; letter-spacing:.02em}
-    .brand .title{font-family:'Fraunces', serif; font-size:1.15rem; color:var(--accent-2)}
-    .brand .dot{width:8px; height:8px; border-radius:999px; background:var(--accent)}
-    .menu{display:flex; gap:1.2rem}
-    .menu a{text-decoration:none; color:#e9e9ec; font-weight:600; padding:8px 12px; border-radius:10px}
-    .menu a:hover,.menu a:focus-visible{background:#1b1b1b; outline:2px solid transparent}
+    .navlink{
+      padding: 8px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      border: 1px solid transparent;
+    }
+    .navlink:hover{
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,.04);
+    }
 
-    /* HERO */
-    header.hero{text-align:center; border-bottom:1px solid var(--line); background:linear-gradient(180deg,#000 0%, #0e0e0e 100%)}
-    .hero-inner{padding:84px 20px}
-    .hero h1{font-family:'Fraunces', serif; font-size:clamp(2rem, 4vw, 3.1rem); margin:0 0 .25rem; color:#ffffff}
-    .hero h2{font-weight:500; color:var(--muted); font-style:italic; margin:.25rem 0 1.25rem}
-
-    .cta-row{display:flex; flex-wrap:wrap; gap:12px; justify-content:center}
+    /* Buttons */
+    .btnrow{ display:flex; gap:10px; flex-wrap: wrap; margin-top: 18px; }
     .btn{
-      display:inline-flex; align-items:center; gap:.6rem;
-      padding:12px 18px; border-radius:14px; font-weight:700; text-decoration:none;
-      box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .15s ease; border:1px solid rgba(255,255,255,.06)
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 11px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+      transition: transform .15s ease, background .15s ease;
     }
-    .btn:hover{transform:translateY(-2px)}
-    .btn:focus-visible{outline:3px solid rgba(124,58,237,.55); outline-offset:3px}
-    .btn .ico{width:18px; height:18px; display:inline-block}
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.07); }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(242,198,160,.95), rgba(184,242,230,.80));
+      color: rgba(10,10,10,.92);
+      border-color: transparent;
+    }
+    .btn.primary:hover{ background: linear-gradient(135deg, rgba(242,198,160,1), rgba(184,242,230,.92)); }
 
-    /* ===== BOTONES EN MORADO (lo que pediste) ===== */
-    .btn-amazon,
-    .btn-mercado,
-    .btn-instagram,
-    .btn-facebook{
-      background: var(--morado);
-      color: #fff;
-      border-color: var(--morado-700);
+    /* Hero */
+    .hero{ padding: 44px 0 26px; }
+    .hero-grid{
+      display:grid; grid-template-columns: 1.1fr .9fr; gap: 26px;
+      align-items: center;
     }
-    .btn-amazon:hover,
-    .btn-mercado:hover,
-    .btn-instagram:hover,
-    .btn-facebook:hover{
-      background: var(--morado-600);
-      box-shadow: 0 6px 18px var(--morado-glow);
+    .kicker{
+      color: var(--muted);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: 12px;
     }
-    .btn-amazon:active,
-    .btn-mercado:active,
-    .btn-instagram:active,
-    .btn-facebook:active{
-      background: var(--morado-700);
+    h1{
+      font-family: Fraunces, serif;
+      font-size: 48px;
+      line-height: 1.05;
+      margin: 12px 0 10px;
     }
-    /* (Si prefieres gradiente, reemplaza lo de arriba por esto)
-    .btn-amazon,
-    .btn-mercado,
-    .btn-instagram,
-    .btn-facebook{
-      background: linear-gradient(135deg, #8B5CF6, #7C3AED 55%, #5B21B6);
-      color:#fff; border:0;
-    }
-    .btn-amazon:hover,
-    .btn-mercado:hover,
-    .btn-instagram:hover,
-    .btn-facebook:hover{
-      filter: brightness(.98);
-      box-shadow: 0 6px 18px var(--morado-glow);
-    }
-    */
-
-    /* SECCIONES */
-    section{padding:56px 0}
-    h2.section-title{
-      font-family:'Fraunces', serif; text-transform:uppercase; letter-spacing:.06em; text-align:center; margin:0 0 24px;
-      font-size:clamp(1.5rem, 2.4vw, 2.2rem); color:var(--accent-2)
-    }
-    .lead{max-width:800px; margin:0 auto 14px; text-align:center; color:var(--muted)}
-    .quote{font-style:italic; text-align:center; color:#e3e3e6; margin:10px auto 26px}
-
-    /* BIO */
-    .bio-card{
-      background:var(--paper); border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow);
-      padding:26px; display:grid; grid-template-columns:240px 1fr; gap:24px; align-items:center
-    }
-    .bio-card img{width:100%; max-width:240px; border-radius:14px; display:block}
-    .bio-card h3{font-family:'Fraunces', serif; margin:.25rem 0 .5rem; font-size:1.7rem; color:#fff}
-    .bio-card p{margin:.4rem 0; color:#d9d9dd}
-    @media (max-width:760px){.bio-card{grid-template-columns:1fr}}
-
-    /* MAPAS / IFRAMES */
-    .region{border-top:1px solid var(--line)}
-    .map-embed{aspect-ratio: 16/9; width:100%; border:0; border-radius:16px; box-shadow:var(--shadow); background:#0f0f0f}
-    .stories-embed{width:100%; height:1000px; border:0; border-radius:16px; box-shadow:var(--shadow); background:#0f0f0f}
-
-    /* Instagram */
-    .galeria-insta{background:#0f0f0f; border-top:1px solid var(--line)}
-    .insta-grid{display:flex; flex-wrap:wrap; gap:20px; justify-content:center}
-    .insta-btn{
-      display:inline-block; padding:12px 24px; border-radius:999px;
-      background: var(--morado); color:#fff; text-decoration:none; font-weight:700;
-      border:1px solid var(--morado-700);
-    }
-    .insta-btn:hover,
-    .insta-btn:focus-visible{
-      background: var(--morado-600);
-      box-shadow:0 6px 18px var(--morado-glow);
-      filter:none;
+    .subtitle{
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 60ch;
     }
 
-    /* Facebook box */
-    .facebook-box{background:#141414; border:1px solid var(--line); border-radius:16px; padding:28px; text-align:center; box-shadow:var(--shadow)}
-    .facebook-box h3{font-family:'Fraunces', serif; color:var(--accent-2); margin-top:0}
-    .facebook-link{
-      display:inline-block; background: var(--morado); color:#fff; text-decoration:none;
-      padding:12px 20px; border-radius:12px; font-weight:700; border:1px solid var(--morado-700)
+    .portrait{
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
     }
-    .facebook-link:hover{ background: var(--morado-600); box-shadow:0 6px 18px var(--morado-glow) }
+    .portrait img{
+      width:100%;
+      height: 360px;
+      object-fit: cover;
+      border-radius: calc(var(--radius) - 8px);
+      display:block;
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .portrait .cap{
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
 
-    /* Frase final */
-    .frase-final{background:#101010; color:#e9e9ec; border:1px solid var(--line); border-radius:16px; text-align:center; padding:38px; box-shadow:var(--shadow)}
-    .frase-final em{color:#c7c7cb}
+    /* Sections */
+    .section{ padding: 28px 0; }
+    .section-head{
+      display:flex; justify-content:space-between; align-items:flex-end;
+      gap: 12px; flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .section h2{
+      font-family: Fraunces, serif;
+      font-size: 26px; margin: 0;
+    }
+    .section p.lead{
+      margin: 6px 0 0;
+      color: var(--muted);
+      max-width: 75ch;
+    }
+
+    /* Cards */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+    .card{
+      grid-column: span 6;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .card:hover{ transform: translateY(-2px); background: rgba(255,255,255,.075); }
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing: .2px;
+    }
+    .card p{
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .quote{
+      margin: 0;
+      padding: 10px 12px;
+      border-left: 3px solid rgba(242,198,160,.8);
+      background: rgba(0,0,0,.22);
+      border-radius: 12px;
+      color: rgba(255,255,255,.75);
+      font-style: italic;
+      font-size: 14px;
+    }
+
+    /* Callouts */
+    .callout{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 14px; flex-wrap: wrap;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .callout strong{
+      font-family: Fraunces, serif;
+      font-size: 18px;
+    }
+    .callout span{ color: var(--muted); }
 
     /* Footer */
-    footer{border-top:1px solid var(--line); background:#0e0e0e; color:#bdbdc2; padding:24px 0; text-align:center; font-size:.95rem}
-    footer a{color:#ffffff}
+    footer{
+      padding: 30px 0 40px;
+      border-top: 1px solid var(--line);
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footgrid{
+      display:grid; grid-template-columns: 1.4fr .6fr; gap: 12px;
+      align-items:start;
+    }
+    .footerlinks{ display:flex; gap: 10px; flex-wrap: wrap; justify-content:flex-end; }
+    .tag{
+      display:inline-flex; align-items:center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+    }
 
-    /* WhatsApp flotante */
-    #wa-float{position:fixed; right:20px; bottom:20px; width:56px; height:56px; display:grid; place-items:center; border-radius:999px; text-decoration:none; box-shadow:var(--shadow); z-index:9999; background:linear-gradient(135deg, #25d366, #128c7e)}
-    #wa-float svg{width:28px; height:28px; fill:#fff}
-    #wa-float:focus-visible{outline:3px solid #9be7b3; outline-offset:3px}
-    @media (prefers-reduced-motion: reduce){.btn,.btn:hover{transition:none; transform:none}}
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      h1{ font-size: 40px; }
+      .portrait img{ height: 320px; }
+      .card{ grid-column: span 12; }
+      .footgrid{ grid-template-columns: 1fr; }
+      .footerlinks{ justify-content:flex-start; }
+    }
   </style>
 </head>
+
 <body>
-
-  <!-- NAV -->
-  <nav role="navigation" aria-label="Principal">
-    <div class="container nav-inner">
-      <div class="brand" aria-label="Peatón por el Mundo">
-        <span class="dot" aria-hidden="true"></span>
-        <span class="title">Peatón por el Mundo</span>
-      </div>
-      <div class="menu">
-        <a href="#inicio">Inicio</a>
-        <a href="#mapas">Mapas</a>
-        <a href="#historias">Historias</a>
-        <a href="#contacto">Contacto</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header id="inicio" class="hero">
-    <div class="container hero-inner">
-      <h1>PEATÓN POR EL MUNDO</h1>
-      <h2>Relatos de una exploradora nómada</h2>
-
-      <div class="cta-row" role="group" aria-label="Acciones principales">
-        <!-- Amazon -->
-        <a class="btn btn-amazon" href="https://www.amazon.com/gp/product/9564200997" target="_blank" rel="noopener">
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M7 18a2 2 0 1 0 .001 3.999A2 2 0 0 0 7 18zm10 0a2 2 0 1 0 .001 3.999A2 2 0 0 0 17 18zM6 6h14l-2 8H8L6 6zm-2-2h2l3 12h10l3-12h2" fill="currentColor"/>
-          </svg>
-          Amazon
+  <header class="topbar">
+    <div class="wrap">
+      <div class="topbar-inner">
+        <a class="brand" href="#inicio" aria-label="Inicio">
+          <strong>Peatón por el Mundo</strong>
+          <span>Macarena Silva · @macafromchile</span>
         </a>
 
-        <!-- Mercado Libre -->
-        <a class="btn btn-mercado" href="https://www.mercadolibre.cl/libro-peaton-por-el-mundo/up/MLCU2858535998/" target="_blank" rel="noopener">
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M3 7l9-5 9 5v10a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2V7z" fill="currentColor"/>
-          </svg>
-          Mercado Libre
-        </a>
-
-        <!-- Instagram -->
-        <a class="btn btn-instagram" href="https://www.instagram.com/macafromchile" target="_blank" rel="me noopener">
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
-            <circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/>
-            <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
-          </svg>
-          Instagram
-        </a>
-
-        <!-- Facebook -->
-        <a class="btn btn-facebook" href="https://www.facebook.com/macafromchile/" target="_blank" rel="me noopener">
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M13 22v-9h3l.5-4H13V7.5c0-1.1.3-1.8 1.9-1.8H17V2.2C16.6 2.1 15.5 2 14.2 2 11.4 2 9.5 3.7 9.5 7v2H6v4h3.5v9h3.5z" fill="currentColor"/>
-          </svg>
-          Facebook
-        </a>
+        <nav aria-label="Navegación principal">
+          <a class="navlink" href="#mapas">Mapas</a>
+          <a class="navlink" href="#historias">Historias</a>
+          <a class="navlink" href="#contacto">Contacto</a>
+        </nav>
       </div>
     </div>
   </header>
 
-  <!-- BIO -->
-  <section class="container" aria-labelledby="bio-title">
-    <div class="bio-card">
-      <img src="tu-foto.jpg" alt="Retrato de Macarena Silva" loading="lazy" />
-      <div>
-        <h3 id="bio-title">Camino el mundo para entenderlo</h3>
-        <p><strong>Soy Maca Silva</strong>: autora y caminante. En esta bitácora digital comparto historias nacidas desde los caminos. Viajo a pie por el mundo en busca de lo que no aparece en las postales.</p>
+  <main id="inicio">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker">Relatos de viaje · mapas · crónicas</div>
+            <h1>Camino el mundo para entenderlo.</h1>
+            <p class="subtitle">
+              Soy <strong>Maca Silva</strong>: autora y caminante. En esta bitácora comparto historias nacidas desde los caminos.
+              Viajo a pie por el mundo en busca de lo que no aparece en las postales.
+            </p>
 
-<p>He recorrido América, Europa, Asia, África y Oceanía, observando lo cotidiano, lo invisible, lo incómodo y lo profundamente humano. Mis relatos nacen desde la experiencia directa, con los pies en el barro.</p>
+            <div class="btnrow">
+              <!-- Ajusta rutas si tus páginas internas son distintas -->
+              <a class="btn primary" href="/historias.html">Leer historias</a>
+              <a class="btn" href="/mapas.html">Ver mapas</a>
+              <a class="btn" href="https://www.instagram.com/macafromchile/" target="_blank" rel="noopener">Instagram</a>
+              <a class="btn" href="https://www.amazon.com" target="_blank" rel="noopener">Amazon</a>
+              <a class="btn" href="https://www.mercadolibre.cl" target="_blank" rel="noopener">Mercado Libre</a>
+            </div>
+          </div>
 
-<p>Aquí encontrarás mapas, crónicas y miradas íntimas de los territorios que he habitado. ¿Me acompañas?</p>
-
+          <aside class="portrait" aria-label="Retrato">
+            <!-- TODO: cambia esta imagen por tu ruta real -->
+            <img src="/assets/retrato.jpg" alt="Retrato de Macarena Silva" loading="lazy" />
+            <div class="cap">
+              He recorrido América, Europa, Asia, África y Oceanía, observando lo cotidiano, lo invisible, lo incómodo y lo profundamente humano.
+            </div>
+          </aside>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- MAPAS: ancla -->
-  <section id="mapas"></section>
+    <section class="section" id="mapas">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Continentes · capítulos</h2>
+            <p class="lead">Un recorrido editorial: breve, directo, y con espacio para respirar. Cada territorio, una forma distinta de mirar.</p>
+          </div>
+        </div>
 
-  <!-- SUR AMÉRICA -->
-  <section class="region">
-    <div class="container">
-      <h2 class="section-title">América del Sur: de volcanes y asfalto</h2>
-      <p class="lead">La raíz de todo viaje está en el sur. Cruzar la cordillera, tocar la selva, compartir mate en la frontera. En Sudamérica aprendí a caminar lento y mirar profundo.</p>
-      <p class="quote">“Aquí nació el impulso de moverme.”</p>
-      <iframe class="map-embed" src="mapa_america_sur.html" loading="lazy" title="Mapa de América del Sur"></iframe>
-    </div>
-  </section>
+        <div class="grid" role="list">
+          <article class="card" role="listitem">
+            <h3>América del Sur: de volcanes y asfalto</h3>
+            <p>La raíz de todo viaje está en el sur. Cruzar la cordillera, tocar la selva, compartir mate en la frontera.</p>
+            <p class="quote">“Aquí nació el impulso de moverme.”</p>
+          </article>
 
-  <!-- WEST INDIES -->
-  <section class="region">
-    <div class="container">
-      <h2 class="section-title">West Indies: islas pequeñas, memorias grandes</h2>
-      <p class="lead">Entre playas que no salen en postales y acentos que cantan historias, encontré en el Caribe una forma suave de vivir y resistir.</p>
-      <p class="quote">“En cada ola, un recuerdo tibio.”</p>
-      <iframe class="map-embed" src="mapa_west_indies.html" loading="lazy" title="Mapa de West Indies"></iframe>
-    </div>
-  </section>
+          <article class="card" role="listitem">
+            <h3>West Indies: islas pequeñas, memorias grandes</h3>
+            <p>Entre playas que no salen en postales y acentos que cantan historias, encontré una forma suave de vivir y resistir.</p>
+            <p class="quote">“En cada ola, un recuerdo tibio.”</p>
+          </article>
 
-  <!-- AMÉRICA CENTRAL Y USA -->
-  <section class="region">
-    <div class="container">
-      <h2 class="section-title">América Central y USA: la ruta del contraste</h2>
-      <p class="lead">Pasé del calor tropical de Centroamérica a las luces desbordadas de ciudades gigantes. Cada paso fue una contradicción, y por eso, aprendizaje.</p>
-      <p class="quote">“Contrastes que me hicieron mirar dos veces.”</p>
-      <iframe class="map-embed" src="mapa_america_central_usa.html" loading="lazy" title="Mapa de América Central y USA"></iframe>
-    </div>
-  </section>
+          <article class="card" role="listitem">
+            <h3>América Central y USA: la ruta del contraste</h3>
+            <p>Del calor tropical a ciudades gigantes: contradicción, aprendizaje, y otra manera de medir la libertad.</p>
+            <p class="quote">“Contrastes que me hicieron mirar dos veces.”</p>
+          </article>
 
-  <!-- ÁFRICA Y MEDIO ORIENTE -->
-  <section class="region">
-    <div class="container">
-      <h2 class="section-title">África y Medio Oriente: el origen del asombro</h2>
-      <p class="lead">Caminar entre templos, arena y conflicto. Aquí todo grita historia, herida, vida. Fue duro, fue bello, fue transformador.</p>
-      <p class="quote">“Volver al origen, y encontrarse.”</p>
-      <iframe class="map-embed" src="mapa_africa_medio_oriente.html" loading="lazy" title="Mapa de África y Medio Oriente"></iframe>
-    </div>
-  </section>
+          <article class="card" role="listitem">
+            <h3>África y Medio Oriente: el origen del asombro</h3>
+            <p>Templos, arena y conflicto: historia viva. Duro, bello, transformador.</p>
+            <p class="quote">“Volver al origen, y encontrarse.”</p>
+          </article>
 
-  <!-- EUROPA -->
-  <section class="region">
-    <div class="container">
-      <h2 class="section-title">Europa: entre invierno y revolución</h2>
-      <p class="lead">Más allá de los monumentos, Europa me enseñó que el pasado nunca es pasado. Cada esquina guarda memoria, y cada paso, un eco.</p>
-      <p class="quote">“Los muros hablan, si uno sabe escuchar.”</p>
-      <iframe class="map-embed" src="mapa_europa.html" loading="lazy" title="Mapa de Europa"></iframe>
-    </div>
-  </section>
+          <article class="card" role="listitem">
+            <h3>Europa: entre invierno y revolución</h3>
+            <p>Más allá de los monumentos: memoria, eco, y un pasado que no termina de irse.</p>
+            <p class="quote">“Los muros hablan, si uno sabe escuchar.”</p>
+          </article>
 
-  <!-- ASIA -->
-  <section class="region">
-    <div class="container">
-      <h2 class="section-title">Asia: caos, calma y conciencia</h2>
-      <p class="lead">De templos silenciosos a ciudades que nunca duermen, Asia me recordó que no hay una sola forma de habitar el mundo. Todo puede convivir.</p>
-      <p class="quote">“Caos y silencio: dos caras del mismo viaje.”</p>
-      <iframe class="map-embed" src="mapa_asia.html" loading="lazy" title="Mapa de Asia"></iframe>
-    </div>
-  </section>
+          <article class="card" role="listitem">
+            <h3>Asia y Oceanía: caos, calma y comienzo</h3>
+            <p>De templos silenciosos a ciudades que no duermen; de islas remotas a cercanías profundas.</p>
+            <p class="quote">“Donde nadie te conoce, todo comienza.”</p>
+          </article>
+        </div>
 
-  <!-- OCEANÍA -->
-  <section class="region">
-    <div class="container">
-      <h2 class="section-title">Oceanía: islas lejanas, cercanías profundas</h2>
-      <p class="lead">Vanuatu, Nauru, Fiyi, Australia. Lugares remotos donde nadie sabe quién eres y, por eso, puedes ser tú.</p>
-      <p class="quote">“Donde nadie te conoce, todo comienza.”</p>
-      <iframe class="map-embed" src="mapa_oceania.html" loading="lazy" title="Mapa de Oceanía"></iframe>
-    </div>
-  </section>
-
-  <!-- HISTORIAS DEL MUNDO -->
-  <section id="historias" class="region">
-    <div class="container">
-      <h2 class="section-title">Historias del Mundo</h2>
-      <iframe class="stories-embed" src="historias_del_mundo.html" loading="lazy" title="Listado de historias"></iframe>
-    </div>
-  </section>
-
-  <!-- Instagram -->
-  <section class="galeria-insta">
-    <div class="container">
-      <h2 class="section-title">Sigue el recorrido en Instagram</h2>
-      <div class="insta-grid">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CuGmSRmROY6/" data-instgrm-version="14"></blockquote>
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CqaUZkIjDFu/" data-instgrm-version="14"></blockquote>
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Cn9pDX2jVd0/" data-instgrm-version="14"></blockquote>
+        <div style="margin-top:14px" class="callout">
+          <div>
+            <strong>¿Quieres ver el recorrido visual?</strong><br/>
+            <span>Sigue el camino en Instagram y acompaña el detrás de escena de los viajes.</span>
+          </div>
+          <div class="btnrow" style="margin-top:0">
+            <a class="btn primary" href="https://www.instagram.com/macafromchile/" target="_blank" rel="noopener">Ver Instagram</a>
+            <a class="btn" href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a>
+          </div>
+        </div>
       </div>
-      <p style="text-align:center; margin:24px 0 0">
-        <a class="insta-btn" href="https://www.instagram.com/macafromchile/" target="_blank" rel="noopener">Ver más en Instagram</a>
-      </p>
-    </div>
-  </section>
-  <script async src="//www.instagram.com/embed.js"></script>
+    </section>
 
-  <!-- Facebook box -->
-  <section class="region">
-    <div class="container">
-      <div class="facebook-box">
-        <h3>También estoy en Facebook</h3>
-        <p>En mi página comparto reflexiones viajeras que no siempre aparecen en Instagram. Es otro rincón íntimo de este caminar.</p>
-        <a class="facebook-link" href="https://www.facebook.com/macafromchile" target="_blank" rel="noopener">Ir a Facebook</a>
+    <section class="section" id="historias">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Historias del Mundo</h2>
+            <p class="lead">Crónicas y notas: lo cotidiano, lo invisible y lo profundamente humano — escrito con los pies en el barro.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div>
+            <strong>Entrar a Historias</strong><br/>
+            <span>Lectura rápida, limpia y sin ruido visual.</span>
+          </div>
+          <div class="btnrow" style="margin-top:0">
+            <a class="btn primary" href="/historias.html">Leer historias</a>
+            <a class="btn" href="/contacto.html">Contactar</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Frase final -->
-  <section class="region">
-    <div class="container">
-      <div class="frase-final">
-        <p>“Lo único que uno puede dejar en el mundo son las creaciones personales. Todo lo demás se esfuma como el viento.”<br><em>— Maca Silva</em></p>
+    <section class="section" id="contacto">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Contacto</h2>
+            <p class="lead">Colaboraciones, prensa, charlas, talleres de autopublicación y proyectos editoriales.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <div>
+            <strong>Escríbeme</strong><br/>
+            <span>
+              <a class="tag" href="mailto:macafromchile@gmail.com">macafromchile@gmail.com</a>
+              <a class="tag" href="mailto:peatonporelmundo@gmail.com">peatonporelmundo@gmail.com</a>
+            </span>
+          </div>
+          <div class="btnrow" style="margin-top:0">
+            <a class="btn" href="mailto:macafromchile@gmail.com">Enviar correo</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer id="contacto" role="contentinfo">
-    <div class="container">
-      <p>📩 Contacto: <a href="mailto:macafromchile@gmail.com">macafromchile@gmail.com</a> · <a href="mailto:peatonporelmundo@gmail.com">peatonporelmundo@gmail.com</a></p>
-      <p>© 2025 Maca Silva – Todos los derechos reservados</p>
+    <section class="section">
+      <div class="wrap">
+        <p class="quote" style="margin:0">
+          “Lo único que uno puede dejar en el mundo son las creaciones personales. Todo lo demás se esfuma como el viento.”
+          <br/>— Maca Silva
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footgrid">
+        <div>
+          © 2026 Maca Silva – Todos los derechos reservados<br/>
+          <span style="color:rgba(255,255,255,.52)">Hecho en GitHub Pages · Diseño editorial minimalista</span>
+        </div>
+        <div class="footerlinks">
+          <a class="tag" href="/mapas.html">Mapas</a>
+          <a class="tag" href="/historias.html">Historias</a>
+          <a class="tag" href="#inicio">Volver arriba</a>
+        </div>
+      </div>
     </div>
   </footer>
-
-  <!-- WhatsApp flotante -->
-  <a id="wa-float" href="#" aria-label="Escríbeme por WhatsApp" title="WhatsApp">
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M19.11 17.44c-.23-.12-1.33-.66-1.54-.74-.21-.08-.36-.12-.51.12s-.58.74-.71.9c-.13.16-.26.18-.49.06a6.6 6.6 0 0 1-1.95-1.27 7.18 7.18 0 0 1-1.35-1.71c-.14-.24-.01-.37.1-.49.1-.1.23-.26.35-.39.12-.13.16-.22.23-.37.07-.15.03-.28-.02-.4s-.51-1.23-.7-1.69c-.18-.44-.37-.38-.51-.39l-.44-.01c-.15 0-.4.06-.61.28-.21.22-.8.78-.8 1.9s.82 2.2.93 2.36c.11.16 1.62 2.47 3.93 3.47.55.24.98.38 1.32.49.55.17 1.05.15 1.45.09.44-.07 1.33-.55 1.52-1.07.19-.52.19-.96.13-1.06-.06-.1-.21-.16-.44-.28Z" fill="#fff"/>
-    </svg>
-  </a>
-  <script>
-    (function(){
-      const a = document.getElementById('wa-float');
-      if(!a) return;
-      // Número de Maca sin “+”
-      const phone = '56953609597';
-      const msg = 'Hola Maca, vi tu web y quiero hablar';
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-      const base = isMobile ? 'https://wa.me/' : 'https://web.whatsapp.com/send';
-      const url = isMobile ? `${base}${phone}?text=${encodeURIComponent(msg)}` : `${base}?phone=${phone}&text=${encodeURIComponent(msg)}`;
-      const utm = 'utm_source=website&utm_medium=whatsapp_float&utm_campaign=contacto';
-      a.href = url + (url.includes('?') ? '&' : '?') + utm;
-    })();
-  </script>
-
 </body>
 </html>
+
+
 
 
