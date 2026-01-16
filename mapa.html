@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mapa – Peatón por el Mundo</title>
+
+  <!-- Leaflet -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <style>
+    :root{
+      --bg:#0f0f10;
+      --panel:rgba(255,255,255,.06);
+      --line:rgba(255,255,255,.12);
+      --text:rgba(255,255,255,.88);
+      --muted:rgba(255,255,255,.62);
+      --accent:#f2c6a0;
+    }
+    body{ margin:0; background:var(--bg); color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(15,15,16,.72);
+      border-bottom:1px solid var(--line);
+    }
+    .wrap{ max-width:1120px; margin:0 auto; padding:14px 18px; display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+    .title{ font-weight:700; letter-spacing:.2px; }
+    .sub{ color:var(--muted); font-size:13px; }
+    .controls{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    input{
+      width:min(320px, 70vw);
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      outline:none;
+    }
+    .pill{
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size:13px;
+      user-select:none;
+    }
+    .pill strong{ color: var(--text); }
+
+    #map{ height: calc(100vh - 76px); }
+
+    .legend{
+      position:absolute;
+      right:14px; bottom:14px;
+      background: rgba(15,15,16,.78);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px 12px;
+      font-size:13px;
+      color: var(--muted);
+      z-index: 5;
+      min-width: 190px;
+    }
+    .row{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin:6px 0; }
+    .swatch{ width:14px; height:14px; border-radius:4px; display:inline-block; border:1px solid rgba(255,255,255,.18); }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div>
+        <div class="title">Mapa global</div>
+        <div class="sub">Países visitados – Peatón por el Mundo</div>
+      </div>
+
+      <div class="controls">
+        <input id="search" placeholder="Buscar país (ej: Japón, Chile, Turquía)" />
+        <div class="pill">Visitados: <strong id="countVisited">—</strong></div>
+      </div>
+    </div>
+  </header>
+
+  <div id="map"></div>
+
+  <div class="legend">
+    <div class="row">
+      <span><span class="swatch" style="background: rgba(242,198,160,.85)"></span> Visitado</span>
+    </div>
+    <div class="row">
+      <span><span class="swatch" style="background: rgba(255,255,255,.06)"></span> No visitado</span>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <span>Tip:</span><span style="color:var(--text)">click en un país</span>
+    </div>
+  </div>
+
+  <script>
+    const map = L.map("map", { zoomControl: true }).setView([15, 0], 2);
+
+    // Base map (limpio)
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+      attribution: "&copy; OpenStreetMap &copy; CARTO"
+    }).addTo(map);
+
+    let visitedSet = new Set();
+    let geoLayer = null;
+    let featureIndexByName = new Map();
+
+    function norm(s){
+      return (s || "")
+        .toString()
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function styleFeature(feature){
+      const iso3 = feature?.properties?.ISO_A3;
+      const visited = visitedSet.has(iso3);
+      return {
+        weight: 1,
+        opacity: 1,
+        color: "rgba(255,255,255,.18)",
+        fillOpacity: visited ? 0.85 : 0.22,
+        fillColor: visited ? "rgba(242,198,160,.85)" : "rgba(255,255,255,.06)"
+      };
+    }
+
+    async function loadData(){
+      const visited = await fetch("/data/visited.json").then(r => r.json());
+      visitedSet = new Set(visited.visited_iso3 || []);
+      document.getElementById("countVisited").textContent = visitedSet.size.toString();
+
+      // Debes subir /data/world.geojson (países con ISO_A3)
+      const world = await fetch("/data/world.geojson").then(r => r.json());
+
+      geoLayer = L.geoJSON(world, {
+        style: styleFeature,
+        onEachFeature: (feature, layer) => {
+          const name =
+            feature?.properties?.ADMIN ||
+            feature?.properties?.NAME ||
+            feature?.properties?.name ||
+            "";
+
+          featureIndexByName.set(norm(name), layer);
+
+          layer.on("click", () => {
+            const iso3 = feature?.properties?.ISO_A3;
+            const isVisited = visitedSet.has(iso3);
+            const label = `${name}${isVisited ? " · visitado" : ""}`;
+            layer.bindPopup(label).openPopup();
+          });
+
+          layer.on("mouseover", () => layer.setStyle({ weight: 2, color: "rgba(255,255,255,.35)" }));
+          layer.on("mouseout", () => geoLayer.resetStyle(layer));
+        }
+      }).addTo(map);
+    }
+
+    document.getElementById("search").addEventListener("keydown", (e) => {
+      if(e.key !== "Enter") return;
+      const q = norm(e.target.value);
+      const layer = featureIndexByName.get(q);
+
+      if(layer){
+        map.fitBounds(layer.getBounds(), { padding: [30, 30] });
+        layer.fire("click");
+      } else {
+        // búsqueda aproximada: primer match que contenga el texto
+        for (const [k, lyr] of featureIndexByName.entries()){
+          if(k.includes(q)){
+            map.fitBounds(lyr.getBounds(), { padding: [30, 30] });
+            lyr.fire("click");
+            return;
+          }
+        }
+        alert("No encontré ese país. Prueba con otro nombre (ej: Reino Unido / United Kingdom).");
+      }
+    });
+
+    loadData().catch(err => {
+      console.error(err);
+      alert("No pude cargar los datos. Revisa que existan /data/visited.json y /data/world.geojson en tu repo.");
+    });
+  </script>
+</body>
+</html>
