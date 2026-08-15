@@ -3,455 +3,2070 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Peatón por el Mundo – Macarena Silva (@macafromchile)</title>
-  <meta name="description" content="Relatos de viaje, mapas por continente y miradas íntimas desde los caminos. Maca Silva: autora y caminante." />
+
+  <title>Peatón por el Mundo — Macarena Silva</title>
+
+  <meta
+    name="description"
+    content="Peatón por el Mundo. Una mirada a las ciudades, los caminos y las historias que aparecen cuando decidimos caminar."
+  />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Peatón por el Mundo – Macarena Silva" />
-  <meta property="og:description" content="Viajo a pie por el mundo en busca de lo que no aparece en las postales." />
+  <meta property="og:title" content="Peatón por el Mundo — Macarena Silva" />
+  <meta
+    property="og:description"
+    content="Una mirada a las ciudades, los caminos y las historias que aparecen cuando decidimos caminar."
+  />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://peatonporelmundo.com/" />
-  <!-- TODO: agrega una imagen OG real -->
   <meta property="og:image" content="https://peatonporelmundo.com/assets/og.jpg" />
 
-  <meta name="theme-color" content="#0f0f10" />
+  <meta name="theme-color" content="#f4efe6" />
+
   <link rel="icon" href="/favicon.ico" />
 
-  <!-- Fonts (editorial + sans limpia) -->
+  <!--
+    TIPOGRAFÍAS
+    Cormorant Garamond = editorial / personalidad
+    DM Sans = moderna / limpia
+  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
-    :root{
-      --bg: #0f0f10;
-      --panel: rgba(255,255,255,.06);
-      --panel-2: rgba(255,255,255,.10);
-      --text: rgba(255,255,255,.88);
-      --muted: rgba(255,255,255,.62);
-      --line: rgba(255,255,255,.12);
 
-      /* Acento femenino sobrio (cambia si quieres: #d7a8a8 / #c7a6ff / #f2c6a0) */
-      --accent: #f2c6a0;
-      --accent-2: #b8f2e6;
+    /* =========================================================
+       01. VARIABLES
+    ========================================================= */
 
-      --shadow: 0 18px 55px rgba(0,0,0,.45);
-      --radius: 18px;
-      --max: 1120px;
+    :root {
+
+      --paper: #f4efe6;
+      --paper-light: #faf7f0;
+
+      --ink: #20211e;
+      --muted: #6c6b63;
+
+      --coral: #d96f59;
+      --yellow: #e6b94f;
+      --blue: #5f8f91;
+      --green: #7e9270;
+
+      --line: rgba(32, 33, 30, .15);
+
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+
+      --max: 1180px;
+
+      --radius: 22px;
     }
 
-    *{ box-sizing: border-box; }
-    html{ scroll-behavior: smooth; }
-    body{
-      margin:0;
-      background:
-        radial-gradient(900px 500px at 20% -10%, rgba(242,198,160,.15), transparent 60%),
-        radial-gradient(900px 500px at 80% 0%, rgba(184,242,230,.10), transparent 60%),
-        var(--bg);
-      color: var(--text);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+    /* =========================================================
+       02. RESET
+    ========================================================= */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
       line-height: 1.55;
+      overflow-x: hidden;
     }
 
-    a{ color: inherit; text-decoration: none; }
-    a:hover{ opacity: .92; }
+    img {
+      max-width: 100%;
+    }
 
-    .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    /* Topbar */
-    .topbar{
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(10px);
-      background: rgba(15,15,16,.72);
-      border-bottom: 1px solid var(--line);
+
+    /* =========================================================
+       03. GENERAL
+    ========================================================= */
+
+    .wrap {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
     }
-    .topbar-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 14px 0;
-      gap: 14px;
-    }
-    .brand{
-      display:flex; align-items:baseline; gap:10px;
-      letter-spacing: .2px;
-    }
-    .brand strong{
-      font-family: Fraunces, serif;
+
+    .eyebrow {
+      font-size: 11px;
       font-weight: 700;
-      font-size: 18px;
-    }
-    .brand span{
-      color: var(--muted);
-      font-size: 13px;
-    }
-    nav{
-      display:flex; gap: 14px; align-items:center; flex-wrap: wrap;
-      justify-content:flex-end;
-    }
-    .navlink{
-      padding: 8px 10px;
-      border-radius: 999px;
-      color: var(--muted);
-      border: 1px solid transparent;
-    }
-    .navlink:hover{
-      color: var(--text);
-      border-color: var(--line);
-      background: rgba(255,255,255,.04);
-    }
-
-    /* Buttons */
-    .btnrow{ display:flex; gap:10px; flex-wrap: wrap; margin-top: 18px; }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding: 11px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      font-weight: 600;
-      font-size: 14px;
-      transition: transform .15s ease, background .15s ease;
-    }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.07); }
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(242,198,160,.95), rgba(184,242,230,.80));
-      color: rgba(10,10,10,.92);
-      border-color: transparent;
-    }
-    .btn.primary:hover{ background: linear-gradient(135deg, rgba(242,198,160,1), rgba(184,242,230,.92)); }
-
-    /* Hero */
-    .hero{ padding: 44px 0 26px; }
-    .hero-grid{
-      display:grid; grid-template-columns: 1.1fr .9fr; gap: 26px;
-      align-items: center;
-    }
-    .kicker{
-      color: var(--muted);
       letter-spacing: .18em;
       text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .serif {
+      font-family: var(--serif);
+    }
+
+
+    /* =========================================================
+       04. HEADER
+    ========================================================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      background: rgba(244, 239, 230, .88);
+      backdrop-filter: blur(14px);
+
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 76px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 30px;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .logo-main {
+      font-family: var(--serif);
+      font-size: 27px;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+
+    .logo-sub {
+      margin-top: 5px;
+
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    nav a {
+      padding: 9px 13px;
+
+      font-size: 13px;
+      font-weight: 600;
+
+      border-radius: 100px;
+
+      transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
+    }
+
+    nav a:hover {
+      background: var(--ink);
+      color: var(--paper);
+      transform: translateY(-1px);
+    }
+
+    .nav-instagram {
+      background: var(--coral);
+      color: white;
+    }
+
+
+    /* =========================================================
+       05. HERO
+    ========================================================= */
+
+    .hero {
+      position: relative;
+
+      min-height: 720px;
+
+      display: flex;
+      align-items: center;
+
+      padding: 90px 0 100px;
+
+      overflow: hidden;
+    }
+
+    /*
+      Manchas de color muy suaves.
+      Dan personalidad sin parecer una plantilla.
+    */
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 520px;
+      height: 520px;
+
+      right: -180px;
+      top: -180px;
+
+      background: var(--yellow);
+
+      border-radius: 50%;
+
+      opacity: .35;
+
+      filter: blur(2px);
+    }
+
+    .hero::after {
+      content: "";
+
+      position: absolute;
+
+      width: 430px;
+      height: 430px;
+
+      left: -230px;
+      bottom: -250px;
+
+      background: var(--blue);
+
+      border-radius: 50%;
+
+      opacity: .20;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(360px, .95fr);
+
+      gap: 80px;
+
+      align-items: center;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+    }
+
+    .hero-title {
+      margin-top: 20px;
+
+      font-family: var(--serif);
+
+      font-size: clamp(62px, 7vw, 104px);
+
+      line-height: .84;
+
+      letter-spacing: -.045em;
+
+      font-weight: 600;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-title .accent {
+      color: var(--coral);
+    }
+
+    .hero-description {
+      max-width: 520px;
+
+      margin-top: 32px;
+
+      font-size: 17px;
+
+      color: var(--muted);
+    }
+
+    .hero-description strong {
+      color: var(--ink);
+    }
+
+
+    /* =========================================================
+       06. HERO BUTTONS
+    ========================================================= */
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-height: 46px;
+
+      padding: 0 20px;
+
+      border: 1px solid var(--ink);
+
+      border-radius: 100px;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      transition:
+        transform .25s ease,
+        background .25s ease,
+        color .25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-dark {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .button-dark:hover {
+      background: var(--coral);
+      border-color: var(--coral);
+    }
+
+    .button-light {
+      background: transparent;
+    }
+
+    .button-light:hover {
+      background: white;
+    }
+
+
+    /* =========================================================
+       07. HERO PHOTO
+    ========================================================= */
+
+    .hero-photo {
+      position: relative;
+    }
+
+    .hero-photo-frame {
+      position: relative;
+
+      padding: 12px;
+
+      background: white;
+
+      transform: rotate(2deg);
+
+      box-shadow:
+        0 30px 70px rgba(32, 33, 30, .15);
+    }
+
+    .hero-photo-frame::before {
+      content: "";
+
+      position: absolute;
+
+      width: 95px;
+      height: 25px;
+
+      top: -12px;
+      left: 50%;
+
+      transform: translateX(-50%) rotate(-2deg);
+
+      background: rgba(230, 185, 79, .72);
+
+      z-index: 2;
+    }
+
+    .hero-photo img {
+      display: block;
+
+      width: 100%;
+      height: 520px;
+
+      object-fit: cover;
+    }
+
+    .photo-caption {
+      padding: 13px 4px 2px;
+
+      font-size: 11px;
+      letter-spacing: .05em;
+
+      color: var(--muted);
+    }
+
+
+    /* =========================================================
+       08. CONTINENT STRIP
+    ========================================================= */
+
+    .continent-strip {
+      overflow: hidden;
+
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+
+      background: var(--ink);
+
+      color: var(--paper);
+    }
+
+    .continent-track {
+      display: flex;
+
+      width: max-content;
+
+      animation: moveStrip 30s linear infinite;
+    }
+
+    .continent-item {
+      padding: 17px 30px;
+
+      font-family: var(--serif);
+
+      font-size: 25px;
+
+      white-space: nowrap;
+    }
+
+    .continent-item:nth-child(2n) {
+      color: var(--yellow);
+    }
+
+    .continent-item:nth-child(3n) {
+      color: #e6a28e;
+    }
+
+    .continent-item:nth-child(4n) {
+      color: #9db9b2;
+    }
+
+    @keyframes moveStrip {
+
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+
+    }
+
+
+    /* =========================================================
+       09. INTRO
+    ========================================================= */
+
+    .intro {
+      padding: 140px 0;
+    }
+
+    .intro-grid {
+      display: grid;
+
+      grid-template-columns: .7fr 1.3fr;
+
+      gap: 80px;
+
+      align-items: start;
+    }
+
+    .intro-number {
+      font-family: var(--serif);
+
+      font-size: 100px;
+
+      line-height: .8;
+
+      color: var(--coral);
+    }
+
+    .intro-text {
+      max-width: 760px;
+
+      font-family: var(--serif);
+
+      font-size: clamp(34px, 4vw, 55px);
+
+      line-height: 1.05;
+
+      letter-spacing: -.025em;
+    }
+
+    .intro-text em {
+      color: var(--coral);
+      font-style: normal;
+    }
+
+
+    /* =========================================================
+       10. MAP SECTION
+    ========================================================= */
+
+    .map-section {
+      padding: 100px 0;
+
+      background: var(--blue);
+
+      color: white;
+    }
+
+    .section-heading {
+      display: flex;
+
+      justify-content: space-between;
+      align-items: end;
+
+      gap: 30px;
+
+      margin-bottom: 40px;
+    }
+
+    .section-heading h2 {
+      margin-top: 8px;
+
+      font-family: var(--serif);
+
+      font-size: clamp(45px, 6vw, 72px);
+
+      line-height: .9;
+
+      font-weight: 600;
+    }
+
+    .section-heading p {
+      max-width: 390px;
+
+      font-size: 14px;
+
+      opacity: .8;
+    }
+
+    .map-card {
+      position: relative;
+
+      min-height: 430px;
+
+      overflow: hidden;
+
+      background: #dfe5dc;
+
+      border: 1px solid rgba(255,255,255,.3);
+
+      box-shadow: 0 30px 70px rgba(0,0,0,.15);
+    }
+
+    .map-placeholder {
+      min-height: 430px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      color: var(--ink);
+
+      padding: 30px;
+    }
+
+    .map-placeholder-inner {
+      max-width: 500px;
+    }
+
+    .map-placeholder h3 {
+      font-family: var(--serif);
+
+      font-size: 48px;
+
+      line-height: .9;
+    }
+
+    .map-placeholder p {
+      margin-top: 15px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    .map-button {
+      margin-top: 25px;
+    }
+
+
+    /* =========================================================
+       11. STORIES
+    ========================================================= */
+
+    .stories {
+      padding: 130px 0;
+    }
+
+    .stories-header {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 60px;
+
+      margin-bottom: 55px;
+    }
+
+    .stories-header h2 {
+      font-family: var(--serif);
+
+      font-size: clamp(55px, 6vw, 78px);
+
+      line-height: .85;
+    }
+
+    .stories-header p {
+      max-width: 450px;
+
+      align-self: end;
+
+      color: var(--muted);
+
+      font-size: 15px;
+    }
+
+    .story-grid {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .story {
+      position: relative;
+
+      min-height: 390px;
+
+      padding: 28px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: flex-end;
+
+      overflow: hidden;
+
+      background: white;
+
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+    }
+
+    .story:hover {
+      transform: translateY(-7px);
+
+      box-shadow: 0 25px 50px rgba(32,33,30,.13);
+    }
+
+    .story:nth-child(1) {
+      background: #e7b5a6;
+    }
+
+    .story:nth-child(2) {
+      background: #e7d49b;
+    }
+
+    .story:nth-child(3) {
+      background: #a8c2ba;
+    }
+
+    .story-number {
+      position: absolute;
+
+      top: 20px;
+      right: 25px;
+
+      font-family: var(--serif);
+
+      font-size: 70px;
+
+      opacity: .25;
+    }
+
+    .story h3 {
+      max-width: 310px;
+
+      font-family: var(--serif);
+
+      font-size: 40px;
+
+      line-height: .9;
+    }
+
+    .story p {
+      margin-top: 15px;
+
+      max-width: 320px;
+
+      font-size: 13px;
+
+      color: rgba(32,33,30,.72);
+    }
+
+
+    /* =========================================================
+       12. INSTAGRAM
+    ========================================================= */
+
+    .instagram {
+      padding: 120px 0;
+
+      background: var(--paper-light);
+    }
+
+    .instagram-heading {
+      display: flex;
+
+      align-items: end;
+      justify-content: space-between;
+
+      gap: 30px;
+
+      margin-bottom: 45px;
+    }
+
+    .instagram-heading h2 {
+      margin-top: 8px;
+
+      font-family: var(--serif);
+
+      font-size: clamp(52px, 6vw, 76px);
+
+      line-height: .85;
+    }
+
+    .instagram-heading a {
+      font-size: 13px;
+      font-weight: 700;
+
+      border-bottom: 1px solid var(--ink);
+
+      padding-bottom: 4px;
+    }
+
+    .instagram-grid {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 14px;
+    }
+
+    .instagram-item {
+      aspect-ratio: 1 / 1;
+
+      background: #dedbd3;
+
+      overflow: hidden;
+    }
+
+    .instagram-item img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition: transform .5s ease;
+    }
+
+    .instagram-item:hover img {
+      transform: scale(1.05);
+    }
+
+
+    /* =========================================================
+       13. BOOK
+    ========================================================= */
+
+    .book {
+      padding: 130px 0;
+
+      background: var(--coral);
+
+      color: white;
+    }
+
+    .book-grid {
+      display: grid;
+
+      grid-template-columns: .9fr 1.1fr;
+
+      gap: 90px;
+
+      align-items: center;
+    }
+
+    .book-cover {
+      max-width: 370px;
+
+      margin: auto;
+
+      background: white;
+
+      padding: 12px;
+
+      transform: rotate(-2deg);
+
+      box-shadow:
+        0 35px 70px rgba(32,33,30,.2);
+    }
+
+    .book-cover-inner {
+      min-height: 470px;
+
+      background: var(--paper);
+
+      color: var(--ink);
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      padding: 40px;
+    }
+
+    .book-cover-title {
+      font-family: var(--serif);
+
+      font-size: 55px;
+
+      line-height: .85;
+    }
+
+    .book-copy .eyebrow {
+      color: rgba(255,255,255,.7);
+    }
+
+    .book-copy h2 {
+      margin-top: 15px;
+
+      font-family: var(--serif);
+
+      font-size: clamp(55px, 7vw, 90px);
+
+      line-height: .82;
+    }
+
+    .book-copy p {
+      max-width: 540px;
+
+      margin-top: 25px;
+
+      color: rgba(255,255,255,.82);
+    }
+
+    .book .button {
+      margin-top: 28px;
+
+      border-color: white;
+
+      background: white;
+
+      color: var(--ink);
+    }
+
+    .book .button:hover {
+      background: var(--yellow);
+
+      border-color: var(--yellow);
+    }
+
+
+    /* =========================================================
+       14. CONTACT
+    ========================================================= */
+
+    .contact {
+      padding: 130px 0;
+    }
+
+    .contact-grid {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 80px;
+    }
+
+    .contact h2 {
+      margin-top: 10px;
+
+      font-family: var(--serif);
+
+      font-size: clamp(55px, 7vw, 85px);
+
+      line-height: .82;
+    }
+
+    .contact-copy {
+      align-self: end;
+
+      color: var(--muted);
+
+      font-size: 15px;
+    }
+
+    .email-links {
+      margin-top: 25px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: flex-start;
+
+      gap: 8px;
+    }
+
+    .email-links a {
+      font-size: 15px;
+
+      color: var(--ink);
+
+      border-bottom: 1px solid var(--ink);
+    }
+
+
+    /* =========================================================
+       15. FOOTER
+    ========================================================= */
+
+    footer {
+      padding: 30px 0 35px;
+
+      background: var(--ink);
+
+      color: var(--paper);
+    }
+
+    .footer-grid {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 30px;
+    }
+
+    .footer-brand {
+      font-family: var(--serif);
+
+      font-size: 25px;
+    }
+
+    .footer-meta {
+      margin-top: 5px;
+
+      font-size: 11px;
+
+      color: rgba(244,239,230,.55);
+    }
+
+    .footer-links {
+      display: flex;
+
+      gap: 20px;
+
       font-size: 12px;
     }
-    h1{
-      font-family: Fraunces, serif;
-      font-size: 48px;
-      line-height: 1.05;
-      margin: 12px 0 10px;
-    }
-    .subtitle{
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 60ch;
+
+    .footer-links a {
+      opacity: .65;
+
+      transition: opacity .2s ease;
     }
 
-    .portrait{
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: var(--shadow);
-    }
-    .portrait img{
-      width:100%;
-      height: 360px;
-      object-fit: cover;
-      border-radius: calc(var(--radius) - 8px);
-      display:block;
-      border: 1px solid rgba(255,255,255,.10);
-    }
-    .portrait .cap{
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 13px;
+    .footer-links a:hover {
+      opacity: 1;
     }
 
-    /* Sections */
-    .section{ padding: 28px 0; }
-    .section-head{
-      display:flex; justify-content:space-between; align-items:flex-end;
-      gap: 12px; flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
-    .section h2{
-      font-family: Fraunces, serif;
-      font-size: 26px; margin: 0;
-    }
-    .section p.lead{
-      margin: 6px 0 0;
-      color: var(--muted);
-      max-width: 75ch;
+
+    /* =========================================================
+       16. SCROLL ANIMATION
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform: translateY(25px);
+
+      transition:
+        opacity .8s ease,
+        transform .8s ease;
     }
 
-    /* Cards */
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 12px;
-    }
-    .card{
-      grid-column: span 6;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 16px;
-      transition: transform .15s ease, background .15s ease;
-    }
-    .card:hover{ transform: translateY(-2px); background: rgba(255,255,255,.075); }
-    .card h3{
-      margin: 0 0 8px;
-      font-size: 16px;
-      letter-spacing: .2px;
-    }
-    .card p{
-      margin: 0 0 10px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .quote{
-      margin: 0;
-      padding: 10px 12px;
-      border-left: 3px solid rgba(242,198,160,.8);
-      background: rgba(0,0,0,.22);
-      border-radius: 12px;
-      color: rgba(255,255,255,.75);
-      font-style: italic;
-      font-size: 14px;
+    .reveal.visible {
+      opacity: 1;
+
+      transform: translateY(0);
     }
 
-    /* Callouts */
-    .callout{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 14px; flex-wrap: wrap;
-      background: rgba(255,255,255,.04);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 16px;
-    }
-    .callout strong{
-      font-family: Fraunces, serif;
-      font-size: 18px;
-    }
-    .callout span{ color: var(--muted); }
 
-    /* Footer */
-    footer{
-      padding: 30px 0 40px;
-      border-top: 1px solid var(--line);
-      margin-top: 22px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .footgrid{
-      display:grid; grid-template-columns: 1.4fr .6fr; gap: 12px;
-      align-items:start;
-    }
-    .footerlinks{ display:flex; gap: 10px; flex-wrap: wrap; justify-content:flex-end; }
-    .tag{
-      display:inline-flex; align-items:center;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color: var(--muted);
+    /* =========================================================
+       17. MOBILE
+    ========================================================= */
+
+    @media (max-width: 900px) {
+
+      .nav {
+        min-height: 68px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+
+        padding: 70px 0 80px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+      }
+
+      .hero-title {
+        font-size: clamp(62px, 18vw, 92px);
+      }
+
+      .hero-photo img {
+        height: 430px;
+      }
+
+      .intro {
+        padding: 90px 0;
+      }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+      }
+
+      .intro-number {
+        font-size: 70px;
+      }
+
+      .section-heading {
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
+      .stories {
+        padding: 90px 0;
+      }
+
+      .stories-header {
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+      }
+
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .story {
+        min-height: 330px;
+      }
+
+      .instagram {
+        padding: 90px 0;
+      }
+
+      .instagram-heading {
+        align-items: flex-start;
+
+        flex-direction: column;
+      }
+
+      .instagram-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .book {
+        padding: 90px 0;
+      }
+
+      .book-grid {
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+      }
+
+      .contact {
+        padding: 90px 0;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+      }
+
+      .footer-grid {
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
     }
 
-    /* Responsive */
-    @media (max-width: 920px){
-      .hero-grid{ grid-template-columns: 1fr; }
-      h1{ font-size: 40px; }
-      .portrait img{ height: 320px; }
-      .card{ grid-column: span 12; }
-      .footgrid{ grid-template-columns: 1fr; }
-      .footerlinks{ justify-content:flex-start; }
+
+    @media (max-width: 500px) {
+
+      .wrap {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .logo-main {
+        font-size: 23px;
+      }
+
+      .logo-sub {
+        font-size: 8px;
+      }
+
+      .hero-title {
+        font-size: 60px;
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .hero-photo img {
+        height: 390px;
+      }
+
+      .intro-text {
+        font-size: 36px;
+      }
+
+      .map-card,
+      .map-placeholder {
+        min-height: 330px;
+      }
+
+      .map-placeholder h3 {
+        font-size: 40px;
+      }
+
+      .instagram-grid {
+        gap: 7px;
+      }
+
+      .book-cover-inner {
+        min-height: 400px;
+      }
+
+      .book-cover-title {
+        font-size: 45px;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+      }
+
     }
+
+
+    /* =========================================================
+       18. ACCESSIBILITY
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+    }
+
   </style>
 </head>
 
+
 <body>
-  <header class="topbar">
+
+
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
+
+  <header>
+
     <div class="wrap">
-      <div class="topbar-inner">
-        <a class="brand" href="#inicio" aria-label="Inicio">
-          <strong>Peatón por el Mundo</strong>
-          <span>Macarena Silva · @macafromchile</span>
+
+      <div class="nav">
+
+        <a href="#inicio" class="logo">
+
+          <span class="logo-main">
+            Peatón por el Mundo
+          </span>
+
+          <span class="logo-sub">
+            Macarena Silva · @macafromchile
+          </span>
+
         </a>
 
-        <nav aria-label="Navegación principal">
-          <a class="navlink" href="#mapas">Mapas</a>
-          <a class="navlink" href="#historias">Historias</a>
-          <a class="navlink" href="#contacto">Contacto</a>
+
+        <nav>
+
+          <a href="#mapas">
+            Mapas
+          </a>
+
+          <a href="#historias">
+            Historias
+          </a>
+
+          <a href="#instagram">
+            Instagram
+          </a>
+
+          <a href="#libro">
+            Atlas Íntimo
+          </a>
+
+          <a href="#contacto">
+            Contacto
+          </a>
+
+          <a
+            href="https://www.instagram.com/macafromchile/"
+            target="_blank"
+            rel="noopener"
+            class="nav-instagram"
+          >
+            @macafromchile
+          </a>
+
         </nav>
+
       </div>
+
     </div>
+
   </header>
 
+
+
   <main id="inicio">
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
     <section class="hero">
+
       <div class="wrap">
+
         <div class="hero-grid">
-          <div>
-            <div class="kicker">Relatos de viaje · mapas · crónicas</div>
-            <h1>Camino el mundo para entenderlo.</h1>
-            <p class="subtitle">
-              Soy <strong>Maca Silva</strong>: autora y caminante. En esta bitácora comparto historias nacidas desde los caminos.
-              Viajo a pie por el mundo en busca de lo que no aparece en las postales.
+
+
+          <div class="hero-copy reveal">
+
+            <div class="eyebrow">
+              Ciudades · caminos · observaciones
+            </div>
+
+
+            <h1 class="hero-title">
+
+              <span>Caminar.</span>
+
+              <span>Mirar.</span>
+
+              <span class="accent">Entender.</span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+              Soy <strong>Maca Silva</strong>, autora y caminante.
+
+              <br><br>
+
+              Peatón por el Mundo nació de una idea bastante simple:
+              hay lugares que solo empiezan a entenderse cuando uno
+              deja de mirarlos desde la ventana y decide caminar.
+
             </p>
 
-            <div class="btnrow">
-              <!-- Ajusta rutas si tus páginas internas son distintas -->
-              <a class="btn primary" href="/historias.html">Leer historias</a>
-              <a class="btn" href="/mapas.html">Ver mapas</a>
-              <a class="btn" href="https://www.instagram.com/macafromchile/" target="_blank" rel="noopener">Instagram</a>
-              <a class="btn" href="https://www.amazon.com/dp/B0DP5G4XWL" target="_blank" rel="noopener">Amazon</a>
-              <a class="btn" href="https://www.mercadolibre.cl/libro-peaton-por-el-mundo/up/MLCU2858535998" target="_blank" rel="noopener">Mercado Libre</a>
+
+            <div class="actions">
+
+              <a
+                href="/historias.html"
+                class="button button-dark"
+              >
+                Leer historias
+              </a>
+
+
+              <a
+                href="/mapas.html"
+                class="button button-light"
+              >
+                Explorar mapas
+              </a>
+
+
+              <a
+                href="https://www.instagram.com/macafromchile/"
+                target="_blank"
+                rel="noopener"
+                class="button button-light"
+              >
+                Instagram
+              </a>
+
             </div>
+
           </div>
 
-          <aside class="portrait" aria-label="Retrato">
-            <!-- TODO: cambia esta imagen por tu ruta real -->
-            <img src="IMG_1587 (5).JPG" alt="Retrato de Macarena Silva" loading="lazy" />
-            <div class="cap">
-              He recorrido América, Europa, Asia, África y Oceanía, observando lo cotidiano, lo invisible, lo incómodo y lo profundamente humano.
+
+
+          <!-- FOTO PRINCIPAL -->
+
+          <div class="hero-photo reveal">
+
+            <div class="hero-photo-frame">
+
+              <!--
+                IMPORTANTE:
+
+                Mantengo exactamente el nombre de la fotografía
+                que tienes actualmente.
+
+                Si la imagen está en otra carpeta,
+                cambia solamente esta ruta.
+              -->
+
+              <img
+                src="IMG_1587 (5).JPG"
+                alt="Macarena Silva — Peatón por el Mundo"
+              />
+
+              <div class="photo-caption">
+                Peatón por el Mundo · Maca Silva
+              </div>
+
             </div>
-          </aside>
+
+          </div>
+
+
         </div>
+
       </div>
+
     </section>
 
-    <section class="section" id="mapas">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <h2>Continentes · capítulos</h2>
-            <p class="lead">Un recorrido editorial: breve, directo, y con espacio para respirar. Cada territorio, una forma distinta de mirar.</p>
-          </div>
-        </div>
 
-        <div class="grid" role="list">
-          <article class="card" role="listitem">
-            <h3>América del Sur: de volcanes y asfalto</h3>
-            <p>La raíz de todo viaje está en el sur. Cruzar la cordillera, tocar la selva, compartir mate en la frontera.</p>
-            <p class="quote">“Aquí nació el impulso de moverme.”</p>
-          </article>
 
-          <article class="card" role="listitem">
-            <h3>West Indies: islas pequeñas, memorias grandes</h3>
-            <p>Entre playas que no salen en postales y acentos que cantan historias, encontré una forma suave de vivir y resistir.</p>
-            <p class="quote">“En cada ola, un recuerdo tibio.”</p>
-          </article>
+    <!-- =====================================================
+         CONTINENTS STRIP
+    ====================================================== -->
 
-          <article class="card" role="listitem">
-            <h3>América Central y USA: la ruta del contraste</h3>
-            <p>Del calor tropical a ciudades gigantes: contradicción, aprendizaje, y otra manera de medir la libertad.</p>
-            <p class="quote">“Contrastes que me hicieron mirar dos veces.”</p>
-          </article>
+    <div class="continent-strip">
 
-          <article class="card" role="listitem">
-            <h3>África y Medio Oriente: el origen del asombro</h3>
-            <p>Templos, arena y conflicto: historia viva. Duro, bello, transformador.</p>
-            <p class="quote">“Volver al origen, y encontrarse.”</p>
-          </article>
+      <div class="continent-track">
 
-          <article class="card" role="listitem">
-            <h3>Europa: entre invierno y revolución</h3>
-            <p>Más allá de los monumentos: memoria, eco, y un pasado que no termina de irse.</p>
-            <p class="quote">“Los muros hablan, si uno sabe escuchar.”</p>
-          </article>
+        <div class="continent-item">América</div>
+        <div class="continent-item">Europa</div>
+        <div class="continent-item">Asia</div>
+        <div class="continent-item">África</div>
+        <div class="continent-item">Oceanía</div>
 
-          <article class="card" role="listitem">
-            <h3>Asia y Oceanía: caos, calma y comienzo</h3>
-            <p>De templos silenciosos a ciudades que no duermen; de islas remotas a cercanías profundas.</p>
-            <p class="quote">“Donde nadie te conoce, todo comienza.”</p>
-          </article>
-        </div>
+        <div class="continent-item">América</div>
+        <div class="continent-item">Europa</div>
+        <div class="continent-item">Asia</div>
+        <div class="continent-item">África</div>
+        <div class="continent-item">Oceanía</div>
 
-        <div style="margin-top:14px" class="callout">
-          <div>
-            <strong>¿Quieres ver el recorrido visual?</strong><br/>
-            <span>Sigue el camino en Instagram y acompaña el detrás de escena de los viajes.</span>
-          </div>
-          <div class="btnrow" style="margin-top:0">
-            <a class="btn primary" href="https://www.instagram.com/macafromchile/" target="_blank" rel="noopener">Ver Instagram</a>
-            <a class="btn" href="https://www.facebook.com/macafromchile/" target="_blank" rel="noopener">Facebook</a>
-          </div>
-        </div>
       </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         INTRO
+    ====================================================== -->
+
+    <section class="intro">
+
+      <div class="wrap">
+
+        <div class="intro-grid">
+
+          <div class="intro-number reveal">
+            01
+          </div>
+
+
+          <div class="reveal">
+
+            <div class="eyebrow">
+              La idea
+            </div>
+
+            <p class="intro-text">
+
+              No se trata solamente de llegar a un lugar.
+
+              Se trata de
+
+              <em>caminarlo</em>,
+
+              observarlo y descubrir
+              todo aquello que normalmente queda fuera de la fotografía.
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </section>
 
-    <section class="section" id="historias">
+
+
+    <!-- =====================================================
+         MAP
+    ====================================================== -->
+
+    <section class="map-section" id="mapas">
+
       <div class="wrap">
-        <div class="section-head">
+
+        <div class="section-heading reveal">
+
           <div>
-            <h2>Historias del Mundo</h2>
-            <p class="lead">Crónicas y notas: lo cotidiano, lo invisible y lo profundamente humano — escrito con los pies en el barro.</p>
+
+            <div class="eyebrow">
+              02 · Cartografía
+            </div>
+
+            <h2>
+              Por dónde<br>
+              he pasado.
+            </h2>
+
           </div>
+
+
+          <p>
+
+            Ciudades, fronteras, islas, carreteras y lugares
+            que fueron quedando en el camino.
+
+            <br><br>
+
+            Esta parte de la web será nuestro mapa interactivo.
+
+          </p>
+
         </div>
 
-        <div class="callout">
-          <div>
-            <strong>Entrar a Historias</strong><br/>
-            <span>Lectura rápida, limpia y sin ruido visual.</span>
+
+        <div class="map-card reveal">
+
+          <!--
+            POR AHORA dejamos este espacio preparado.
+
+            En el siguiente paso vamos a colocar aquí
+            Leaflet y tu mapa real.
+          -->
+
+          <div class="map-placeholder">
+
+            <div class="map-placeholder-inner">
+
+              <div class="eyebrow">
+                Mapa interactivo
+              </div>
+
+              <h3>
+                El recorrido
+                todavía está por abrirse.
+              </h3>
+
+              <p>
+                Aquí aparecerán los lugares recorridos,
+                ciudades, rutas y fotografías asociadas.
+              </p>
+
+              <a
+                href="/mapas.html"
+                class="button button-dark map-button"
+              >
+                Ver mapa completo
+              </a>
+
+            </div>
+
           </div>
-          <div class="btnrow" style="margin-top:0">
-            <a class="btn primary" href="/historias.html">Leer historias</a>
-            <a class="btn" href="/contacto.html">Contactar</a>
-          </div>
+
         </div>
+
       </div>
+
     </section>
 
-    <section class="section" id="contacto">
+
+
+    <!-- =====================================================
+         STORIES
+    ====================================================== -->
+
+    <section class="stories" id="historias">
+
       <div class="wrap">
-        <div class="section-head">
+
+
+        <div class="stories-header reveal">
+
           <div>
-            <h2>Contacto</h2>
-            <p class="lead">Colaboraciones, prensa, charlas, talleres de autopublicación y proyectos editoriales.</p>
+
+            <div class="eyebrow">
+              03 · Historias
+            </div>
+
+            <h2>
+              Lo que<br>
+              queda.
+            </h2>
+
           </div>
+
+
+          <p>
+
+            Algunas historias duran lo que una caminata.
+            Otras se quedan durante años.
+
+            Aquí viven las crónicas, observaciones y
+            pequeñas historias que aparecen en el camino.
+
+          </p>
+
         </div>
 
-        <div class="callout">
-          <div>
-            <strong>Escríbeme</strong><br/>
-            <span>
-              <a class="tag" href="mailto:macafromchile@gmail.com">macafromchile@gmail.com</a>
-              <a class="tag" href="mailto:peatonporelmundo@gmail.com">peatonporelmundo@gmail.com</a>
+
+
+        <div class="story-grid">
+
+
+          <article class="story reveal">
+
+            <span class="story-number">
+              01
             </span>
-          </div>
-          <div class="btnrow" style="margin-top:0">
-            <a class="btn" href="mailto:macafromchile@gmail.com">Enviar correo</a>
-          </div>
+
+            <h3>
+              América
+            </h3>
+
+            <p>
+              Desde el sur de Chile hasta las ciudades,
+              fronteras e islas que fui encontrando
+              mucho más allá de casa.
+            </p>
+
+          </article>
+
+
+
+          <article class="story reveal">
+
+            <span class="story-number">
+              02
+            </span>
+
+            <h3>
+              Europa
+            </h3>
+
+            <p>
+              Historia, ciudades, trenes, plazas,
+              memoria y esa convivencia extraña
+              entre lo antiguo y lo cotidiano.
+            </p>
+
+          </article>
+
+
+
+          <article class="story reveal">
+
+            <span class="story-number">
+              03
+            </span>
+
+            <h3>
+              Asia & Oceanía
+            </h3>
+
+            <p>
+              Lugares donde todo parece funcionar
+              bajo otras reglas y donde caminar
+              obliga a mirar de otra manera.
+            </p>
+
+          </article>
+
+
         </div>
+
+
+        <div class="actions" style="margin-top:35px">
+
+          <a
+            href="/historias.html"
+            class="button button-dark"
+          >
+            Entrar a Historias
+          </a>
+
+        </div>
+
       </div>
+
     </section>
 
-    <section class="section">
+
+
+    <!-- =====================================================
+         INSTAGRAM
+    ====================================================== -->
+
+    <section class="instagram" id="instagram">
+
       <div class="wrap">
-        <p class="quote" style="margin:0">
-          “Lo único que uno puede dejar en el mundo son las creaciones personales. Todo lo demás se esfuma como el viento.”
-          <br/>— Maca Silva
-        </p>
+
+
+        <div class="instagram-heading reveal">
+
+          <div>
+
+            <div class="eyebrow">
+              04 · Instagram
+            </div>
+
+            <h2>
+              Desde el<br>
+              camino.
+            </h2>
+
+          </div>
+
+
+          <a
+            href="https://www.instagram.com/macafromchile/"
+            target="_blank"
+            rel="noopener"
+          >
+            @macafromchile →
+          </a>
+
+        </div>
+
+
+
+        <div class="instagram-grid">
+
+
+          <!--
+            INSTAGRAM
+
+            Por ahora dejamos las imágenes preparadas
+            para que puedas controlar completamente
+            la estética de la página.
+
+            En el siguiente paso podemos reemplazar
+            esto por embeds reales de Instagram.
+          -->
+
+
+          <a
+            href="https://www.instagram.com/macafromchile/"
+            target="_blank"
+            rel="noopener"
+            class="instagram-item reveal"
+          >
+
+            <img
+              src="IMG_1587 (5).JPG"
+              alt="Peatón por el Mundo en Instagram"
+              loading="lazy"
+            />
+
+          </a>
+
+
+
+          <a
+            href="https://www.instagram.com/macafromchile/"
+            target="_blank"
+            rel="noopener"
+            class="instagram-item reveal"
+          >
+
+            <img
+              src="IMG_1587 (5).JPG"
+              alt="Peatón por el Mundo en Instagram"
+              loading="lazy"
+            />
+
+          </a>
+
+
+
+          <a
+            href="https://www.instagram.com/macafromchile/"
+            target="_blank"
+            rel="noopener"
+            class="instagram-item reveal"
+          >
+
+            <img
+              src="IMG_1587 (5).JPG"
+              alt="Peatón por el Mundo en Instagram"
+              loading="lazy"
+            />
+
+          </a>
+
+
+        </div>
+
       </div>
+
     </section>
+
+
+
+    <!-- =====================================================
+         ATLAS INTIMO
+    ====================================================== -->
+
+    <section class="book" id="libro">
+
+      <div class="wrap">
+
+        <div class="book-grid">
+
+
+          <div class="book-cover reveal">
+
+            <div class="book-cover-inner">
+
+              <div>
+
+                <div class="eyebrow">
+                  Libro fotográfico
+                </div>
+
+                <div class="book-cover-title">
+                  ATLAS<br>
+                  ÍNTIMO
+                </div>
+
+                <p style="margin-top:18px;font-size:11px;letter-spacing:.08em;">
+                  MACA SILVA
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="book-copy reveal">
+
+            <div class="eyebrow">
+              05 · Publicación
+            </div>
+
+            <h2>
+              Atlas<br>
+              Íntimo.
+            </h2>
+
+            <p>
+
+              Un recorrido visual de Peatón por el Mundo.
+
+              Fotografías tomadas durante años de caminos,
+              ciudades, encuentros y lugares que quedaron
+              guardados de una manera distinta.
+
+            </p>
+
+
+            <a
+              href="https://www.amazon.com/dp/B0DP5G4XWL"
+              target="_blank"
+              rel="noopener"
+              class="button"
+            >
+              Ver en Amazon →
+            </a>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+
+    <section class="contact" id="contacto">
+
+      <div class="wrap">
+
+        <div class="contact-grid">
+
+
+          <div class="reveal">
+
+            <div class="eyebrow">
+              06 · Contacto
+            </div>
+
+            <h2>
+              Hablemos.
+            </h2>
+
+          </div>
+
+
+          <div class="contact-copy reveal">
+
+            <p>
+
+              Colaboraciones, prensa, charlas,
+              talleres de autopublicación y proyectos
+              editoriales.
+
+            </p>
+
+
+            <div class="email-links">
+
+              <a href="mailto:macafromchile@gmail.com">
+                macafromchile@gmail.com
+              </a>
+
+              <a href="mailto:peatonporelmundo@gmail.com">
+                peatonporelmundo@gmail.com
+              </a>
+
+              <a
+                href="https://www.instagram.com/macafromchile/"
+                target="_blank"
+                rel="noopener"
+              >
+                Instagram · @macafromchile
+              </a>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
   </main>
 
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
   <footer>
+
     <div class="wrap">
-      <div class="footgrid">
+
+      <div class="footer-grid">
+
         <div>
-          © 2026 Maca Silva – Todos los derechos reservados<br/>
-          <span style="color:rgba(255,255,255,.52)">Hecho en GitHub Pages · Diseño editorial minimalista</span>
+
+          <div class="footer-brand">
+            Peatón por el Mundo
+          </div>
+
+          <div class="footer-meta">
+            © 2026 Maca Silva · Todos los derechos reservados
+          </div>
+
         </div>
-        <div class="footerlinks">
-          <a class="tag" href="/mapas.html">Mapas</a>
-          <a class="tag" href="/historias.html">Historias</a>
-          <a class="tag" href="#inicio">Volver arriba</a>
+
+
+        <div class="footer-links">
+
+          <a href="#inicio">
+            Inicio
+          </a>
+
+          <a href="#mapas">
+            Mapas
+          </a>
+
+          <a href="#historias">
+            Historias
+          </a>
+
+          <a href="#instagram">
+            Instagram
+          </a>
+
+          <a href="#libro">
+            Atlas Íntimo
+          </a>
+
         </div>
+
       </div>
+
     </div>
+
   </footer>
+
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+       Animación suave al entrar las secciones
+  ======================================================== -->
+
+  <script>
+
+    const observer = new IntersectionObserver(
+
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+            observer.unobserve(entry.target);
+
+          }
+
+        });
+
+      },
+
+      {
+        threshold: 0.12
+      }
+
+    );
+
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach((element) => {
+
+        observer.observe(element);
+
+      });
+
+  </script>
+
+
 </body>
 </html>
-
-
-
-
