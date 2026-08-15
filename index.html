@@ -11,7 +11,6 @@
     content="Peatón por el Mundo. Una mirada a las ciudades, los caminos y las historias que aparecen cuando decidimos caminar."
   />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Peatón por el Mundo — Macarena Silva" />
   <meta
     property="og:description"
@@ -25,11 +24,7 @@
 
   <link rel="icon" href="/favicon.ico" />
 
-  <!--
-    TIPOGRAFÍAS
-    Cormorant Garamond = editorial / personalidad
-    DM Sans = moderna / limpia
-  -->
+  <!-- Tipografías -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -37,6 +32,7 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
+
 
   <style>
 
@@ -64,7 +60,6 @@
 
       --max: 1180px;
 
-      --radius: 22px;
     }
 
 
@@ -85,8 +80,11 @@
     body {
       background: var(--paper);
       color: var(--ink);
+
       font-family: var(--sans);
+
       line-height: 1.55;
+
       overflow-x: hidden;
     }
 
@@ -111,14 +109,14 @@
 
     .eyebrow {
       font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
 
-    .serif {
-      font-family: var(--serif);
+      font-weight: 700;
+
+      letter-spacing: .18em;
+
+      text-transform: uppercase;
+
+      color: var(--muted);
     }
 
 
@@ -127,60 +125,87 @@
     ========================================================= */
 
     header {
+
       position: sticky;
+
       top: 0;
+
       z-index: 100;
 
-      background: rgba(244, 239, 230, .88);
+      background: rgba(244, 239, 230, .90);
+
       backdrop-filter: blur(14px);
 
       border-bottom: 1px solid var(--line);
+
     }
 
     .nav {
+
       min-height: 76px;
 
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
 
       gap: 30px;
+
     }
 
     .logo {
+
       display: flex;
+
       flex-direction: column;
+
       line-height: 1;
+
     }
 
     .logo-main {
-      font-family: var(--serif);
+
+      font-family: "Cormorant Garamond", Georgia, serif;
+
       font-size: 27px;
+
       font-weight: 700;
-      letter-spacing: -.02em;
+
     }
 
     .logo-sub {
+
       margin-top: 5px;
 
       font-size: 10px;
+
       font-weight: 600;
+
       letter-spacing: .16em;
+
       text-transform: uppercase;
 
       color: var(--muted);
+
     }
 
     nav {
+
       display: flex;
+
       align-items: center;
-      gap: 8px;
+
+      gap: 7px;
+
     }
 
     nav a {
+
       padding: 9px 13px;
 
       font-size: 13px;
+
       font-weight: 600;
 
       border-radius: 100px;
@@ -189,17 +214,25 @@
         background .25s ease,
         color .25s ease,
         transform .25s ease;
+
     }
 
     nav a:hover {
+
       background: var(--ink);
+
       color: var(--paper);
+
       transform: translateY(-1px);
+
     }
 
     .nav-instagram {
+
       background: var(--coral);
+
       color: white;
+
     }
 
 
@@ -208,134 +241,133 @@
     ========================================================= */
 
     .hero {
+
       position: relative;
 
-      min-height: 720px;
-
-      display: flex;
-      align-items: center;
-
-      padding: 90px 0 100px;
+      padding: 80px 0 100px;
 
       overflow: hidden;
+
     }
 
-    /*
-      Manchas de color muy suaves.
-      Dan personalidad sin parecer una plantilla.
-    */
-
     .hero::before {
+
       content: "";
 
       position: absolute;
 
-      width: 520px;
-      height: 520px;
+      width: 500px;
 
-      right: -180px;
-      top: -180px;
+      height: 500px;
+
+      right: -230px;
+
+      top: -220px;
+
+      border-radius: 50%;
 
       background: var(--yellow);
 
-      border-radius: 50%;
-
       opacity: .35;
 
-      filter: blur(2px);
-    }
-
-    .hero::after {
-      content: "";
-
-      position: absolute;
-
-      width: 430px;
-      height: 430px;
-
-      left: -230px;
-      bottom: -250px;
-
-      background: var(--blue);
-
-      border-radius: 50%;
-
-      opacity: .20;
     }
 
     .hero-grid {
+
       position: relative;
+
       z-index: 2;
 
       display: grid;
 
-      grid-template-columns:
-        minmax(0, 1.05fr)
-        minmax(360px, .95fr);
+      grid-template-columns: .78fr 1.22fr;
 
-      gap: 80px;
+      gap: 65px;
 
       align-items: center;
+
     }
 
+
+    /* ---------------------------------------------------------
+       HERO TEXT
+    --------------------------------------------------------- */
+
     .hero-copy {
-      max-width: 650px;
+
+      max-width: 520px;
+
     }
 
     .hero-title {
+
       margin-top: 20px;
 
-      font-family: var(--serif);
+      font-family: "Cormorant Garamond", Georgia, serif;
 
-      font-size: clamp(62px, 7vw, 104px);
+      font-size: clamp(65px, 7vw, 100px);
 
-      line-height: .84;
+      line-height: .82;
 
       letter-spacing: -.045em;
 
       font-weight: 600;
+
     }
 
     .hero-title span {
+
       display: block;
+
     }
 
     .hero-title .accent {
+
       color: var(--coral);
+
     }
 
     .hero-description {
-      max-width: 520px;
 
       margin-top: 32px;
 
-      font-size: 17px;
+      max-width: 480px;
+
+      font-size: 16px;
 
       color: var(--muted);
+
     }
 
     .hero-description strong {
+
       color: var(--ink);
+
     }
 
 
     /* =========================================================
-       06. HERO BUTTONS
+       BUTTONS
     ========================================================= */
 
     .actions {
+
       display: flex;
+
       flex-wrap: wrap;
 
       gap: 10px;
 
-      margin-top: 32px;
+      margin-top: 30px;
+
     }
 
     .button {
+
       display: inline-flex;
 
       align-items: center;
+
       justify-content: center;
 
       min-height: 46px;
@@ -347,138 +379,192 @@
       border-radius: 100px;
 
       font-size: 13px;
+
       font-weight: 700;
 
       transition:
         transform .25s ease,
         background .25s ease,
         color .25s ease;
+
     }
 
     .button:hover {
+
       transform: translateY(-3px);
+
     }
 
     .button-dark {
+
       background: var(--ink);
+
       color: var(--paper);
+
     }
 
     .button-dark:hover {
+
       background: var(--coral);
+
       border-color: var(--coral);
+
     }
 
     .button-light {
+
       background: transparent;
+
     }
 
     .button-light:hover {
+
       background: white;
+
     }
 
 
     /* =========================================================
-       07. HERO PHOTO
+       06. TRAVEL PHOTOGRAPH
     ========================================================= */
 
     .hero-photo {
+
       position: relative;
+
     }
 
     .hero-photo-frame {
+
       position: relative;
 
       padding: 12px;
 
       background: white;
 
-      transform: rotate(2deg);
-
       box-shadow:
-        0 30px 70px rgba(32, 33, 30, .15);
+        0 35px 80px rgba(32,33,30,.18);
+
+      transform: rotate(1.5deg);
+
     }
 
     .hero-photo-frame::before {
+
       content: "";
 
       position: absolute;
 
-      width: 95px;
-      height: 25px;
+      width: 90px;
+
+      height: 23px;
 
       top: -12px;
+
       left: 50%;
 
       transform: translateX(-50%) rotate(-2deg);
 
-      background: rgba(230, 185, 79, .72);
+      background: rgba(230,185,79,.75);
 
       z-index: 2;
+
     }
 
+    /*
+      AQUÍ VA UNA FOTO DE VIAJE.
+
+      No es una fotografía tuya.
+
+      Reemplaza:
+
+      assets/foto-hero.jpg
+
+      por la fotografía que quieras utilizar
+      como portada.
+    */
+
     .hero-photo img {
+
       display: block;
 
       width: 100%;
-      height: 520px;
+
+      height: 620px;
 
       object-fit: cover;
+
     }
 
     .photo-caption {
-      padding: 13px 4px 2px;
+
+      padding: 13px 5px 3px;
 
       font-size: 11px;
-      letter-spacing: .05em;
+
+      letter-spacing: .06em;
 
       color: var(--muted);
+
     }
 
 
     /* =========================================================
-       08. CONTINENT STRIP
+       07. CONTINENTS STRIP
     ========================================================= */
 
     .continent-strip {
-      overflow: hidden;
 
-      border-top: 1px solid var(--ink);
-      border-bottom: 1px solid var(--ink);
+      overflow: hidden;
 
       background: var(--ink);
 
       color: var(--paper);
+
+      border-top: 1px solid var(--ink);
+
+      border-bottom: 1px solid var(--ink);
+
     }
 
     .continent-track {
+
       display: flex;
 
       width: max-content;
 
       animation: moveStrip 30s linear infinite;
+
     }
 
     .continent-item {
+
       padding: 17px 30px;
 
-      font-family: var(--serif);
+      font-family: "Cormorant Garamond", Georgia, serif;
 
       font-size: 25px;
 
       white-space: nowrap;
+
     }
 
     .continent-item:nth-child(2n) {
+
       color: var(--yellow);
+
     }
 
     .continent-item:nth-child(3n) {
+
       color: #e6a28e;
+
     }
 
     .continent-item:nth-child(4n) {
+
       color: #9db9b2;
+
     }
 
     @keyframes moveStrip {
@@ -495,157 +581,188 @@
 
 
     /* =========================================================
-       09. INTRO
+       08. INTRO
     ========================================================= */
 
     .intro {
+
       padding: 140px 0;
+
     }
 
     .intro-grid {
+
       display: grid;
 
       grid-template-columns: .7fr 1.3fr;
 
       gap: 80px;
 
-      align-items: start;
     }
 
     .intro-number {
-      font-family: var(--serif);
+
+      font-family: "Cormorant Garamond", Georgia, serif;
 
       font-size: 100px;
 
       line-height: .8;
 
       color: var(--coral);
+
     }
 
     .intro-text {
+
       max-width: 760px;
 
-      font-family: var(--serif);
+      font-family: "Cormorant Garamond", Georgia, serif;
 
       font-size: clamp(34px, 4vw, 55px);
 
       line-height: 1.05;
 
       letter-spacing: -.025em;
+
     }
 
     .intro-text em {
+
       color: var(--coral);
+
       font-style: normal;
+
     }
 
 
     /* =========================================================
-       10. MAP SECTION
+       09. MAP
     ========================================================= */
 
     .map-section {
-      padding: 100px 0;
+
+      padding: 110px 0;
 
       background: var(--blue);
 
       color: white;
+
     }
 
     .section-heading {
+
       display: flex;
 
       justify-content: space-between;
+
       align-items: end;
 
       gap: 30px;
 
       margin-bottom: 40px;
+
     }
 
     .section-heading h2 {
+
       margin-top: 8px;
 
-      font-family: var(--serif);
+      font-family: "Cormorant Garamond", Georgia, serif;
 
-      font-size: clamp(45px, 6vw, 72px);
+      font-size: clamp(48px, 6vw, 76px);
 
-      line-height: .9;
+      line-height: .88;
 
       font-weight: 600;
+
     }
 
     .section-heading p {
+
       max-width: 390px;
 
       font-size: 14px;
 
-      opacity: .8;
+      opacity: .82;
+
     }
 
     .map-card {
-      position: relative;
 
       min-height: 430px;
 
-      overflow: hidden;
-
       background: #dfe5dc;
 
-      border: 1px solid rgba(255,255,255,.3);
+      box-shadow:
+        0 30px 70px rgba(0,0,0,.16);
 
-      box-shadow: 0 30px 70px rgba(0,0,0,.15);
     }
 
     .map-placeholder {
+
       min-height: 430px;
 
       display: flex;
 
       align-items: center;
+
       justify-content: center;
 
       text-align: center;
 
+      padding: 30px;
+
       color: var(--ink);
 
-      padding: 30px;
     }
 
     .map-placeholder-inner {
-      max-width: 500px;
+
+      max-width: 520px;
+
     }
 
     .map-placeholder h3 {
-      font-family: var(--serif);
 
-      font-size: 48px;
+      margin-top: 5px;
+
+      font-family: "Cormorant Garamond", Georgia, serif;
+
+      font-size: 50px;
 
       line-height: .9;
+
     }
 
     .map-placeholder p {
-      margin-top: 15px;
+
+      margin-top: 16px;
+
+      font-size: 14px;
 
       color: var(--muted);
 
-      font-size: 14px;
     }
 
     .map-button {
+
       margin-top: 25px;
+
     }
 
 
     /* =========================================================
-       11. STORIES
+       10. STORIES
     ========================================================= */
 
     .stories {
+
       padding: 130px 0;
+
     }
 
     .stories-header {
+
       display: grid;
 
       grid-template-columns: 1fr 1fr;
@@ -653,35 +770,43 @@
       gap: 60px;
 
       margin-bottom: 55px;
+
     }
 
     .stories-header h2 {
-      font-family: var(--serif);
+
+      font-family: "Cormorant Garamond", Georgia, serif;
 
       font-size: clamp(55px, 6vw, 78px);
 
       line-height: .85;
+
     }
 
     .stories-header p {
-      max-width: 450px;
 
       align-self: end;
+
+      max-width: 450px;
 
       color: var(--muted);
 
       font-size: 15px;
+
     }
 
     .story-grid {
+
       display: grid;
 
       grid-template-columns: repeat(3, 1fr);
 
       gap: 20px;
+
     }
 
     .story {
+
       position: relative;
 
       min-height: 390px;
@@ -696,55 +821,69 @@
 
       overflow: hidden;
 
-      background: white;
-
       transition:
         transform .3s ease,
         box-shadow .3s ease;
+
     }
 
     .story:hover {
+
       transform: translateY(-7px);
 
-      box-shadow: 0 25px 50px rgba(32,33,30,.13);
+      box-shadow:
+        0 25px 50px rgba(32,33,30,.13);
+
     }
 
     .story:nth-child(1) {
+
       background: #e7b5a6;
+
     }
 
     .story:nth-child(2) {
+
       background: #e7d49b;
+
     }
 
     .story:nth-child(3) {
+
       background: #a8c2ba;
+
     }
 
     .story-number {
+
       position: absolute;
 
       top: 20px;
+
       right: 25px;
 
-      font-family: var(--serif);
+      font-family: "Cormorant Garamond", Georgia, serif;
 
       font-size: 70px;
 
       opacity: .25;
+
     }
 
     .story h3 {
+
       max-width: 310px;
 
-      font-family: var(--serif);
+      font-family: "Cormorant Garamond", Georgia, serif;
 
       font-size: 40px;
 
       line-height: .9;
+
     }
 
     .story p {
+
       margin-top: 15px;
 
       max-width: 320px;
@@ -752,92 +891,115 @@
       font-size: 13px;
 
       color: rgba(32,33,30,.72);
+
     }
 
 
     /* =========================================================
-       12. INSTAGRAM
+       11. INSTAGRAM
     ========================================================= */
 
     .instagram {
+
       padding: 120px 0;
 
       background: var(--paper-light);
+
     }
 
     .instagram-heading {
+
       display: flex;
 
       align-items: end;
+
       justify-content: space-between;
 
       gap: 30px;
 
       margin-bottom: 45px;
+
     }
 
     .instagram-heading h2 {
+
       margin-top: 8px;
 
-      font-family: var(--serif);
+      font-family: "Cormorant Garamond", Georgia, serif;
 
       font-size: clamp(52px, 6vw, 76px);
 
       line-height: .85;
+
     }
 
     .instagram-heading a {
+
       font-size: 13px;
+
       font-weight: 700;
 
       border-bottom: 1px solid var(--ink);
 
       padding-bottom: 4px;
+
     }
 
     .instagram-grid {
+
       display: grid;
 
       grid-template-columns: repeat(3, 1fr);
 
       gap: 14px;
+
     }
 
     .instagram-item {
+
       aspect-ratio: 1 / 1;
+
+      overflow: hidden;
 
       background: #dedbd3;
 
-      overflow: hidden;
     }
 
     .instagram-item img {
+
       width: 100%;
+
       height: 100%;
 
       object-fit: cover;
 
       transition: transform .5s ease;
+
     }
 
     .instagram-item:hover img {
+
       transform: scale(1.05);
+
     }
 
 
     /* =========================================================
-       13. BOOK
+       12. ATLAS ÍNTIMO
     ========================================================= */
 
     .book {
+
       padding: 130px 0;
 
       background: var(--coral);
 
       color: white;
+
     }
 
     .book-grid {
+
       display: grid;
 
       grid-template-columns: .9fr 1.1fr;
@@ -845,24 +1007,28 @@
       gap: 90px;
 
       align-items: center;
+
     }
 
     .book-cover {
+
       max-width: 370px;
 
       margin: auto;
 
-      background: white;
-
       padding: 12px;
+
+      background: white;
 
       transform: rotate(-2deg);
 
       box-shadow:
-        0 35px 70px rgba(32,33,30,.2);
+        0 35px 70px rgba(32,33,30,.20);
+
     }
 
     .book-cover-inner {
+
       min-height: 470px;
 
       background: var(--paper);
@@ -872,95 +1038,112 @@
       display: flex;
 
       align-items: center;
+
       justify-content: center;
 
       text-align: center;
 
       padding: 40px;
+
     }
 
     .book-cover-title {
-      font-family: var(--serif);
+
+      font-family: "Cormorant Garamond", Georgia, serif;
 
       font-size: 55px;
 
       line-height: .85;
-    }
 
-    .book-copy .eyebrow {
-      color: rgba(255,255,255,.7);
     }
 
     .book-copy h2 {
+
       margin-top: 15px;
 
-      font-family: var(--serif);
+      font-family: "Cormorant Garamond", Georgia, serif;
 
       font-size: clamp(55px, 7vw, 90px);
 
       line-height: .82;
+
     }
 
     .book-copy p {
+
       max-width: 540px;
 
       margin-top: 25px;
 
       color: rgba(255,255,255,.82);
+
     }
 
     .book .button {
-      margin-top: 28px;
 
-      border-color: white;
+      margin-top: 28px;
 
       background: white;
 
+      border-color: white;
+
       color: var(--ink);
+
     }
 
     .book .button:hover {
+
       background: var(--yellow);
 
       border-color: var(--yellow);
+
     }
 
 
     /* =========================================================
-       14. CONTACT
+       13. CONTACT
     ========================================================= */
 
     .contact {
+
       padding: 130px 0;
+
     }
 
     .contact-grid {
+
       display: grid;
 
       grid-template-columns: 1fr 1fr;
 
       gap: 80px;
+
     }
 
     .contact h2 {
+
       margin-top: 10px;
 
-      font-family: var(--serif);
+      font-family: "Cormorant Garamond", Georgia, serif;
 
       font-size: clamp(55px, 7vw, 85px);
 
       line-height: .82;
+
     }
 
     .contact-copy {
+
       align-self: end;
 
       color: var(--muted);
 
       font-size: 15px;
+
     }
 
     .email-links {
+
       margin-top: 25px;
 
       display: flex;
@@ -970,76 +1153,91 @@
       align-items: flex-start;
 
       gap: 8px;
+
     }
 
     .email-links a {
+
       font-size: 15px;
 
-      color: var(--ink);
-
       border-bottom: 1px solid var(--ink);
+
     }
 
 
     /* =========================================================
-       15. FOOTER
+       14. FOOTER
     ========================================================= */
 
     footer {
+
       padding: 30px 0 35px;
 
       background: var(--ink);
 
       color: var(--paper);
+
     }
 
     .footer-grid {
+
       display: flex;
 
       align-items: center;
+
       justify-content: space-between;
 
       gap: 30px;
+
     }
 
     .footer-brand {
-      font-family: var(--serif);
+
+      font-family: "Cormorant Garamond", Georgia, serif;
 
       font-size: 25px;
+
     }
 
     .footer-meta {
+
       margin-top: 5px;
 
       font-size: 11px;
 
       color: rgba(244,239,230,.55);
+
     }
 
     .footer-links {
+
       display: flex;
 
       gap: 20px;
 
       font-size: 12px;
+
     }
 
     .footer-links a {
+
       opacity: .65;
 
-      transition: opacity .2s ease;
     }
 
     .footer-links a:hover {
+
       opacity: 1;
+
     }
 
 
     /* =========================================================
-       16. SCROLL ANIMATION
+       15. ANIMACIONES
     ========================================================= */
 
     .reveal {
+
       opacity: 0;
 
       transform: translateY(25px);
@@ -1047,12 +1245,110 @@
       transition:
         opacity .8s ease,
         transform .8s ease;
+
     }
 
     .reveal.visible {
+
       opacity: 1;
 
       transform: translateY(0);
+
+    }
+
+
+    /* =========================================================
+       16. TABLET
+    ========================================================= */
+
+    @media (max-width: 900px) {
+
+      nav {
+        display: none;
+      }
+
+      .hero-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+
+      }
+
+      .hero-copy {
+
+        max-width: 700px;
+
+      }
+
+      .hero-photo img {
+
+        height: 500px;
+
+      }
+
+      .intro-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+      }
+
+      .section-heading {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+      }
+
+      .stories-header {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+
+      }
+
+      .story-grid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+      .instagram-heading {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+      }
+
+      .book-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+
+      }
+
+      .contact-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+      }
+
+      .footer-grid {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+      }
+
     }
 
 
@@ -1060,177 +1356,94 @@
        17. MOBILE
     ========================================================= */
 
-    @media (max-width: 900px) {
-
-      .nav {
-        min-height: 68px;
-      }
-
-      nav {
-        display: none;
-      }
-
-      .hero {
-        min-height: auto;
-
-        padding: 70px 0 80px;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-
-        gap: 55px;
-      }
-
-      .hero-title {
-        font-size: clamp(62px, 18vw, 92px);
-      }
-
-      .hero-photo img {
-        height: 430px;
-      }
-
-      .intro {
-        padding: 90px 0;
-      }
-
-      .intro-grid {
-        grid-template-columns: 1fr;
-
-        gap: 35px;
-      }
-
-      .intro-number {
-        font-size: 70px;
-      }
-
-      .section-heading {
-        flex-direction: column;
-
-        align-items: flex-start;
-      }
-
-      .stories {
-        padding: 90px 0;
-      }
-
-      .stories-header {
-        grid-template-columns: 1fr;
-
-        gap: 25px;
-      }
-
-      .story-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .story {
-        min-height: 330px;
-      }
-
-      .instagram {
-        padding: 90px 0;
-      }
-
-      .instagram-heading {
-        align-items: flex-start;
-
-        flex-direction: column;
-      }
-
-      .instagram-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .book {
-        padding: 90px 0;
-      }
-
-      .book-grid {
-        grid-template-columns: 1fr;
-
-        gap: 60px;
-      }
-
-      .contact {
-        padding: 90px 0;
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-
-        gap: 35px;
-      }
-
-      .footer-grid {
-        flex-direction: column;
-
-        align-items: flex-start;
-      }
-
-    }
-
-
     @media (max-width: 500px) {
 
       .wrap {
-        width: min(100% - 28px, var(--max));
+
+        width: calc(100% - 28px);
+
       }
 
       .logo-main {
+
         font-size: 23px;
+
       }
 
       .logo-sub {
+
         font-size: 8px;
+
+      }
+
+      .hero {
+
+        padding-top: 65px;
+
       }
 
       .hero-title {
-        font-size: 60px;
-      }
 
-      .hero-description {
-        font-size: 15px;
+        font-size: 61px;
+
       }
 
       .hero-photo img {
-        height: 390px;
+
+        height: 410px;
+
+      }
+
+      .intro {
+
+        padding: 90px 0;
+
       }
 
       .intro-text {
+
         font-size: 36px;
+
       }
 
       .map-card,
       .map-placeholder {
-        min-height: 330px;
-      }
 
-      .map-placeholder h3 {
-        font-size: 40px;
+        min-height: 330px;
+
       }
 
       .instagram-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
         gap: 7px;
+
+      }
+
+      .book {
+
+        padding: 90px 0;
+
       }
 
       .book-cover-inner {
-        min-height: 400px;
-      }
 
-      .book-cover-title {
-        font-size: 45px;
+        min-height: 400px;
+
       }
 
       .footer-links {
+
         flex-wrap: wrap;
+
       }
 
     }
 
 
     /* =========================================================
-       18. ACCESSIBILITY
+       18. REDUCED MOTION
     ========================================================= */
 
     @media (prefers-reduced-motion: reduce) {
@@ -1242,14 +1455,19 @@
       *,
       *::before,
       *::after {
+
         animation-duration: .01ms !important;
+
         animation-iteration-count: 1 !important;
+
         transition-duration: .01ms !important;
+
       }
 
     }
 
   </style>
+
 </head>
 
 
@@ -1265,6 +1483,7 @@
     <div class="wrap">
 
       <div class="nav">
+
 
         <a href="#inicio" class="logo">
 
@@ -1307,7 +1526,7 @@
             rel="noopener"
             class="nav-instagram"
           >
-            @macafromchile
+            Instagram
           </a>
 
         </nav>
@@ -1334,6 +1553,8 @@
         <div class="hero-grid">
 
 
+          <!-- TEXTO -->
+
           <div class="hero-copy reveal">
 
             <div class="eyebrow">
@@ -1354,13 +1575,9 @@
 
             <p class="hero-description">
 
-              Soy <strong>Maca Silva</strong>, autora y caminante.
-
-              <br><br>
-
-              Peatón por el Mundo nació de una idea bastante simple:
-              hay lugares que solo empiezan a entenderse cuando uno
-              deja de mirarlos desde la ventana y decide caminar.
+              <strong>Peatón por el Mundo</strong> es una mirada
+              personal sobre las ciudades, los caminos y las personas
+              que aparecen cuando uno decide caminar.
 
             </p>
 
@@ -1389,7 +1606,7 @@
                 rel="noopener"
                 class="button button-light"
               >
-                Instagram
+                @macafromchile
               </a>
 
             </div>
@@ -1398,29 +1615,42 @@
 
 
 
-          <!-- FOTO PRINCIPAL -->
+          <!-- =================================================
+               FOTO DE VIAJE
+          ================================================== -->
 
           <div class="hero-photo reveal">
 
             <div class="hero-photo-frame">
 
               <!--
+                CAMBIA ESTA FOTO.
+
                 IMPORTANTE:
+                aquí NO va una foto tuya.
 
-                Mantengo exactamente el nombre de la fotografía
-                que tienes actualmente.
+                Ponemos una de tus fotografías
+                de viaje.
 
-                Si la imagen está en otra carpeta,
-                cambia solamente esta ruta.
+                Ejemplo:
+
+                assets/puerto-williams.jpg
+                assets/kathmandu.jpg
+                assets/port-vila.jpg
+                assets/cajamarca.jpg
+
               -->
 
               <img
-                src="IMG_1587 (5).JPG"
-                alt="Macarena Silva — Peatón por el Mundo"
+                src="assets/foto-hero.jpg"
+                alt="Fotografía de Peatón por el Mundo"
               />
 
+
               <div class="photo-caption">
-                Peatón por el Mundo · Maca Silva
+
+                Una imagen del camino · Peatón por el Mundo
+
               </div>
 
             </div>
@@ -1437,7 +1667,7 @@
 
 
     <!-- =====================================================
-         CONTINENTS STRIP
+         CONTINENTES
     ====================================================== -->
 
     <div class="continent-strip">
@@ -1445,15 +1675,24 @@
       <div class="continent-track">
 
         <div class="continent-item">América</div>
+
         <div class="continent-item">Europa</div>
+
         <div class="continent-item">Asia</div>
+
         <div class="continent-item">África</div>
+
         <div class="continent-item">Oceanía</div>
 
+
         <div class="continent-item">América</div>
+
         <div class="continent-item">Europa</div>
+
         <div class="continent-item">Asia</div>
+
         <div class="continent-item">África</div>
+
         <div class="continent-item">Oceanía</div>
 
       </div>
@@ -1472,6 +1711,7 @@
 
         <div class="intro-grid">
 
+
           <div class="intro-number reveal">
             01
           </div>
@@ -1480,8 +1720,9 @@
           <div class="reveal">
 
             <div class="eyebrow">
-              La idea
+              La mirada
             </div>
+
 
             <p class="intro-text">
 
@@ -1498,6 +1739,7 @@
 
           </div>
 
+
         </div>
 
       </div>
@@ -1507,12 +1749,13 @@
 
 
     <!-- =====================================================
-         MAP
+         MAPA
     ====================================================== -->
 
     <section class="map-section" id="mapas">
 
       <div class="wrap">
+
 
         <div class="section-heading reveal">
 
@@ -1532,26 +1775,21 @@
 
           <p>
 
-            Ciudades, fronteras, islas, carreteras y lugares
-            que fueron quedando en el camino.
+            Ciudades, fronteras, islas, carreteras
+            y lugares que fueron quedando en el camino.
 
             <br><br>
 
-            Esta parte de la web será nuestro mapa interactivo.
+            El mapa será el punto de encuentro
+            entre fotografía y territorio.
 
           </p>
 
         </div>
 
 
+
         <div class="map-card reveal">
-
-          <!--
-            POR AHORA dejamos este espacio preparado.
-
-            En el siguiente paso vamos a colocar aquí
-            Leaflet y tu mapa real.
-          -->
 
           <div class="map-placeholder">
 
@@ -1561,15 +1799,20 @@
                 Mapa interactivo
               </div>
 
+
               <h3>
                 El recorrido
-                todavía está por abrirse.
+                está aquí.
               </h3>
 
+
               <p>
-                Aquí aparecerán los lugares recorridos,
-                ciudades, rutas y fotografías asociadas.
+
+                Una cartografía de lugares recorridos,
+                ciudades, fotografías y pequeñas historias.
+
               </p>
+
 
               <a
                 href="/mapas.html"
@@ -1591,7 +1834,7 @@
 
 
     <!-- =====================================================
-         STORIES
+         HISTORIAS
     ====================================================== -->
 
     <section class="stories" id="historias">
@@ -1600,6 +1843,7 @@
 
 
         <div class="stories-header reveal">
+
 
           <div>
 
@@ -1620,10 +1864,12 @@
             Algunas historias duran lo que una caminata.
             Otras se quedan durante años.
 
-            Aquí viven las crónicas, observaciones y
-            pequeñas historias que aparecen en el camino.
+            Aquí viven las crónicas,
+            observaciones y pequeñas historias
+            que aparecen en el camino.
 
           </p>
+
 
         </div>
 
@@ -1643,9 +1889,11 @@
             </h3>
 
             <p>
+
               Desde el sur de Chile hasta las ciudades,
               fronteras e islas que fui encontrando
               mucho más allá de casa.
+
             </p>
 
           </article>
@@ -1663,9 +1911,11 @@
             </h3>
 
             <p>
-              Historia, ciudades, trenes, plazas,
-              memoria y esa convivencia extraña
+
+              Historia, ciudades, trenes,
+              plazas, memoria y esa convivencia
               entre lo antiguo y lo cotidiano.
+
             </p>
 
           </article>
@@ -1683,9 +1933,11 @@
             </h3>
 
             <p>
+
               Lugares donde todo parece funcionar
               bajo otras reglas y donde caminar
               obliga a mirar de otra manera.
+
             </p>
 
           </article>
@@ -1694,7 +1946,7 @@
         </div>
 
 
-        <div class="actions" style="margin-top:35px">
+        <div class="actions">
 
           <a
             href="/historias.html"
@@ -1704,6 +1956,7 @@
           </a>
 
         </div>
+
 
       </div>
 
@@ -1722,10 +1975,11 @@
 
         <div class="instagram-heading reveal">
 
+
           <div>
 
             <div class="eyebrow">
-              04 · Instagram
+              04 · Fotografías
             </div>
 
             <h2>
@@ -1744,6 +1998,7 @@
             @macafromchile →
           </a>
 
+
         </div>
 
 
@@ -1752,14 +2007,12 @@
 
 
           <!--
-            INSTAGRAM
+            ESTAS TRES FOTOGRAFÍAS SERÁN REEMPLAZADAS
+            POR FOTOS REALES TUYAS.
 
-            Por ahora dejamos las imágenes preparadas
-            para que puedas controlar completamente
-            la estética de la página.
+            No fotografías personales.
 
-            En el siguiente paso podemos reemplazar
-            esto por embeds reales de Instagram.
+            Solo fotografía de viaje.
           -->
 
 
@@ -1771,8 +2024,8 @@
           >
 
             <img
-              src="IMG_1587 (5).JPG"
-              alt="Peatón por el Mundo en Instagram"
+              src="assets/foto-instagram-1.jpg"
+              alt="Fotografía de viaje"
               loading="lazy"
             />
 
@@ -1788,8 +2041,8 @@
           >
 
             <img
-              src="IMG_1587 (5).JPG"
-              alt="Peatón por el Mundo en Instagram"
+              src="assets/foto-instagram-2.jpg"
+              alt="Fotografía de viaje"
               loading="lazy"
             />
 
@@ -1805,8 +2058,8 @@
           >
 
             <img
-              src="IMG_1587 (5).JPG"
-              alt="Peatón por el Mundo en Instagram"
+              src="assets/foto-instagram-3.jpg"
+              alt="Fotografía de viaje"
               loading="lazy"
             />
 
@@ -1822,12 +2075,13 @@
 
 
     <!-- =====================================================
-         ATLAS INTIMO
+         ATLAS ÍNTIMO
     ====================================================== -->
 
     <section class="book" id="libro">
 
       <div class="wrap">
+
 
         <div class="book-grid">
 
@@ -1842,13 +2096,23 @@
                   Libro fotográfico
                 </div>
 
+
                 <div class="book-cover-title">
+
                   ATLAS<br>
                   ÍNTIMO
+
                 </div>
 
-                <p style="margin-top:18px;font-size:11px;letter-spacing:.08em;">
+
+                <p style="
+                  margin-top:18px;
+                  font-size:11px;
+                  letter-spacing:.08em;
+                ">
+
                   MACA SILVA
+
                 </p>
 
               </div>
@@ -1861,14 +2125,19 @@
 
           <div class="book-copy reveal">
 
+
             <div class="eyebrow">
               05 · Publicación
             </div>
 
+
             <h2>
+
               Atlas<br>
               Íntimo.
+
             </h2>
+
 
             <p>
 
@@ -1890,6 +2159,7 @@
               Ver en Amazon →
             </a>
 
+
           </div>
 
 
@@ -1902,12 +2172,13 @@
 
 
     <!-- =====================================================
-         CONTACT
+         CONTACTO
     ====================================================== -->
 
     <section class="contact" id="contacto">
 
       <div class="wrap">
+
 
         <div class="contact-grid">
 
@@ -1925,7 +2196,9 @@
           </div>
 
 
+
           <div class="contact-copy reveal">
+
 
             <p>
 
@@ -1956,6 +2229,7 @@
 
             </div>
 
+
           </div>
 
 
@@ -1980,6 +2254,7 @@
 
       <div class="footer-grid">
 
+
         <div>
 
           <div class="footer-brand">
@@ -1987,7 +2262,9 @@
           </div>
 
           <div class="footer-meta">
+
             © 2026 Maca Silva · Todos los derechos reservados
+
           </div>
 
         </div>
@@ -2008,7 +2285,7 @@
           </a>
 
           <a href="#instagram">
-            Instagram
+            Fotografías
           </a>
 
           <a href="#libro">
@@ -2016,6 +2293,7 @@
           </a>
 
         </div>
+
 
       </div>
 
@@ -2027,7 +2305,6 @@
 
   <!-- =======================================================
        JAVASCRIPT
-       Animación suave al entrar las secciones
   ======================================================== -->
 
   <script>
