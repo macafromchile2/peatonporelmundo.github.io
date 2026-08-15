@@ -9,9 +9,7 @@
     content="width=device-width, initial-scale=1"
   >
 
-  <title>
-    Peatón por el Mundo — Maca Silva
-  </title>
+  <title>Peatón por el Mundo — Maca Silva</title>
 
   <meta
     name="description"
@@ -23,6 +21,7 @@
     content="#f4eee3"
   >
 
+  <!-- Open Graph -->
   <meta
     property="og:title"
     content="Peatón por el Mundo — Maca Silva"
@@ -129,19 +128,13 @@
     }
 
     img {
-
       display: block;
-
       max-width: 100%;
-
     }
 
     a {
-
       color: inherit;
-
       text-decoration: none;
-
     }
 
 
@@ -287,7 +280,13 @@
 
       position: relative;
 
-      padding: 95px 0 110px;
+      min-height: 650px;
+
+      display: flex;
+
+      align-items: center;
+
+      padding: 100px 0 120px;
 
       overflow: hidden;
 
@@ -300,19 +299,19 @@
 
       position: absolute;
 
-      width: 500px;
+      width: 560px;
 
-      height: 500px;
+      height: 560px;
 
       border-radius: 50%;
 
       background: var(--yellow);
 
-      opacity: .28;
+      opacity: .27;
 
-      right: -240px;
+      right: -270px;
 
-      top: -240px;
+      top: -260px;
 
     }
 
@@ -323,9 +322,9 @@
 
       position: absolute;
 
-      width: 280px;
+      width: 300px;
 
-      height: 280px;
+      height: 300px;
 
       border-radius: 50%;
 
@@ -333,26 +332,20 @@
 
       opacity: .13;
 
-      left: -150px;
+      left: -160px;
 
-      bottom: -150px;
+      bottom: -170px;
 
     }
 
 
-    .hero-grid {
+    .hero-content {
 
       position: relative;
 
       z-index: 2;
 
-      display: grid;
-
-      grid-template-columns: .8fr 1.2fr;
-
-      gap: 70px;
-
-      align-items: center;
+      max-width: 900px;
 
     }
 
@@ -374,19 +367,21 @@
 
     .hero-title {
 
-      margin-top: 20px;
+      margin-top: 25px;
 
       font-family: var(--serif);
 
       font-size: clamp(
-        64px,
-        8vw,
-        105px
+        70px,
+        11vw,
+        150px
       );
 
-      line-height: .84;
+      line-height: .78;
 
-      letter-spacing: -.04em;
+      letter-spacing: -.045em;
+
+      max-width: 950px;
 
     }
 
@@ -407,13 +402,15 @@
 
     .hero-text {
 
-      max-width: 500px;
+      max-width: 580px;
 
-      margin-top: 32px;
+      margin-top: 38px;
 
       color: var(--muted);
 
-      font-size: 16px;
+      font-size: 17px;
+
+      line-height: 1.65;
 
     }
 
@@ -437,7 +434,7 @@
 
       gap: 10px;
 
-      margin-top: 30px;
+      margin-top: 32px;
 
     }
 
@@ -510,56 +507,7 @@
 
 
     /* =====================================================
-       HERO PHOTO
-    ====================================================== */
-
-    .hero-image {
-
-      position: relative;
-
-    }
-
-
-    .hero-image-frame {
-
-      padding: 12px;
-
-      background: white;
-
-      box-shadow:
-        0 35px 80px rgba(36,37,34,.16);
-
-      transform: rotate(1.3deg);
-
-    }
-
-
-    .hero-image-frame img {
-
-      width: 100%;
-
-      height: 600px;
-
-      object-fit: cover;
-
-    }
-
-
-    .photo-note {
-
-      padding: 12px 4px 2px;
-
-      font-size: 10px;
-
-      letter-spacing: .06em;
-
-      color: var(--muted);
-
-    }
-
-
-    /* =====================================================
-       MOVING CONTINENTS
+       CONTINENTS
     ====================================================== */
 
     .continent-bar {
@@ -599,23 +547,17 @@
 
 
     .continent:nth-child(2n) {
-
       color: var(--yellow);
-
     }
 
 
     .continent:nth-child(3n) {
-
       color: #e7a08c;
-
     }
 
 
     .continent:nth-child(4n) {
-
       color: #a9c2b8;
-
     }
 
 
@@ -638,7 +580,7 @@
 
     .intro {
 
-      padding: 130px 0;
+      padding: 140px 0;
 
       background: var(--cream-light);
 
@@ -676,9 +618,9 @@
       font-family: var(--serif);
 
       font-size: clamp(
-        34px,
-        4vw,
-        57px
+        36px,
+        4.2vw,
+        60px
       );
 
       line-height: 1.04;
@@ -698,12 +640,12 @@
 
 
     /* =====================================================
-       PHOTOGRAPHY
+       FOTOGRAFÍAS
     ====================================================== */
 
     .photography {
 
-      padding: 120px 0;
+      padding: 125px 0;
 
     }
 
@@ -776,8 +718,8 @@
         .85fr;
 
       grid-template-rows:
-        260px
-        260px;
+        280px
+        280px;
 
       gap: 14px;
 
@@ -822,12 +764,12 @@
 
 
     /* =====================================================
-       BOOK
+       LIBRO
     ====================================================== */
 
     .book-section {
 
-      padding: 120px 0;
+      padding: 125px 0;
 
       background: var(--coral);
 
@@ -867,49 +809,29 @@
     }
 
 
+    /*
+      AQUÍ PONDREMOS LA FOTO REAL DE LA PORTADA
+      DEL LIBRO.
+
+      Por ahora se muestra esta estructura temporal.
+    */
+
     .book-cover {
-
-      min-height: 490px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      text-align: center;
-
-      padding: 40px;
 
       background: var(--cream);
 
-      color: var(--ink);
+      overflow: hidden;
 
     }
 
 
-    .book-cover-small {
+    .book-cover img {
 
-      font-size: 10px;
+      display: block;
 
-      font-weight: 700;
+      width: 100%;
 
-      letter-spacing: .17em;
-
-      text-transform: uppercase;
-
-    }
-
-
-    .book-cover-title {
-
-      margin-top: 18px;
-
-      font-family: var(--serif);
-
-      font-size: 54px;
-
-      line-height: .82;
+      height: auto;
 
     }
 
@@ -1002,12 +924,12 @@
 
 
     /* =====================================================
-       MAP
+       MAPA
     ====================================================== */
 
     .map-section {
 
-      padding: 120px 0;
+      padding: 125px 0;
 
       background: var(--blue);
 
@@ -1071,12 +993,12 @@
 
 
     /* =====================================================
-       SOCIAL
+       REDES SOCIALES
     ====================================================== */
 
     .social-section {
 
-      padding: 110px 0;
+      padding: 120px 0;
 
     }
 
@@ -1167,12 +1089,12 @@
 
 
     /* =====================================================
-       CONTACT
+       CONTACTO
     ====================================================== */
 
     .contact {
 
-      padding: 120px 0;
+      padding: 125px 0;
 
       background: var(--cream-light);
 
@@ -1307,7 +1229,7 @@
 
 
     /* =====================================================
-       ANIMATION
+       ANIMACIONES
     ====================================================== */
 
     .reveal {
@@ -1339,24 +1261,26 @@
     @media (max-width: 900px) {
 
       .main-nav {
-
         display: none;
+      }
+
+
+      .hero {
+
+        min-height: auto;
+
+        padding: 80px 0 90px;
 
       }
 
 
-      .hero-grid {
+      .hero-title {
 
-        grid-template-columns: 1fr;
-
-        gap: 55px;
-
-      }
-
-
-      .hero-image-frame img {
-
-        height: 500px;
+        font-size: clamp(
+          68px,
+          15vw,
+          105px
+        );
 
       }
 
@@ -1376,7 +1300,7 @@
 
         grid-template-rows:
           300px
-          220px;
+          230px;
 
       }
 
@@ -1439,23 +1363,37 @@
       }
 
 
+      .brand-name {
+
+        font-size: 23px;
+
+      }
+
+
+      .brand-author {
+
+        font-size: 8px;
+
+      }
+
+
       .hero {
 
-        padding: 65px 0 80px;
+        padding: 70px 0 85px;
 
       }
 
 
       .hero-title {
 
-        font-size: 61px;
+        font-size: 64px;
 
       }
 
 
-      .hero-image-frame img {
+      .hero-text {
 
-        height: 410px;
+        font-size: 15px;
 
       }
 
@@ -1469,7 +1407,7 @@
 
       .intro-copy {
 
-        font-size: 36px;
+        font-size: 37px;
 
       }
 
@@ -1500,13 +1438,6 @@
       }
 
 
-      .book-cover {
-
-        min-height: 410px;
-
-      }
-
-
       .social-card {
 
         min-height: 200px;
@@ -1533,15 +1464,13 @@
 
 
     /* =====================================================
-       ACCESSIBILITY
+       REDUCED MOTION
     ====================================================== */
 
     @media (prefers-reduced-motion: reduce) {
 
       html {
-
         scroll-behavior: auto;
-
       }
 
       * {
@@ -1632,107 +1561,71 @@
 
     <!-- =====================================================
          HERO
+         SIN FOTOGRAFÍA
     ====================================================== -->
 
     <section class="hero">
 
       <div class="container">
 
-        <div class="hero-grid">
+        <div class="hero-content reveal">
 
 
-          <div class="reveal">
-
-
-            <div class="hero-label">
-              Fotografía · exploración · historias
-            </div>
-
-
-            <h1 class="hero-title">
-
-              <span>Caminar.</span>
-
-              <span>Mirar.</span>
-
-              <span class="highlight">
-                Contarlo.
-              </span>
-
-            </h1>
-
-
-            <p class="hero-text">
-
-              <strong>Peatón por el Mundo</strong>
-              es el proyecto de Maca Silva:
-              fotografías, historias y libros nacidos
-              de caminar ciudades y territorios.
-
-            </p>
-
-
-            <div class="hero-actions">
-
-
-              <a
-                href="#fotografias"
-                class="button button-dark"
-              >
-                Ver fotografías
-              </a>
-
-
-              <a
-                href="#libro"
-                class="button button-outline"
-              >
-                Conocer el libro
-              </a>
-
-
-            </div>
-
-
+          <div class="hero-label">
+            Fotografía · exploración · historias
           </div>
 
 
+          <h1 class="hero-title">
 
-          <!-- =================================================
-               FOTO PRINCIPAL
-          ================================================== -->
+            <span>Caminar.</span>
 
-          <div class="hero-image reveal">
+            <span>Mirar.</span>
 
+            <span class="highlight">
+              Contarlo.
+            </span>
 
-            <div class="hero-image-frame">
-
-
-              <!--
-                FOTO PRINCIPAL
-
-                Pon aquí una de tus fotografías
-                de viaje.
-
-                Ejemplo:
-
-                assets/foto-hero.jpg
-              -->
-
-              <img
-                src="assets/foto-hero.jpg"
-                alt="Fotografía de Peatón por el Mundo"
-              >
+          </h1>
 
 
-              <div class="photo-note">
+          <p class="hero-text">
 
-                Una imagen del camino · Peatón por el Mundo
+            <strong>Peatón por el Mundo</strong>
+            es el proyecto de Maca Silva:
+            fotografías, historias y libros nacidos
+            de caminar ciudades y territorios.
 
-              </div>
+          </p>
 
 
-            </div>
+          <div class="hero-actions">
+
+
+            <a
+              href="#fotografias"
+              class="button button-dark"
+            >
+              Ver fotografías
+            </a>
+
+
+            <a
+              href="#libro"
+              class="button button-outline"
+            >
+              Conocer el libro
+            </a>
+
+
+            <a
+              href="https://www.instagram.com/macafromchile/"
+              target="_blank"
+              rel="noopener"
+              class="button button-outline"
+            >
+              Instagram
+            </a>
 
 
           </div>
@@ -1811,6 +1704,7 @@
 
       <div class="container">
 
+
         <div class="intro-grid">
 
 
@@ -1842,6 +1736,7 @@
 
         </div>
 
+
       </div>
 
     </section>
@@ -1869,9 +1764,12 @@
               02 · Fotografía
             </div>
 
+
             <h2 class="section-title">
+
               Desde<br>
               el camino.
+
             </h2>
 
           </div>
@@ -1893,8 +1791,6 @@
         <div class="photo-grid">
 
 
-          <!-- FOTO 1 -->
-
           <a
             href="https://www.instagram.com/macafromchile/"
             target="_blank"
@@ -1910,8 +1806,6 @@
 
           </a>
 
-
-          <!-- FOTO 2 -->
 
           <a
             href="https://www.instagram.com/macafromchile/"
@@ -1929,8 +1823,6 @@
           </a>
 
 
-          <!-- FOTO 3 -->
-
           <a
             href="https://www.instagram.com/macafromchile/"
             target="_blank"
@@ -1947,8 +1839,6 @@
           </a>
 
 
-          <!-- FOTO 4 -->
-
           <a
             href="https://www.instagram.com/macafromchile/"
             target="_blank"
@@ -1964,8 +1854,6 @@
 
           </a>
 
-
-          <!-- FOTO 5 -->
 
           <a
             href="https://www.instagram.com/macafromchile/"
@@ -2007,54 +1895,31 @@
         <div class="book-grid">
 
 
-          <!-- REPRESENTACIÓN DEL LIBRO -->
+          <!-- PORTADA DEL LIBRO -->
 
           <div class="book-visual reveal">
 
-
             <div class="book-cover">
 
+              <!--
+                CUANDO TENGAS LA FOTO DE LA PORTADA,
+                CAMBIA ESTA RUTA:
 
-              <div>
+                assets/portada-peaton.jpg
+              -->
 
-
-                <div class="book-cover-small">
-                  Maca Silva
-                </div>
-
-
-                <div class="book-cover-title">
-
-                  PEATÓN<br>
-                  POR EL<br>
-                  MUNDO
-
-                </div>
-
-
-                <p style="
-                  margin-top:20px;
-                  font-size:11px;
-                  line-height:1.4;
-                ">
-
-                  Relatos de una
-                  exploradora nómada
-
-                </p>
-
-
-              </div>
-
+              <img
+                src="assets/portada-peaton.jpg"
+                alt="Portada del libro Peatón por el Mundo: Relatos de una exploradora nómada"
+              >
 
             </div>
-
 
           </div>
 
 
 
-          <!-- TEXTO DEL LIBRO -->
+          <!-- INFORMACIÓN DEL LIBRO -->
 
           <div class="reveal">
 
@@ -2067,7 +1932,9 @@
             <h2>
 
               Peatón por el Mundo:
-              <span>Relatos de una exploradora nómada.</span>
+              <span>
+                Relatos de una exploradora nómada.
+              </span>
 
             </h2>
 
@@ -2136,8 +2003,10 @@
 
 
             <h2 class="section-title">
+
               Por dónde<br>
               he pasado.
+
             </h2>
 
           </div>
@@ -2167,8 +2036,10 @@
 
 
             <h3>
+
               El recorrido
               continúa.
+
             </h3>
 
 
@@ -2222,8 +2093,10 @@
 
 
             <h2 class="section-title">
+
               Seguimos<br>
               caminando.
+
             </h2>
 
           </div>
@@ -2253,13 +2126,11 @@
             class="social-card social-instagram reveal"
           >
 
-
             <div>
 
               <div class="social-name">
                 Instagram
               </div>
-
 
               <div class="social-handle">
                 @macafromchile
@@ -2271,7 +2142,6 @@
             <div class="social-arrow">
               ↗
             </div>
-
 
           </a>
 
@@ -2286,13 +2156,11 @@
             class="social-card social-facebook reveal"
           >
 
-
             <div>
 
               <div class="social-name">
                 Facebook
               </div>
-
 
               <div class="social-handle">
                 @macafromchile
@@ -2304,7 +2172,6 @@
             <div class="social-arrow">
               ↗
             </div>
-
 
           </a>
 
@@ -2373,6 +2240,7 @@
 
         </div>
 
+
       </div>
 
     </section>
@@ -2384,7 +2252,7 @@
 
   <!-- =====================================================
        FOOTER
-  ====================================================== -->
+    ====================================================== -->
 
   <footer>
 
@@ -2460,8 +2328,7 @@
 
   <!-- =====================================================
        JAVASCRIPT
-       Aparición suave de elementos
-  ====================================================== -->
+    ====================================================== -->
 
   <script>
 
@@ -2504,3 +2371,4 @@
 
 </body>
 </html>
+
