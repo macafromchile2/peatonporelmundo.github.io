@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="es">
+
 <head>
 
   <meta charset="utf-8">
@@ -22,6 +23,7 @@
   >
 
   <!-- Open Graph -->
+
   <meta
     property="og:title"
     content="Peatón por el Mundo — Maca Silva"
@@ -104,14 +106,20 @@
     ====================================================== */
 
     * {
+
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+
     }
 
+
     html {
+
       scroll-behavior: smooth;
+
     }
+
 
     body {
 
@@ -127,14 +135,27 @@
 
     }
 
+
     img {
+
       display: block;
       max-width: 100%;
+
     }
 
+
     a {
+
       color: inherit;
       text-decoration: none;
+
+    }
+
+
+    button {
+
+      font-family: inherit;
+
     }
 
 
@@ -507,7 +528,7 @@
 
 
     /* =====================================================
-       CONTINENTS
+       CONTINENTES
     ====================================================== */
 
     .continent-bar {
@@ -547,28 +568,38 @@
 
 
     .continent:nth-child(2n) {
+
       color: var(--yellow);
+
     }
 
 
     .continent:nth-child(3n) {
+
       color: #e7a08c;
+
     }
 
 
     .continent:nth-child(4n) {
+
       color: #a9c2b8;
+
     }
 
 
     @keyframes continents {
 
       from {
+
         transform: translateX(0);
+
       }
 
       to {
+
         transform: translateX(-50%);
+
       }
 
     }
@@ -809,13 +840,6 @@
     }
 
 
-    /*
-      AQUÍ PONDREMOS LA FOTO REAL DE LA PORTADA
-      DEL LIBRO.
-
-      Por ahora se muestra esta estructura temporal.
-    */
-
     .book-cover {
 
       background: var(--cream);
@@ -851,7 +875,7 @@
     }
 
 
-    .book-copy h2 {
+    .book-section h2 {
 
       margin-top: 15px;
 
@@ -868,14 +892,14 @@
     }
 
 
-    .book-copy h2 span {
+    .book-section h2 span {
 
       color: var(--yellow);
 
     }
 
 
-    .book-copy p {
+    .book-section p {
 
       max-width: 540px;
 
@@ -919,6 +943,369 @@
       font-size: 10px;
 
       color: rgba(255,255,255,.62);
+
+    }
+
+
+    /* =====================================================
+       ATLAS ÍNTIMO
+    ====================================================== */
+
+    .atlas-block {
+
+      margin-top: 110px;
+
+      padding-top: 100px;
+
+      border-top: 1px solid rgba(255,255,255,.28);
+
+    }
+
+
+    .atlas-header {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: end;
+
+      gap: 40px;
+
+      margin-bottom: 55px;
+
+    }
+
+
+    .atlas-label {
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: .18em;
+
+      text-transform: uppercase;
+
+      color: rgba(255,255,255,.68);
+
+    }
+
+
+    .atlas-title {
+
+      margin-top: 10px;
+
+      font-family: var(--serif);
+
+      font-size: clamp(
+        55px,
+        7vw,
+        90px
+      );
+
+      line-height: .84;
+
+    }
+
+
+    .atlas-description {
+
+      max-width: 390px;
+
+      color: rgba(255,255,255,.78);
+
+      font-size: 14px;
+
+    }
+
+
+    .atlas-layout {
+
+      display: grid;
+
+      grid-template-columns: .8fr 1.2fr;
+
+      gap: 90px;
+
+      align-items: center;
+
+    }
+
+
+    .atlas-cover-link {
+
+      display: block;
+
+      max-width: 360px;
+
+      margin: 0 auto;
+
+      padding: 12px;
+
+      background: white;
+
+      transform: rotate(2deg);
+
+      box-shadow:
+        0 35px 70px rgba(36,37,34,.24);
+
+      transition:
+        transform .45s ease,
+        box-shadow .45s ease;
+
+    }
+
+
+    .atlas-cover-link:hover {
+
+      transform:
+        rotate(0deg)
+        translateY(-8px);
+
+      box-shadow:
+        0 45px 85px rgba(36,37,34,.30);
+
+    }
+
+
+    .atlas-cover-link img {
+
+      width: 100%;
+
+      height: auto;
+
+    }
+
+
+    .atlas-copy {
+
+      max-width: 520px;
+
+    }
+
+
+    .atlas-copy h3 {
+
+      font-family: var(--serif);
+
+      font-size: clamp(
+        42px,
+        5vw,
+        68px
+      );
+
+      line-height: .88;
+
+    }
+
+
+    .atlas-copy h3 span {
+
+      color: var(--yellow);
+
+    }
+
+
+    .atlas-copy p {
+
+      margin-top: 22px;
+
+      max-width: 480px;
+
+      color: rgba(255,255,255,.82);
+
+    }
+
+
+    .atlas-button {
+
+      margin-top: 28px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      min-height: 48px;
+
+      padding: 0 22px;
+
+      border: 1px solid white;
+
+      border-radius: 100px;
+
+      background: transparent;
+
+      color: white;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+
+      transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
+
+    }
+
+
+    .atlas-button:hover {
+
+      background: white;
+
+      color: var(--ink);
+
+      transform: translateY(-3px);
+
+    }
+
+
+    .atlas-note {
+
+      display: block;
+
+      margin-top: 14px;
+
+      font-size: 10px;
+
+      color: rgba(255,255,255,.58);
+
+    }
+
+
+    /* =====================================================
+       ATLAS MODAL / HEYZINE
+    ====================================================== */
+
+    .atlas-modal {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 1000;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 25px;
+
+      background:
+        rgba(20,18,16,.96);
+
+      opacity: 0;
+
+      visibility: hidden;
+
+      pointer-events: none;
+
+      transition:
+        opacity .35s ease,
+        visibility .35s ease;
+
+    }
+
+
+    .atlas-modal.active {
+
+      opacity: 1;
+
+      visibility: visible;
+
+      pointer-events: auto;
+
+    }
+
+
+    .atlas-modal-content {
+
+      width: min(
+        1400px,
+        96vw
+      );
+
+      height: min(
+        900px,
+        92vh
+      );
+
+      background: white;
+
+      box-shadow:
+        0 30px 100px rgba(0,0,0,.45);
+
+    }
+
+
+    .atlas-modal-content iframe {
+
+      display: block;
+
+      width: 100%;
+
+      height: 100%;
+
+      border: 0;
+
+    }
+
+
+    .atlas-close {
+
+      position: fixed;
+
+      top: 15px;
+
+      right: 22px;
+
+      z-index: 1010;
+
+      width: 46px;
+
+      height: 46px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border: 1px solid rgba(255,255,255,.35);
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.08);
+
+      color: white;
+
+      font-size: 30px;
+
+      font-weight: 300;
+
+      line-height: 1;
+
+      cursor: pointer;
+
+      transition:
+        background .25s ease,
+        transform .25s ease;
+
+    }
+
+
+    .atlas-close:hover {
+
+      background: rgba(255,255,255,.18);
+
+      transform: rotate(90deg);
 
     }
 
@@ -1261,7 +1648,9 @@
     @media (max-width: 900px) {
 
       .main-nav {
+
         display: none;
+
       }
 
 
@@ -1319,6 +1708,31 @@
         grid-template-columns: 1fr;
 
         gap: 60px;
+
+      }
+
+
+      .atlas-layout {
+
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+
+      }
+
+
+      .atlas-header {
+
+        align-items: start;
+
+        flex-direction: column;
+
+      }
+
+
+      .atlas-copy {
+
+        max-width: none;
 
       }
 
@@ -1438,6 +1852,74 @@
       }
 
 
+      .atlas-block {
+
+        margin-top: 80px;
+
+        padding-top: 75px;
+
+      }
+
+
+      .atlas-title {
+
+        font-size: 55px;
+
+      }
+
+
+      .atlas-cover-link {
+
+        max-width: 290px;
+
+      }
+
+
+      .atlas-copy h3 {
+
+        font-size: 45px;
+
+      }
+
+
+      .atlas-button {
+
+        width: 100%;
+
+      }
+
+
+      .atlas-modal {
+
+        padding: 8px;
+
+      }
+
+
+      .atlas-modal-content {
+
+        width: 100%;
+
+        height: 91vh;
+
+      }
+
+
+      .atlas-close {
+
+        top: 7px;
+
+        right: 10px;
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 26px;
+
+      }
+
+
       .social-card {
 
         min-height: 200px;
@@ -1470,8 +1952,11 @@
     @media (prefers-reduced-motion: reduce) {
 
       html {
+
         scroll-behavior: auto;
+
       }
+
 
       * {
 
@@ -1723,8 +2208,9 @@
 
             <p class="intro-copy">
 
-            Recorrer lugares a pie, mirar lo que pasa y contar algunas de esas 
-            <em>historias.</em>
+              Recorrer lugares a pie, mirar lo que pasa
+              y contar algunas de esas
+              <em>historias.</em>
 
             </p>
 
@@ -1890,21 +2376,14 @@
       <div class="container">
 
 
+        <!-- LIBRO NARRATIVO -->
+
         <div class="book-grid">
 
-
-          <!-- PORTADA DEL LIBRO -->
 
           <div class="book-visual reveal">
 
             <div class="book-cover">
-
-              <!--
-                CUANDO TENGAS LA FOTO DE LA PORTADA,
-                CAMBIA ESTA RUTA:
-
-                assets/portada-peaton.jpg
-              -->
 
               <img
                 src="assets/portada-peaton.jpg"
@@ -1916,8 +2395,6 @@
           </div>
 
 
-
-          <!-- INFORMACIÓN DEL LIBRO -->
 
           <div class="reveal">
 
@@ -1941,7 +2418,6 @@
 
               Una colección de historias nacidas
               entre caminos, tierra, selva y mar.
-              
 
               Una mirada personal a los territorios
               y a las personas encontradas durante
@@ -1971,6 +2447,127 @@
 
 
         </div>
+
+
+
+        <!-- =================================================
+             ATLAS ÍNTIMO
+        ================================================== -->
+
+        <div class="atlas-block">
+
+
+          <div class="atlas-header reveal">
+
+
+            <div>
+
+              <div class="atlas-label">
+                Photobook
+              </div>
+
+
+              <h2 class="atlas-title">
+                Atlas Íntimo
+              </h2>
+
+            </div>
+
+
+            <p class="atlas-description">
+
+              Un recorrido visual de Peatón por el Mundo.
+              Fotografías, lugares y momentos reunidos
+              en una experiencia para recorrer página a página.
+
+            </p>
+
+
+          </div>
+
+
+
+          <div class="atlas-layout">
+
+
+            <!-- PORTADA -->
+
+            <div class="reveal">
+
+              <button
+                type="button"
+                class="atlas-cover-link"
+                onclick="openAtlas()"
+                aria-label="Abrir Atlas Íntimo"
+              >
+
+                <img
+                  src="assets/atlas-intimo.jpg"
+                  alt="Portada de Atlas Íntimo — Un recorrido visual de Peatón por el Mundo"
+                >
+
+              </button>
+
+            </div>
+
+
+
+            <!-- INFORMACIÓN -->
+
+            <div class="atlas-copy reveal">
+
+
+              <div class="atlas-label">
+                Lectura online
+              </div>
+
+
+              <h3>
+
+                Un libro para
+                <span>
+                  recorrer.
+                </span>
+
+              </h3>
+
+
+              <p>
+
+                Atlas Íntimo reúne una selección visual
+                de los caminos recorridos, los lugares
+                encontrados y las imágenes que quedaron
+                en el camino.
+
+              </p>
+
+
+              <button
+                type="button"
+                class="atlas-button"
+                onclick="openAtlas()"
+              >
+
+                Explorar Atlas Íntimo →
+
+              </button>
+
+
+              <span class="atlas-note">
+
+                Disponible para lectura online.
+
+              </span>
+
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+
 
       </div>
 
@@ -2043,7 +2640,8 @@
 
             <p>
 
-              Los países y territorios que forman parte de Peatón por el Mundo
+              Los países y territorios que forman parte
+              de Peatón por el Mundo.
 
             </p>
 
@@ -2053,6 +2651,7 @@
               class="button button-dark"
               style="margin-top:25px"
             >
+
               Explorar mapa →
 
             </a>
@@ -2227,7 +2826,9 @@
               href="mailto:macafromchile@gmail.com"
               class="email"
             >
+
               macafromchile@gmail.com
+
             </a>
 
 
@@ -2247,8 +2848,49 @@
 
 
   <!-- =====================================================
+       VISOR ATLAS ÍNTIMO
+  ====================================================== -->
+
+  <div
+    id="atlasModal"
+    class="atlas-modal"
+    aria-hidden="true"
+  >
+
+
+    <button
+      type="button"
+      class="atlas-close"
+      onclick="closeAtlas()"
+      aria-label="Cerrar Atlas Íntimo"
+    >
+
+      ×
+
+    </button>
+
+
+    <div class="atlas-modal-content">
+
+
+      <iframe
+        src="https://heyzine.com/flip-book/2dd4ae8fa9.html"
+        title="Atlas Íntimo — Peatón por el Mundo"
+        allowfullscreen
+      >
+      </iframe>
+
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- =====================================================
        FOOTER
-    ====================================================== -->
+  ====================================================== -->
 
   <footer>
 
@@ -2328,6 +2970,11 @@
 
   <script>
 
+
+    /* =====================================================
+       ANIMACIONES AL HACER SCROLL
+    ====================================================== */
+
     const observer =
       new IntersectionObserver(
 
@@ -2362,9 +3009,75 @@
 
       });
 
+
+
+    /* =====================================================
+       ABRIR ATLAS ÍNTIMO
+    ====================================================== */
+
+    function openAtlas() {
+
+      const modal =
+        document.getElementById("atlasModal");
+
+      modal.classList.add("active");
+
+      modal.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+      document.body.style.overflow = "hidden";
+
+    }
+
+
+
+    /* =====================================================
+       CERRAR ATLAS ÍNTIMO
+    ====================================================== */
+
+    function closeAtlas() {
+
+      const modal =
+        document.getElementById("atlasModal");
+
+      modal.classList.remove("active");
+
+      modal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+      document.body.style.overflow = "";
+
+    }
+
+
+
+    /* =====================================================
+       CERRAR CON ESC
+    ====================================================== */
+
+    document.addEventListener(
+      "keydown",
+      function(event) {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          closeAtlas();
+
+        }
+
+      }
+    );
+
+
   </script>
 
 
 </body>
-</html>
 
+</html>
